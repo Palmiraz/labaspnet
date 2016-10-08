@@ -1,0 +1,72 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterGlobal.master.cs" Inherits="ShoesEcommers.WebAdmin.Masters.MasterGlobal" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="/Content/jquery-ui.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css"/>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <header class="navbar navbar-default navbar-static-top" role="banner">
+        <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a href="/" class="navbar-brand"><img src="http://us-cdn.sd-assets.com/media/images/shared/SD_text_logo_200x38.png"/></a>
+        </div>
+        <nav class="collapse navbar-collapse" role="navigation">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#">Get Started</a>
+            </li>
+            <li>
+              <a href="#">Edit</a>
+            </li>
+            <li>
+              <a href="#">Visualize</a>
+            </li>
+            <li>
+              <a href="#">Prototype</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+        
+        
+        <div class="container">
+	    <div class="row">
+  			    <div class="col-md-3" id="leftCol">
+				    <div class="well"> 
+              	    <ul class="nav nav-stacked" id="sidebar">
+                      <li>Catálogos
+                          <ul >
+                              <li> <a href="#">Clientes</a></li>
+                              <li>Productos</li>
+                          </ul>
+                      </li>
+              	    </ul>
+  				    </div>
+      		    </div>  
+                <div class="col-md-9">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

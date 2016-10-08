@@ -1,0 +1,7 @@
+C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesEcomers.WebAdmin\bin\ShoesEcommers.WebAdmin.dll
+C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesEcomers.WebAdmin\bin\ShoesEcommers.WebAdmin.pdb
+C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesEcomers.WebAdmin\obj\Debug\ShoesEcommers.WebAdmin.csprojResolveAssemblyReference.cache
+C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesEcomers.WebAdmin\obj\Debug\ShoesEcommers.WebAdmin.dll
+C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesEcomers.WebAdmin\obj\Debug\ShoesEcommers.WebAdmin.pdb
+C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesEcomers.WebAdmin\bin\ShoeEcommers.LogicLayer.dll
+C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesEcomers.WebAdmin\bin\ShoeEcommers.LogicLayer.pdb
