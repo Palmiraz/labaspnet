@@ -1,4 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeBehind="FrmCustomers.aspx.cs" Inherits="ShoesEcommers.WebAdmin.Catalogs.FrmCustomers" %>
+﻿<%@ Page Language="C#" 
+    AutoEventWireup="false"  
+    CodeBehind="FrmCustomers.aspx.cs" 
+    Inherits="ShoesEcommers.WebAdmin.Catalogs.FrmCustomers" %>
 
 <!DOCTYPE html>
 

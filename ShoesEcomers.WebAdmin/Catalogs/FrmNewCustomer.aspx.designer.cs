@@ -13,15 +13,6 @@ namespace ShoesEcommers.WebAdmin.Catalogs {
     public partial class FrmNewCustomer {
         
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
         /// TxtName control.
         /// </summary>
         /// <remarks>
@@ -29,6 +20,15 @@ namespace ShoesEcommers.WebAdmin.Catalogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtName;
+        
+        /// <summary>
+        /// ValidName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidName;
         
         /// <summary>
         /// TxtFirstName control.
@@ -40,6 +40,15 @@ namespace ShoesEcommers.WebAdmin.Catalogs {
         protected global::System.Web.UI.WebControls.TextBox TxtFirstName;
         
         /// <summary>
+        /// ValidFirstName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidFirstName;
+        
+        /// <summary>
         /// TxtLastName control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace ShoesEcommers.WebAdmin.Catalogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtLastName;
+        
+        /// <summary>
+        /// ValidLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidLastName;
         
         /// <summary>
         /// TxtEmail control.
@@ -58,40 +76,40 @@ namespace ShoesEcommers.WebAdmin.Catalogs {
         protected global::System.Web.UI.WebControls.TextBox TxtEmail;
         
         /// <summary>
-        /// DropDay control.
+        /// ValidEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDay;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ValidEmail;
         
         /// <summary>
-        /// DropMonth control.
+        /// ValidFormatEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropMonth;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ValidFormatEmail;
         
         /// <summary>
-        /// DropYear control.
+        /// CtlDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropYear;
+        protected global::ShoesEcommers.WebAdmin.Controls.CtlDate CtlDate;
         
         /// <summary>
-        /// ValidDate control.
+        /// BtnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator ValidDate;
+        protected global::System.Web.UI.WebControls.Button BtnCancel;
         
         /// <summary>
         /// BtnSave control.
@@ -101,5 +119,23 @@ namespace ShoesEcommers.WebAdmin.Catalogs {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnSave;
+        
+        /// <summary>
+        /// ContentMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ContentMessage;
+        
+        /// <summary>
+        /// LblMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblMessage;
     }
 }

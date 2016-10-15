@@ -68,5 +68,7 @@
             </div>
         </div>
     </form>
+    <script src="../Scripts/jquery.min.js"></script>
+    <script src="../Scripts/jquery-ui.min.js"></script>
 </body>
 </html>
