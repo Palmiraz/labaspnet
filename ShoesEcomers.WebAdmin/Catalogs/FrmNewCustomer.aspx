@@ -143,9 +143,13 @@
               month++;
               month = ((month < 10) ? "0" : "") + month;
               var dateBirth = $("#" + idDropYear).val() + "-" + month + "-" + $("#" + idDropDay).val();
-              
-              var timestamp = Date.parse(dateBirth);
-              args.IsValid = !(isNaN(timestamp));
+              var day = $("#" + idDropDay).val();
+              var d = new Date(dateBirth);
+              if (parseInt(d.getDate()) !== (parseInt(day)-1)) {
+                  args.IsValid = false;
+                  console.log("Fecha no valida");
+                  return;
+              }
           }
     </script>
 </body>
