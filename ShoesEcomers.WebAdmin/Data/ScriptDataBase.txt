@@ -1,0 +1,382 @@
+﻿USE [ecommers]
+GO
+/****** Object:  Table [dbo].[StatusOrders]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[StatusOrders](
+	[Id] [int] NOT NULL,
+	[Status] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_StatusOrders] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Brands]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Brands](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Brand] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Brands] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[GroupsAttributes]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[GroupsAttributes](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[GroupName] [varchar](50) NOT NULL,
+	[TypeGroup] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_GroupsAttributes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Department]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Department](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Department] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Department] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Customers]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Customers](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NOT NULL,
+	[FirstName] [varchar](50) NOT NULL,
+	[LastName] [varchar](50) NOT NULL,
+	[Email] [varchar](50) NOT NULL,
+	[DateBirth] [datetime] NOT NULL,
+ CONSTRAINT [PK_Customers] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  StoredProcedure [dbo].[DeleteCustomer]    Script Date: 10/15/2016 06:10:30 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc  [dbo].[DeleteCustomer]
+	 @Id int
+	AS 
+	DELETE Customer
+	where Id= @Id
+GO
+/****** Object:  Table [dbo].[Categories]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Categories](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdDepartment] [int] NOT NULL,
+	[Category] [varchar](50) NULL,
+ CONSTRAINT [PK_Categories] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  StoredProcedure [dbo].[GetCustomer]    Script Date: 10/15/2016 06:10:30 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[GetCustomer]
+	@Id int = null, 
+	@Name varchar(50) = null
+	
+AS 
+
+SELECT *
+FROM Customers
+WHERE (@Id is null or Id = @Id)
+and (@Name is null or Name like '%'  + @Name + '%')
+GO
+/****** Object:  StoredProcedure [dbo].[InsertCustomer]    Script Date: 10/15/2016 06:10:30 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROC [dbo].[InsertCustomer]
+	@Id int = null,
+	@Name varchar(50),
+	@FirstName varchar(50),
+	@LastName varchar(50),
+	@Email varchar(50),
+	@DateBirth datetime
+AS 
+IF(@Id is null)
+BEGIN
+	INSERT INTO Customers( Name , FirstName, LastName, Email, DateBirth)
+	VALUES ( @Name,@FirstName, @LastName, @Email, @DateBirth)
+	SELECT Scope_Identity()
+END
+ELSE
+BEGIN
+ UPDATE Customers
+ SET Name  = @Name, 
+	FirstName = @FirstName, 
+	LastName = @LastName, 
+	Email = @Email, 
+	DateBirth = @DateBirth
+SELECT @Id
+END
+GO
+/****** Object:  Table [dbo].[Orders]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Orders](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdCustomer] [int] NOT NULL,
+	[DateCreated] [datetime] NOT NULL,
+	[IdStatus] [int] NOT NULL,
+ CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SubCategories]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[SubCategories](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdCategory] [int] NOT NULL,
+	[SubCategory] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_SubCategories] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Products]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Products](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdBrand] [int] NOT NULL,
+	[IdSubcategory] [int] NOT NULL,
+	[Name] [varchar](50) NOT NULL,
+	[Model] [varchar](50) NOT NULL,
+	[Active] [bit] NOT NULL,
+ CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Skus]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Skus](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdProduct] [int] NOT NULL,
+	[Sku] [varchar](50) NOT NULL,
+	[Active] [bit] NOT NULL,
+	[Price] [money] NOT NULL,
+	[ListPrice] [money] NOT NULL,
+	[Thumbnail] [varchar](255) NULL,
+ CONSTRAINT [PK_Skus] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[OrderDetail]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[OrderDetail](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdOrder] [int] NOT NULL,
+	[IdSku] [int] NOT NULL,
+	[Quantity] [int] NOT NULL,
+	[Price] [money] NOT NULL,
+ CONSTRAINT [PK_OrderDetail] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ImagesSkus]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ImagesSkus](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdSku] [int] NOT NULL,
+	[UrlImage] [varchar](255) NOT NULL,
+ CONSTRAINT [PK_ImagesSkus] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[AttributeSkus]    Script Date: 10/15/2016 06:10:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[AttributeSkus](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdGroup] [int] NOT NULL,
+	[IdSku] [int] NOT NULL,
+	[ValueLabel] [varchar](50) NOT NULL,
+	[Label] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_AttributeSkus] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  ForeignKey [FK_AttributeSkus_GroupsAttributes]    Script Date: 10/15/2016 06:10:29 ******/
+ALTER TABLE [dbo].[AttributeSkus]  WITH CHECK ADD  CONSTRAINT [FK_AttributeSkus_GroupsAttributes] FOREIGN KEY([IdGroup])
+REFERENCES [dbo].[GroupsAttributes] ([Id])
+GO
+ALTER TABLE [dbo].[AttributeSkus] CHECK CONSTRAINT [FK_AttributeSkus_GroupsAttributes]
+GO
+/****** Object:  ForeignKey [FK_AttributeSkus_Skus]    Script Date: 10/15/2016 06:10:29 ******/
+ALTER TABLE [dbo].[AttributeSkus]  WITH CHECK ADD  CONSTRAINT [FK_AttributeSkus_Skus] FOREIGN KEY([IdSku])
+REFERENCES [dbo].[Skus] ([Id])
+GO
+ALTER TABLE [dbo].[AttributeSkus] CHECK CONSTRAINT [FK_AttributeSkus_Skus]
+GO
+/****** Object:  ForeignKey [FK_Categories_Department]    Script Date: 10/15/2016 06:10:29 ******/
+ALTER TABLE [dbo].[Categories]  WITH CHECK ADD  CONSTRAINT [FK_Categories_Department] FOREIGN KEY([IdDepartment])
+REFERENCES [dbo].[Department] ([Id])
+GO
+ALTER TABLE [dbo].[Categories] CHECK CONSTRAINT [FK_Categories_Department]
+GO
+/****** Object:  ForeignKey [FK_ImagesSkus_Skus]    Script Date: 10/15/2016 06:10:29 ******/
+ALTER TABLE [dbo].[ImagesSkus]  WITH CHECK ADD  CONSTRAINT [FK_ImagesSkus_Skus] FOREIGN KEY([IdSku])
+REFERENCES [dbo].[Skus] ([Id])
+GO
+ALTER TABLE [dbo].[ImagesSkus] CHECK CONSTRAINT [FK_ImagesSkus_Skus]
+GO
+/****** Object:  ForeignKey [FK_OrderDetail_Orders]    Script Date: 10/15/2016 06:10:29 ******/
+ALTER TABLE [dbo].[OrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_OrderDetail_Orders] FOREIGN KEY([IdOrder])
+REFERENCES [dbo].[Orders] ([Id])
+GO
+ALTER TABLE [dbo].[OrderDetail] CHECK CONSTRAINT [FK_OrderDetail_Orders]
+GO
+/****** Object:  ForeignKey [FK_OrderDetail_Skus]    Script Date: 10/15/2016 06:10:29 ******/
+ALTER TABLE [dbo].[OrderDetail]  WITH CHECK ADD  CONSTRAINT [FK_OrderDetail_Skus] FOREIGN KEY([IdSku])
+REFERENCES [dbo].[Skus] ([Id])
+GO
+ALTER TABLE [dbo].[OrderDetail] CHECK CONSTRAINT [FK_OrderDetail_Skus]
+GO
+/****** Object:  ForeignKey [FK_Orders_Customers]    Script Date: 10/15/2016 06:10:29 ******/
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_Customers] FOREIGN KEY([IdCustomer])
+REFERENCES [dbo].[Customers] ([Id])
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_Customers]
+GO
+/****** Object:  ForeignKey [FK_Orders_StatusOrders]    Script Date: 10/15/2016 06:10:29 ******/
+ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_StatusOrders] FOREIGN KEY([IdStatus])
+REFERENCES [dbo].[StatusOrders] ([Id])
+GO
+ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_StatusOrders]
+GO
+/****** Object:  ForeignKey [FK_Products_Brands]    Script Date: 10/15/2016 06:10:29 ******/
+ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_Brands] FOREIGN KEY([IdBrand])
+REFERENCES [dbo].[Brands] ([Id])
+GO
+ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_Brands]
+GO
+/****** Object:  ForeignKey [FK_Products_SubCategories]    Script Date: 10/15/2016 06:10:29 ******/
+ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_SubCategories] FOREIGN KEY([IdSubcategory])
+REFERENCES [dbo].[SubCategories] ([Id])
+GO
+ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_SubCategories]
+GO
+/****** Object:  ForeignKey [FK_Skus_Products]    Script Date: 10/15/2016 06:10:29 ******/
+ALTER TABLE [dbo].[Skus]  WITH CHECK ADD  CONSTRAINT [FK_Skus_Products] FOREIGN KEY([IdProduct])
+REFERENCES [dbo].[Products] ([Id])
+GO
+ALTER TABLE [dbo].[Skus] CHECK CONSTRAINT [FK_Skus_Products]
+GO
+/****** Object:  ForeignKey [FK_SubCategories_Categories]    Script Date: 10/15/2016 06:10:29 ******/
+ALTER TABLE [dbo].[SubCategories]  WITH CHECK ADD  CONSTRAINT [FK_SubCategories_Categories] FOREIGN KEY([IdCategory])
+REFERENCES [dbo].[Categories] ([Id])
+GO
+ALTER TABLE [dbo].[SubCategories] CHECK CONSTRAINT [FK_SubCategories_Categories]
+GO
