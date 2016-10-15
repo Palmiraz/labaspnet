@@ -8,10 +8,28 @@ namespace ExamplesLinq
 {
     class Program
     {
+        private static ListData list = new ListData();
         static void Main(string[] args)
         {
-            ListData list = new ListData();
             list.GetProductList();
+            SelectExample();
+            Console.Read();
         }
+
+        private static void SelectExample()
+        {
+            var query = from c in list.categories
+                join p in list.GetProductList() on c equals p.Category into ps
+                from p in ps.DefaultIfEmpty()
+                where p == null 
+                select c;
+
+            query.ToList().ForEach(c => Console.WriteLine(c));
+
+        }
+
+        
+
+
     }
 }

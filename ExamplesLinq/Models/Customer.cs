@@ -17,5 +17,7 @@ namespace ExamplesLinq.Models
         public string Phone { get; set; }
         public string Fax { get; set; }
         public Order[] Orders { get; set; }
+
+       
     }
 }

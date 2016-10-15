@@ -13,6 +13,33 @@ namespace ExamplesLinq.Models
     {
         private List<Product> productList;
         private List<Customer> customerList;
+        public int[] NumbersArr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+        public int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 };
+        public int[] numbersB = { 1, 3, 5, 7, 8 };
+        public string[] words = { "blueberry", "chimpanzee", "abacus", "banana", "apple", "cheese" };
+        public string[] categories = new string[]{   
+        "Beverages",  
+        "Condiments",   
+        "Vegetables",   
+        "Dairy Products",  
+        "Seafood",
+"Electronic"};
+
+        //left join
+        //var query = from c in list.categories
+        //            join p in list.GetProductList() on c equals p.Category into ps
+        //            from p in ps.DefaultIfEmpty()
+        //            where p == null
+        //            select c;
+
+        //group by
+        //List<Customer> customers = list.GetCustomerList();
+        //var query = from c in customers
+        //            group c by c.Country
+        //                into g
+        //                select new { g.Key, g };
+
 
         [Description("This sample uses the where clause to find all elements of an array with a value less than 5.")]
         public void Linq1()
