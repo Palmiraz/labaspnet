@@ -121,4 +121,5 @@
                             <asp:Label ID="LblMessage" runat="server" Text="" ClientIDMode="Predictable"></asp:Label>
                         </div>
                     </div>
+                    <asp:HiddenField ID="HiddId" runat="server" />
 </asp:Content>

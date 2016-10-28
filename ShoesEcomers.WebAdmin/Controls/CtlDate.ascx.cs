@@ -63,6 +63,20 @@ namespace ShoesEcommers.WebAdmin.Controls
                 }
                 return DateTime.MinValue;
             }
+            set
+            {
+                if (value == DateTime.MinValue)
+                {
+                    return;
+                }
+                DateTime date = value;
+                DropDay.SelectedIndex = date.Day - 1;
+
+                DropMonth.SelectedIndex = date.Month - 1;
+                DropYear.SelectedValue = date.Year.ToString();
+
+
+            }
         }
 
 

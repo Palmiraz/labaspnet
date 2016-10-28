@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="col-sm-2">
-                            <asp:Button ID="Button1" runat="server" Text="Buscar" CssClass="btn btn-success" />
+                            <asp:Button ID="Button1" runat="server" Text="Buscar" CssClass="btn btn-success" OnClick="Button1_Click" />
                         </div>
                     </div>
                     

@@ -1,0 +1,346 @@
+﻿Web App Catalos 
+ Brands Catalog
+<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="LinqDataSource" >
+        <Columns>
+            <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
+            <asp:BoundField DataField="Brand" HeaderText="Brand" SortExpression="Brand" />
+        </Columns>
+    </asp:GridView>
+    <asp:LinqDataSource ID="LinqDataSource" runat="server" ContextTypeName="ShoeEcommers.LogicLayer.Entities.ecommersEntities" EntityTypeName="" TableName="Brands">
+    </asp:LinqDataSource>
+	
+New Brand
+
+  <div class="well text-center">
+                        <strong>Marcas</strong>
+    </div>
+    
+     <div class="form-group row">
+                        <label class="col-sm-3 control-label">Marca:</label>
+                        <div class="col-sm-5">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <asp:TextBox ID="TxtBrand" runat="server" CssClass="form-control" placeholder="Nombre"></asp:TextBox>
+                            </div>
+                            <asp:RequiredFieldValidator 
+                                ID="ValidName" 
+                                runat="server" 
+                                ErrorMessage="(requerido)"
+                                ControlToValidate="TxtBrand"
+                                CssClass="label label-danger"></asp:RequiredFieldValidator>
+                        </div>
+    
+     </div>
+    
+     <div class="form-group row">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-5">
+                            <asp:Button ID="BtnCancel" 
+                                runat="server" 
+                                Text="Cancelar" 
+                                CausesValidation="false"
+                                CssClass="btn btn-warning btn-sm"  
+                                PostBackUrl="~/Catalogs/FrmBrands.aspx" />
+                           <asp:Button ID="BtnSave" runat="server" Text="Guardar" CssClass="btn btn-success btn-sm" OnClick="BtnSave_Click" />
+                        </div>
+  </div>
+    
+    
+
+        <div class="form-group row">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-8" id="ContentMessage" runat="server">
+                            <asp:Label ID="LblMessage" runat="server" Text="" ClientIDMode="Predictable"></asp:Label>
+                        </div>
+                    </div>
+                    <asp:HiddenField ID="HiddId" runat="server" />
+					
+					private  ecommersEntities _dc;
+
+        public FrmNewBrand()
+        {
+            _dc = new ecommersEntities();
+        }
+
+        private int IdBrand {
+            get {
+                if (!string.IsNullOrEmpty(this.HiddId.Value))
+                {
+                    return Convert.ToInt32(this.HiddId.Value);
+                }
+                return 0;
+            }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                this.HiddId.Value = string.IsNullOrEmpty(Request.QueryString["id"]) ? "" : Request.QueryString["id"];
+                FillData();
+            }
+        }
+
+        private void FillData()
+        {
+            if (IdBrand == 0) return;
+            Brands brand = _dc.Brands.First(b => b.Id == IdBrand);
+            this.TxtBrand.Text = brand.Brand;
+
+        }
+
+        protected void BtnSave_Click(object sender, EventArgs e)
+        {
+            if (IsValid)
+            {
+                try
+                {
+                    Save();
+                    LblMessage.CssClass = "alert alert-success";
+                    LblMessage.Text = "Datos almacenados";
+                }
+                catch (Exception er)
+                {
+                    LblMessage.CssClass = "alert alert-danger";
+                    LblMessage.Text = "Error";
+                }
+            }
+        }
+
+        private void Save()
+        {
+            Brands brand = null;
+            if (IdBrand == 0)
+            {
+                brand = new Brands();
+                _dc.Brands.Add(brand);
+            }
+            else
+            {
+                brand = _dc.Brands.First(b => b.Id == IdBrand);
+            }
+            brand.Brand = this.TxtBrand.Text.Trim();
+            _dc.SaveChanges();
+        }
+
+
+        public override void Dispose()
+        {
+            _dc.Dispose();
+            base.Dispose();
+        }
+		
+		
+		MARKET CATEGORIES
+		public List<Department> GetDepartments(XDocument document)
+        {
+            var query = from d in document.Root.Elements("department")
+                        let xAttribute = d.Attribute("deparment")
+                        where xAttribute != null
+                        select new Department
+                        {
+                            Department1 = xAttribute.Value,
+                            Categories = (
+                            from c in d.Elements("category")
+                            let xCat = c.Attribute("category")
+                            where xCat != null
+                            select new Categories
+                            {
+                                Category = xCat.Value,
+                                SubCategories = (
+                                from s in c.Elements("subcategory")
+                                let xSub = s.Attribute("subcategory")
+                                where xSub != null
+                                select new SubCategories { SubCategory = xSub.Value }
+                                ).ToList()
+                            }
+                            ).ToList()
+
+                        };
+            return query.ToList();
+        }
+		
+		
+		DYNAMIC DATA
+		[ScaffoldTable(true)]
+    [MetadataType(typeof(CustomersMetadata))]
+	
+	Customer METADATA
+	
+	public class CustomersMetadata
+    {
+        public object Id { get; set; }
+       
+        public object Name { get; set; }
+        public object FirstName { get; set; }
+        public object LastName { get; set; }
+        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*",ErrorMessage="Correo no valido")]
+        public object Email { get; set; }
+        [UIHint("DateTimeText")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}") ]
+        public object DateBirth { get; set; }
+    }
+	
+	
+	LOAD CATEGORIES
+	 protected void BtnUpload_Click(object sender, EventArgs e)
+        {
+            string rootFile = Server.MapPath("~/Files/");
+            FileUpload1.SaveAs(rootFile+FileUpload1.FileName);
+        }
+		
+	GLOBAL ASAX DYNAMIC
+	routes.Add(new DynamicDataRoute("Products/{action}.aspx")
+            {
+                Constraints = new RouteValueDictionary(new { action = "List|Details|Edit|Insert" }),
+                Model = DefaultModel,
+                Table = "Products"
+            });
+
+            // The following statements support combined-page mode, where the List, Detail, Insert, and
+            // Update tasks are performed by using the same page. To enable this mode, uncomment the
+            // following routes and comment out the route definition in the separate-page mode section above.
+            routes.Add(new DynamicDataRoute("{table}/ListDetails.aspx")
+            {
+                Action = PageAction.List,
+                ViewName = "ListDetails",
+                Model = DefaultModel
+            });
+
+            routes.Add(new DynamicDataRoute("{table}/ListDetails.aspx")
+            {
+                Action = PageAction.Details,
+                ViewName = "ListDetails",
+                Model = DefaultModel
+            });
+		
+DATE TIME EDIT
+<%@ Control Language="C#" 
+    AutoEventWireup="true" 
+    CodeBehind="DateTimeText_Edit.ascx.cs" 
+    Inherits="ShoeEcommers.WebAdminDynamic.DynamicData.FieldTemplates.DateTimeText_Edit" %>
+
+<asp:DropDownList ID="DropDay" runat="server" placeholder="Día" ></asp:DropDownList>-
+<asp:DropDownList ID="DropMonth" runat="server" placeholder="Mes" ></asp:DropDownList>-
+<asp:DropDownList ID="DropYear" runat="server" placeholder="Año"></asp:DropDownList>
+<asp:CustomValidator ID="ValidDate" runat="server" ControlToValidate="DropDay" ErrorMessage="Fecha incorrecta" CssClass="label label-danger" ClientValidationFunction="validDate" OnServerValidate="ValidDate_ServerValidate"></asp:CustomValidator>
+<%#SetValue(FieldValueEditString) %>  
+<script>
+      function validDate(oSrc, args) {
+          var idDropYear = "<% Response.Write(DropYear.ClientID);%>";
+          var idDropMonth = "<% Response.Write(DropMonth.ClientID); %>";
+          var idDropDay = "<% Response.Write(DropDay.ClientID); %>";
+          var month = $("#" + idDropMonth).prop("selectedIndex");
+          month++;
+          month = ((month < 10) ? "0" : "") + month;
+          var dateBirth = $("#" + idDropYear).val() + "-" + month + "-" + $("#" + idDropDay).val();
+          var day = $("#" + idDropDay).val();
+          var d = new Date(dateBirth + "T12:00:00");
+          if (parseInt(d.getDate()) !== parseInt(day)) {
+              args.IsValid = false;
+              console.log("Fecha no valida");
+              return;
+          }
+      }
+  </script>
+  
+  
+   public partial class DateTimeText_Edit :  System.Web.DynamicData.FieldTemplateUserControl
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+           
+                FillControls();
+                
+
+                //if (FieldValueString != null && DateTime.TryParse(FieldValueString, out date))
+                //{
+                //    SelectDate = date;
+                //}
+            
+        }
+
+        public string SetValue(string strValue)
+        {
+            DateTime date;
+            if (FieldValueString != null && DateTime.TryParse(FieldValueString, out date))
+            {
+                SelectDate = date;
+            }
+            return string.Empty;
+        }
+      
+
+        private void FillControls()
+        {
+            if (DropDay.Items.Count > 1) return;
+            List<int> years = new List<int>();
+            List<string> days = new List<string>();
+            for (int i = DateTime.Now.Year - 1; i > DateTime.Now.Year - 100; i--)
+            {
+                years.Add(i);
+            }
+            if (DateTimeFormatInfo.CurrentInfo != null)
+            {
+                DropMonth.DataSource = DateTimeFormatInfo.CurrentInfo.MonthNames;
+                DropMonth.DataBind();
+            }
+            for (int i = 1; i <= 31; i++)
+            {
+                string day = ((i < 10) ? "0" : "") + i;
+                days.Add(day);
+            }
+            DropDay.DataSource = days;
+            DropDay.DataBind();
+
+            DropYear.DataSource = years;
+            DropYear.DataBind();
+        }
+
+        protected void ValidDate_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Information.IsDate(StrDate);
+        }
+
+        protected override void ExtractValues(System.Collections.Specialized.IOrderedDictionary dictionary)
+        {
+            dictionary[Column.Name] = ConvertEditedValue(StrDate);
+        }
+        
+
+        public string StrDate
+        {
+            get
+            {
+
+                return string.Format("{0}-{1}-{2}", DropYear.SelectedValue, DropMonth.SelectedIndex + 1, DropDay.SelectedIndex + 1);
+            }
+        }
+
+        public DateTime SelectDate
+        {
+            get
+            {
+                if (Information.IsDate(StrDate))
+                {
+                    return DateTime.Parse(StrDate);
+                }
+                return DateTime.MinValue;
+            }
+            set
+            {
+                if (value == DateTime.MinValue)
+                {
+                    return;
+                }
+                DateTime date = value;
+                DropDay.SelectedIndex = date.Day - 1;
+                DropMonth.SelectedIndex = date.Month - 1;
+                DropYear.SelectedValue = date.Year.ToString();
+            }
+        }
+        
+    }
+  
+		
+		

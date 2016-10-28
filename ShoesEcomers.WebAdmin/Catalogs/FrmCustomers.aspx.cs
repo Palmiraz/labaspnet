@@ -10,9 +10,22 @@ namespace ShoesEcommers.WebAdmin.Catalogs
 {
     public partial class FrmCustomers : System.Web.UI.Page
     {
+        private readonly CustomerRepository _repo;
+        public FrmCustomers()
+        {
+            _repo = new CustomerRepository();
+        }
+
+        public override void Dispose()
+        {
+            _repo.Dispose();
+            base.Dispose();
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            Trace.IsEnabled = true;
+            //Trace.IsEnabled = true;
             if (!IsPostBack)
             {
                 FillData();
@@ -21,8 +34,14 @@ namespace ShoesEcommers.WebAdmin.Catalogs
 
         private void FillData()
         {
-            CustomerRepository repo = new CustomerRepository();
-            GridCustomer.DataSource = repo.GetCustomers();
+            GridCustomer.DataSource = _repo.GetCustomers();
+            GridCustomer.DataBind();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            GridCustomer.DataSource = 
+                _repo.GetCustomers(TxtName.Text);
             GridCustomer.DataBind();
         }
     }

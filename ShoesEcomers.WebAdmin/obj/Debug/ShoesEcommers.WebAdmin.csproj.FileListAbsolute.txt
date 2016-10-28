@@ -5,3 +5,5 @@ C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesE
 C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesEcomers.WebAdmin\obj\Debug\ShoesEcommers.WebAdmin.pdb
 C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesEcomers.WebAdmin\bin\ShoeEcommers.LogicLayer.dll
 C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesEcomers.WebAdmin\bin\ShoeEcommers.LogicLayer.pdb
+C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesEcomers.WebAdmin\bin\EntityFramework.dll
+C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoesEcomers.WebAdmin\bin\EntityFramework.xml
