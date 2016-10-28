@@ -1,0 +1,180 @@
+﻿<export>
+<department deparment="Hombre">
+  <category category="Balerinas">
+    <subcategory subcategory="Balerinas" />
+  </category>
+  <category category="Botas">
+    <subcategory subcategory="Botas" />
+  </category>
+  <category category="Botines">
+    <subcategory subcategory="Botines" />
+  </category>
+  <category category="Calzado">
+    <subcategory subcategory="Balerinas" />
+    <subcategory subcategory="Botas" />
+    <subcategory subcategory="Botines" />
+    <subcategory subcategory="Mocasines" />
+    <subcategory subcategory="Otro" />
+    <subcategory subcategory="Otros" />
+    <subcategory subcategory="Pantuflas" />
+    <subcategory subcategory="Sandalias" />
+    <subcategory subcategory="Sandalias deportivas" />
+    <subcategory subcategory="Tenis" />
+    <subcategory subcategory="Tenis casual" />
+    <subcategory subcategory="Tenis deportivo" />
+    <subcategory subcategory="Tenis deportivos" />
+    <subcategory subcategory="Zapatos" />
+    <subcategory subcategory="Zapatos Casuales" />
+    <subcategory subcategory="Zapatos con Cuña" />
+    <subcategory subcategory="Zapatos con Tacón" />
+    <subcategory subcategory="Zapatos de Fiesta" />
+  </category>
+  <category category="Mocasines">
+    <subcategory subcategory="Mocasines" />
+  </category>
+  <category category="Otros">
+    <subcategory subcategory="Otros" />
+  </category>
+  <category category="Pantuflas">
+    <subcategory subcategory="Pantuflas" />
+  </category>
+  <category category="Sandalias">
+    <subcategory subcategory="Sandalias" />
+  </category>
+  <category category="Sandalias Deportivas">
+    <subcategory subcategory="Sandalias deportivas" />
+  </category>
+  <category category="Tenis">
+    <subcategory subcategory="Avión" />
+    <subcategory subcategory="Avión / Hotel" />
+    <subcategory subcategory="Avión / Hotel / Transportación" />
+    <subcategory subcategory="Hotel" />
+    <subcategory subcategory="Otros" />
+    <subcategory subcategory="Outdoor" />
+    <subcategory subcategory="Sandalias deportivas" />
+    <subcategory subcategory="Tenis" />
+    <subcategory subcategory="Tenis casual" />
+    <subcategory subcategory="Tenis deportivos" />
+  </category>
+  <category category="Tenis Casual">
+    <subcategory subcategory="Tenis casual" />
+  </category>
+  <category category="Tenis Deportivos">
+    <subcategory subcategory="Tenis deportivos" />
+  </category>
+  <category category="Zapatos">
+    <subcategory subcategory="Alpargatas" />
+    <subcategory subcategory="Balerinas/ Flats" />
+    <subcategory subcategory="Botas" />
+    <subcategory subcategory="Botines" />
+    <subcategory subcategory="De Vestir" />
+    <subcategory subcategory="Mocasines" />
+    <subcategory subcategory="Otros" />
+    <subcategory subcategory="Sandalias" />
+    <subcategory subcategory="Zapatilla" />
+    <subcategory subcategory="Zapatos" />
+    <subcategory subcategory="Zapatos Casuales" />
+  </category>
+  <category category="Zapatos Casuales">
+    <subcategory subcategory="Zapatos Casuales" />
+  </category>
+  <category category="Zapatos con Cuña">
+    <subcategory subcategory="Zapatos con Cuña" />
+  </category>
+  <category category="Zapatos con Tacón">
+    <subcategory subcategory="Zapatos con Tacón" />
+  </category>
+  <category category="Zapatos de Fiesta">
+    <subcategory subcategory="Zapatos de Fiesta" />
+  </category>
+</department>
+<department deparment="Mujer">
+  <category category="Balerinas">
+    <subcategory subcategory="Balerinas" />
+  </category>
+  <category category="Botas">
+    <subcategory subcategory="Botas" />
+  </category>
+  <category category="Botines">
+    <subcategory subcategory="Botines" />
+  </category>
+  <category category="Calzado">
+    <subcategory subcategory="Balerinas" />
+    <subcategory subcategory="Botas" />
+    <subcategory subcategory="Botines" />
+    <subcategory subcategory="Mocasines" />
+    <subcategory subcategory="Otro" />
+    <subcategory subcategory="Otros" />
+    <subcategory subcategory="Pantuflas" />
+    <subcategory subcategory="Sandalias" />
+    <subcategory subcategory="Sandalias deportivas" />
+    <subcategory subcategory="Tenis" />
+    <subcategory subcategory="Tenis casual" />
+    <subcategory subcategory="Tenis deportivo" />
+    <subcategory subcategory="Tenis deportivos" />
+    <subcategory subcategory="Zapatos" />
+    <subcategory subcategory="Zapatos Casuales" />
+    <subcategory subcategory="Zapatos con Cuña" />
+    <subcategory subcategory="Zapatos con Tacón" />
+    <subcategory subcategory="Zapatos de Fiesta" />
+  </category>
+  <category category="Mocasines">
+    <subcategory subcategory="Mocasines" />
+  </category>
+  <category category="Otros">
+    <subcategory subcategory="Otros" />
+  </category>
+  <category category="Pantuflas">
+    <subcategory subcategory="Pantuflas" />
+  </category>
+  <category category="Sandalias">
+    <subcategory subcategory="Sandalias" />
+  </category>
+  <category category="Sandalias Deportivas">
+    <subcategory subcategory="Sandalias deportivas" />
+  </category>
+  <category category="Tenis">
+    <subcategory subcategory="Avión" />
+    <subcategory subcategory="Avión / Hotel" />
+    <subcategory subcategory="Avión / Hotel / Transportación" />
+    <subcategory subcategory="Hotel" />
+    <subcategory subcategory="Otros" />
+    <subcategory subcategory="Outdoor" />
+    <subcategory subcategory="Sandalias deportivas" />
+    <subcategory subcategory="Tenis" />
+    <subcategory subcategory="Tenis casual" />
+    <subcategory subcategory="Tenis deportivos" />
+  </category>
+  <category category="Tenis Casual">
+    <subcategory subcategory="Tenis casual" />
+  </category>
+  <category category="Tenis Deportivos">
+    <subcategory subcategory="Tenis deportivos" />
+  </category>
+  <category category="Zapatos">
+    <subcategory subcategory="Alpargatas" />
+    <subcategory subcategory="Balerinas/ Flats" />
+    <subcategory subcategory="Botas" />
+    <subcategory subcategory="Botines" />
+    <subcategory subcategory="De Vestir" />
+    <subcategory subcategory="Mocasines" />
+    <subcategory subcategory="Otros" />
+    <subcategory subcategory="Sandalias" />
+    <subcategory subcategory="Zapatilla" />
+    <subcategory subcategory="Zapatos" />
+    <subcategory subcategory="Zapatos Casuales" />
+  </category>
+  <category category="Zapatos Casuales">
+    <subcategory subcategory="Zapatos Casuales" />
+  </category>
+  <category category="Zapatos con Cuña">
+    <subcategory subcategory="Zapatos con Cuña" />
+  </category>
+  <category category="Zapatos con Tacón">
+    <subcategory subcategory="Zapatos con Tacón" />
+  </category>
+  <category category="Zapatos de Fiesta">
+    <subcategory subcategory="Zapatos de Fiesta" />
+  </category>
+</department>
+</export>
