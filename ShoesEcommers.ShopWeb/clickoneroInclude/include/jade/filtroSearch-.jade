@@ -1,0 +1,36 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			include scaffolding/header.jade
+			div.clickoneroWrapper
+				div.clickoneroFilter.productHome
+					include scaffolding/asideFilter.jade
+					div.clickoneroFilter-products
+						- var filtro = 1
+						include scaffolding/filtro.jade
+						+productDiv('leggings4')
+						+productDiv('leggings5')
+						+productDiv('leggings6')
+						+productDiv('leggings7')
+						+viajesDiv('2_1', 1)
+						+viajesDiv('2_2', 1)
+						+productDiv('leggings8')
+						+viajesDiv('2_3', 1)
+						+productDiv('leggings9')
+						+viajesDiv('2_4', 1)
+						+productDiv('leggings10')
+						+productDiv('leggings11')
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				DocumentReady();
+				$('.clickoneroFilter-div').customCheckbox();
+				$('.clickoneroFP-productSize').customRadio();
+				// $('.clickoneroNavGender').changeOffer();
+				$('.clickoneroFilter-div').resizeFilter();
+				$('.datePicker-div').chooseDate();
+			})();

@@ -1,0 +1,48 @@
+aside
+	div.clickoneroFilter-item
+		h3 PRODUCTOS
+		div.clickoneroFilter-div
+			each val, index in ['Ropa', 'Calzado y Accesorios', 'Deportes', 'Hogar']
+				- if(index == 0)
+					input(type="checkbox", checked="checked", class="clickoneroCheckbox-filter")
+				- else
+					input(type="checkbox", class="clickoneroCheckbox-filter")
+				label #{val}
+	div.clickoneroFilter-item
+		h3 MARCA
+		div.clickoneroFilter-div
+			each val, index in ['Nike', 'Reebok', 'Puma', 'Adidas', 'New Balance']
+				- if(index == 0)
+					input(type="checkbox", checked="checked", class="clickoneroCheckbox-filter")
+				- else
+					input(type="checkbox", class="clickoneroCheckbox-filter")
+				label #{val}
+	div.clickoneroFilter-item
+		h3 TALLAS
+		div.clickoneroFilter-div
+			each val, index in [25, 26, 27, 28, 29, 30, 31, 32]
+				input(type="checkbox", class="clickoneroCheckbox-filter", checked="checked")
+				label Talla #{val}
+	div.clickoneroFilter-item
+		h3 COLOR
+		div.clickoneroFilter-div
+			each val, index in ['Azul', 'Negro', 'Gris', 'Rojo']
+				input(type="checkbox", class="clickoneroCheckbox-filter")
+				label #{val}
+	div.clickoneroFilter-item
+		h3 TIPO
+		div.clickoneroFilter-div
+			each val, index in ['Bra Tops', 'Hoodies']
+				input(type="checkbox", class="clickoneroCheckbox-filter")
+				label #{val}
+	div.clickoneroFilter-item
+		h3 ORDENAR POR
+		div.clickoneroFilter-div
+			a(href="#") Por precio, menor a mayor
+			a(href="#") Por precio, mayor a menor
+	div.clickoneroFilter-item
+		h3 RANGO DE PRECIOS
+		div.clickoneroFilter-div
+			each val, index in [199, 299, 399, 499, 599, 699, 799, 899]
+				input(type="checkbox", class="clickoneroCheckbox-filter")
+				label Hasta $#{val}

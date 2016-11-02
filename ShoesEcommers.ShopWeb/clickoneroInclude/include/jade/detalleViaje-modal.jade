@@ -1,0 +1,44 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroModalBody
+			div.clickoneroMainModal
+				+viajeDetail(1, '', 1)
+					div.clickoneroServiceDescription
+						include scaffolding/serviceDescription.jade
+				div.clickonero-gotoLink
+					a(href="#") ver detalle completo
+		script(src="clickoneroInclude/include/js/script.js")
+		script.
+			(function(){
+				DocumentReady();
+				$('.clickoneroServiceImage-modal-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroServiceImage-modal-slide',
+						wrapperClass: 'clickoneroServiceImage-modal-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 5
+					},
+					arrowLeft: '.clickoneroArrowLeft',
+					arrowRight: '.clickoneroArrowRight',
+					slidesNum: 5,
+					loop: true,
+					slideCSS: '.clickoneroServiceImage-modal-slide',
+					onClickSlide: function(swiper){
+						$(swiper.container).find('.'+swiper.params.slideClass).each(function(){
+							$(this).click(function(){
+								$(this).addClass(swiper.params.slideActiveClass).siblings().removeClass(swiper.params.slideActiveClass);
+							});
+						});
+					}
+				});
+				$('.clickoneroServiceImage').imageProduct({
+					container: '.clickoneroServiceImage-img',
+					imgs: '.clickoneroServiceImage-modal-slide',
+					activeSlide: '.swiper-slide-active',
+					zoom: false
+				});
+				$('.clickoneroDatepicker').datePicker();
+			})();

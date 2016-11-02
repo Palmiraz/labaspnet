@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7e74eed7a8b14abf9d3d175f5e8d68f9" Name="Diagram1">
+        <EntityTypeShape EntityType="ecommersModel.AttributeSkus" Width="1.5" PointX="12" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommersModel.Brands" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommersModel.Categories" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommersModel.Customers" Width="1.5" PointX="10.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommersModel.Department" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommersModel.GroupsAttributes" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommersModel.ImagesSkus" Width="1.5" PointX="12" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommersModel.OrderDetail" Width="1.5" PointX="15" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommersModel.Orders" Width="1.5" PointX="12.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommersModel.Products" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommersModel.Skus" Width="1.5" PointX="9.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommersModel.StatusOrders" Width="1.5" PointX="10.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecommersModel.SubCategories" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="ecommersModel.FK_AttributeSkus_GroupsAttributes" ManuallyRouted="false" />
+        <AssociationConnector Association="ecommersModel.FK_AttributeSkus_Skus" ManuallyRouted="false" />
+        <AssociationConnector Association="ecommersModel.FK_Products_Brands" ManuallyRouted="false" />
+        <AssociationConnector Association="ecommersModel.FK_Categories_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="ecommersModel.FK_SubCategories_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="ecommersModel.FK_Orders_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="ecommersModel.FK_ImagesSkus_Skus" ManuallyRouted="false" />
+        <AssociationConnector Association="ecommersModel.FK_OrderDetail_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="ecommersModel.FK_OrderDetail_Skus" ManuallyRouted="false" />
+        <AssociationConnector Association="ecommersModel.FK_Orders_StatusOrders" ManuallyRouted="false" />
+        <AssociationConnector Association="ecommersModel.FK_Products_SubCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="ecommersModel.FK_Skus_Products" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,562 @@
+.clickoneroModalBody {
+	.ui-slider-handle {
+		top: -8px !important;
+	}
+	.slider-amount {
+		top: -11px !important;
+	}
+	.clickoneroMainModal-product {
+		width: 625px !important;
+	}
+	.clickoneroProductImage {
+		width: 310px !important;
+	}
+	.clickoneroProductMainImage {
+		.inline-block(244px, top) !important;
+	}
+	.clickoneroProductImageCarousel-carrusel {
+		.inline-block(60px, top);
+	}
+	.clickoneroProductDescription {
+		width: 290px !important;
+	}
+}
+.clickoneroProductDetail {
+	padding: 0 0 20px 0;
+	position: relative;
+	.clickoneroProductImage {
+		position: relative;
+		.inline-block(520px, top);
+		.clickoneroProductImage-img {
+			.inline-block(438px, top);
+			img {
+				.size(560px, 438px);
+			}
+		}
+		.clickonero-sold-out {
+			font-size: 20px;
+			text-align: center;
+			width: 408px;
+		}
+		.clickoneroProductImageSoldOut {
+			background: transparent @whiteTransparent;
+			background: rgba(255,255,255,0.74);
+			bottom: 0;
+			padding: 20px 0;
+			position: absolute;
+			text-align: center;
+			width: 438px;
+			a {
+				color: @black;
+				text-decoration: underline;
+				.font('OmnesLight');
+				&:hover {
+					color: @blueLink;
+				}
+			}
+			h3 {
+				font-size: 21px;
+			}
+		}
+	}
+	.clickoneroProductImage-carrusel, .clickoneroProductImageCarousel {
+		margin-left: 3px;
+		.inline-block(74px, top);
+		.clickoneroProductImage-slide {
+			img {
+				cursor: pointer;
+				margin: 0;
+				.inline-block;
+				.size(94px, 74px);
+			}
+		}
+	}
+	.clickoneroProductDescription {
+		color: @black;
+		padding-left: 20px;
+		.inline-block(308px, top);
+		a {
+			color: @grey;
+			text-decoration: underline;
+			&:hover {
+				color: lighten(@black, 60%);
+			}
+		}
+		h2 {
+			background: none;
+			color: @black;
+			font-size: 21px;
+			margin: 0;
+			padding: 0;
+			text-transform: none;
+			.font('OmnesRegular');
+		}
+		h3 {
+			color: @black;
+			font-size: 14px;
+			.font('OmnesLight');
+		}
+		h4 {
+			font-size: 13px;
+			margin: 15px 0 10px;
+		}
+		.clickoneroProduct-div {
+			width: 270px;
+			background: lighten(@black, 95%);
+			margin-top: 10px;
+			padding: 10px;
+			.clickoneroProduct-divsubdiv1 {
+				.inline-block(100px, top);
+			}
+			.clickoneroProduct-divsubdiv2 {
+				.inline-block(150px, top);
+				.slider-wrapper {
+					width: 168px;
+					.slider-holder {
+						background: none; 
+						.size(8px, 168px);
+					}
+					.slider-textMinValue {
+						left: -2px;
+					}
+					.slider-textMaxValue {
+						right: -5px;
+					}
+					.iconFont-slideBG {
+						font-size: 190px;
+						left: -9px;
+					}
+				}
+				.clickoneroProduct-win {
+					margin: 0 0 5px -15px;
+					span, label {
+						color: @black;
+						font-size: 18px;
+						.font('OmnesLight');
+					}
+					.iconBit {
+						margin: -6px 2px 0 2px;
+					}
+				}
+				.clickoneroProduct-save {
+					margin-left: -10px;
+					.slideInput-percent {
+						padding-left: 5px;
+						vertical-align: text-top;
+					}
+				}
+			}
+			.clickoneroProductActualPrice {
+				font-size: 23px;
+				margin-top: 0;
+				.font('OmnesLight');
+			}
+			.clickoneroProductListPrice {
+				color: lighten(@black, 70%);
+			}
+		}
+		.clickoneroProductActualPrice {
+			display: block;
+			font-size: 25px;
+			margin-top: 10px;
+		}
+		.clickoneroProductListPrice {
+			font-size: 14px;
+			text-decoration: line-through;
+			.font('OmnesLight');
+		}
+		.clickoneroProductWinWinbits {
+			font-size: 12px;
+			.font('OmnesLight');
+			label {
+				color: @black;
+				font-size: 11px;
+				margin-right: 20px;
+				.font('OmnesMedium');
+				.inline-block;
+			}
+			span {
+				.inline-block;
+			}
+			strong {
+				margin-left: 5px;
+				.inline-block;
+			}
+		}
+		.slider-wrapper {
+			margin-left: -10px;
+		}
+		.clickoneroProductLegend {
+			font-size: 11px;
+			.font('OmnesLight');
+			.inline-block(230px);
+			a {
+				display: block;
+				.inline-block;
+			}
+		}
+		.clickoneroProductColor {
+			margin-left: -4px;
+		}
+		.clickoneroProductMesure {
+			.radio-span {
+				background-color: @white;
+				background-image: none;
+				cursor: pointer;
+				font-size: 11px;
+				height: 11px;
+				margin-right: -3px !important;
+				min-width: 16px !important;
+				padding: 4px !important;
+				text-align: center;
+				width: 16px;
+				width: auto !important;
+				&.radio-selected {
+					background-color: @grey; 
+				}
+			}
+			.clickoneroProductSize {
+				margin-left: -4px;
+			}
+		}
+		.clickoneroProductQuantity {
+			.inline-block(120px, top);
+			.clickoneroStepperWrapper {
+				margin-left: 0;
+			}
+		}
+	}
+	.clickoneroProductTabs {
+		background: none;
+		border: none;
+		border-top: 1px solid lighten(@black, 80%);
+		margin-top: 20px;
+		width: 300px;
+		.border-radius(0);
+		.ui-tabs-nav {
+			text-transform: uppercase;
+		}
+		ul {
+			background: none;
+			border: none;
+			
+			.border-radius(0);
+			.margin-padding;
+			li {
+				background: none;
+				border: none;
+				font-size: 11px;
+				padding: 5px 10px 5px 0;
+				text-align: left;
+				.border-radius(0);
+				.font('OmnesMedium') !important;
+				a {
+					color: lighten(@black, 68%);
+					padding: 0;
+				}
+			}
+			.ui-tabs-active {
+				a {
+					color: @black;
+				}
+			}
+		}
+		.clickoneroPTTab {
+			font-size: 12px;
+			padding: 0;
+			.font('OmnesLight');
+			&:hover {
+				.jspVerticalBar {
+					.opacity(100);
+				}
+			}
+			.jspVerticalBar {
+				.transition(.3s);
+				.opacity(0);
+			}
+			a {
+				color: @black;
+				&:hover {
+					.font('OmnesMedium');
+				}
+			}
+			p {
+				margin: 10px 0;
+			}
+			&#clickoneroPDTabCare{
+				.no-list;
+				li {
+					font-size: 11px;
+					padding: 5px 5px 5px 0;
+					vertical-align: top;
+					width: 125px;
+					.font('OmnesLight');
+				}
+				.clickoneroCareText {
+					margin: 5px 0 0 5px;
+					.inline-block(90px, top);
+				}
+			}
+		}
+	}
+	aside {
+		border-left: 1px solid lighten(@black, 90%);
+		padding-left: 20px;
+		height: 560px;
+		min-height: 560px;
+		height: auto !important;
+		.inline-block(106px, top);
+		h2 {
+			background: none;
+			color: @black;
+			font-size: 12px;
+			line-height: 11px;
+			margin-bottom: 5px;
+			padding: 0;
+			text-align: center;
+			text-transform: none;
+		}
+		.clickoneroProductLookItem {
+			overflow: hidden;
+			position: relative;
+			&:hover {
+				.clickoneroProductLook-hover {
+					.opacity(100);
+				}
+			}
+			.clickoneroProductLook-hover {
+				background: transparent @fancyboxBackground;
+				background: rgba(0,0,0,0.5);
+				position: absolute;
+				text-align: center;
+				top: 0;
+				.size(134px, 106px);
+				.opacity(0);
+				.transition(1s);
+				a {
+					display: block;
+					color: @white;
+					height: 74px;
+					line-height: 12px;
+					padding: 30px 20px;
+					position: relative;
+					vertical-align: middle;
+					.font('OmnesMedium');
+					span {
+						display: block;
+					}
+					&:hover {
+						text-decoration: none;
+						.clickoneroCompraAhora {
+							background: @yellow;
+						}
+					}
+				}
+			}
+			img {
+				.size(134px, 106px);
+			}
+		}
+	}
+}
+.ck-share-submit {
+	position: relative;
+	width: 290px;
+	.clickoneroProductShare, .clickoneroService-share {
+		top: -45px;
+		font-size: 11px;
+		right: 0;
+		position: absolute;
+		text-align: center;
+		.clickoneroSocialShare {
+			margin-right: -3px;
+		}
+		a {
+			color: lighten(@black, 50%);
+			text-decoration: none;
+			&:hover {
+				.iconFont-facebook{
+					color: @blueFacebook;
+				}
+				.iconFont-twitter {
+					color: @blueTwitter;
+				}
+				.iconFont-pinterest {
+					color: @redPinterest;
+				}
+			}
+		}
+		p {
+			margin-bottom: 10px;
+		}
+		[class^="iconFont-"], [class*=" iconFont-"]{
+			font-size: 22px;
+			margin-right: 5px;
+		}
+	}
+	.clickoneroProductSubmit, .clickoneroService-submit {
+		font-size: 11px;
+		span {
+			color: @black;
+			display: block;
+			font-size: 10px;
+			text-align: left;
+			padding: 12px 0 3px 0;
+			strong {
+				color: lighten(@black, 60%);
+			}
+		}
+
+		.clickoneroBtn {
+			font-size: 15px;
+			text-transform: uppercase;
+			padding: 15px 0;
+			width: 100%;
+			.font('OmnesLight');
+		}
+	}
+}
+.scrollTab {
+	padding: 10px 0;
+	min-height: 100px;
+	height: auto;
+	max-height: 230px;
+}
+// Círculo amarillo
+.clickoneroCompraAhora {
+	background: @white;
+	color: @black;
+	display: block;
+	font-size: 9px;
+	line-height: 8px;
+	padding: 12px 5px 8px 5px;
+	text-align: center;
+	margin: 10px auto 0 auto;
+	.border-radius(20px);
+	.size(20px, 30px);
+}
+.clickoneroSuggestionRecentView {
+	border-top: 1px solid lighten(@black, 90%);
+	padding: 20px 0 50px 0;
+	position: relative;
+	ul {
+		position: absolute;
+	}
+	.clickoneroSRV-divLink {
+		position: absolute;
+		z-index: 3;
+		span {
+			color: lighten(@black, 70%);
+			cursor: pointer;
+			display: block;
+			font-size: 11px;
+			padding-bottom: 5px;
+			.transition(.3s);
+			&.active {
+				color: @black;
+			}
+			&:hover {
+				color: @black;
+			}
+		}
+	}
+	.clickoneroSRV {		
+		position: relative;
+		padding-left: 130px;
+		.user-select(none);
+		.clickoneroArrows {
+			background: @white;
+			position: absolute;
+			top: 0;
+			z-index: 2;
+			.size(250px, 30px);
+			span {
+				font-size: 30px;
+				line-height: 1px;
+				margin-top: 100px;
+				text-indent: 0;
+				position: relative;
+			}
+		}
+		.clickoneroArrowLeft {
+			left: 112px;
+		}
+		.clickoneroArrowRight {
+			right: -5px;
+		}
+	}
+	
+}
+.clickoneroProductText {
+	.radio-selected {
+		babackground-color: @grey;
+	}
+	.radio-span {
+		background-image: none;
+	}
+}
+.clickoneroSRV-carrusel {
+	.clickoneroSRV-slide {
+		padding: 0;
+		position: relative;
+		&:hover {
+			.clickoneroSuggestionRecentViewBuyNow{
+				top: 0;
+			}
+		}
+		h3 {
+			font-size: 11px;
+			margin: 10px 0 0 0;
+			text-transform: inherit;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			width: 153px;
+			.font('OmnesMedium');
+		}
+		h4 {
+			font-size: 11px;
+			line-height: 8px;
+			.font('OmnesLight');
+		}
+		img {
+			.size(197px, 153px);
+		}
+		.product-ck-title {
+			font-size: 14px !important;
+			width: 140px;
+		}
+		.tag-div ul {
+			position: relative;
+		}
+		.clickoneroSuggestionRecentViewPrice {
+			color: @black;
+			display: block;
+			font-size: 13px;
+			margin-top: 5px;
+			.font('OmnesMedium');
+		}
+		.clickoneroSuggestionRecentViewBuyNow {
+			background: transparent @fancyboxBackground;
+			background: rgba(0,0,0,0.5);
+			color: @white;
+			display: block;
+			position: absolute;
+			text-align: center;
+			top: -200px;
+			.size(197px, 153px);
+			.transition(.3s);
+			a {
+				display: block;
+				padding-top: 65px;
+				.size(197px, 153px);
+				&:hover {
+					text-decoration: none;
+					.clickoneroCompraAhora {
+						 background: @yellow;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+div.clickoneroNavServices.largeMenu.ck-menu-travel
+	ul.menu-ul
+		each val, index in ['LO MEJOR DE HOY', 'PLAYA', 'NACIONALES', 'INTERNACIONALES', 'EVENTOS DEPORTIVOS', 'EVENTOS MUSICALES', 'PUEBLOS MÁGICOS', 'CONCIERTOS']
+			- var currentCls = ''
+			if index == crt
+				- currentCls = 'current'
+			if index == 0
+				li.menu-li.ck-best-today
+					div.menuli-div
+						a.menu-a(href="#") #{val}
+			else
+				li.menu-li(class=currentCls)
+					div.menuli-div
+						a.menu-a(href="#") #{val}

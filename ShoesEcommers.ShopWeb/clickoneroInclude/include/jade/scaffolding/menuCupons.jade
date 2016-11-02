@@ -1,0 +1,14 @@
+div.clickoneroNavServices.largeMenu.ck-menu-services
+	ul.menu-ul
+		each val, index in ['LO MEJOR DE HOY', 'SALUD Y BELLEZA', 'ACTIVIDADES', 'BOLETOS', 'CURSOS Y CLASES', 'EJERCICIO Y DEPORTES', 'RESTAURANTES', 'SERVICIOS LOCALES']
+			- var currentCls = ''
+			if index == crt
+				- currentCls = 'current'
+			if index == 0
+				li.menu-li.ck-best-today
+					div.menuli-div
+						a.menu-a(href="#") #{val}
+			else
+				li.menu-li(class=currentCls)
+					div.menuli-div
+						a.menu-a(href="#") #{val}

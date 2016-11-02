@@ -28,7 +28,7 @@ namespace ShoesEcommers.WebAdmin.Catalogs
             //Trace.IsEnabled = true;
             if (!IsPostBack)
             {
-                FillData();
+                //FillData();
             }
         }
 

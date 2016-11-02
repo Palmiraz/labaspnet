@@ -1,0 +1,61 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			include scaffolding/header.jade
+			div.clickoneroWrapper
+				+viajeDetail('', 1, '', 1)
+				+carouselSuggestionVisited('clickoneroService-SVR')
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				DocumentReady();
+				$('.clickoneroService-SVR-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroService-SVR-slide',
+						wrapperClass: 'clickoneroService-SVR-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 2
+					},
+					arrowLeft: '.clickoneroArrowLeft',
+					arrowRight: '.clickoneroArrowRight',
+					slidesNum: 5,
+					loop: true,
+					slideCSS: '.clickoneroService-SVR-slide'
+				});
+				$('.clickoneroServiceImage-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroServiceImage-slide',
+						wrapperClass: 'clickoneroServiceImage-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 5
+					},
+					arrowLeft: '.clickoneroArrowLeft',
+					arrowRight: '.clickoneroArrowRight',
+					slidesNum: 5,
+					loop: true,
+					slideCSS: '.clickoneroServiceImage-slide',
+					onClickSlide: function(swiper){
+						$(swiper.container).find('.'+swiper.params.slideClass).each(function(){
+							$(this).click(function(){
+								$(this).addClass(swiper.params.slideActiveClass).siblings().removeClass(swiper.params.slideActiveClass);
+							});
+						});
+					}
+				});
+				$('.clickoneroService-options').customCheckbox();
+				$('.clickoneroServiceImage').imageProduct({
+					container: '.clickoneroServiceImage-img',
+					imgs: '.clickoneroServiceImage-slide',
+					activeSlide: '.swiper-slide-active',
+					zoom: false
+				});
+				$('.clickoneroService-SVR-divLink').showDiv();
+				$('.scrollTab').scrollpane({ parent: '.clickoneroServiceImage-tabs'});
+				$('.clickoneroServiceImage-tabs').tabs({ heightStyle: 'auto' });
+			})();

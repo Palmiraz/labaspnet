@@ -33,7 +33,7 @@ namespace ShoeEcommers.WebAdminDynamic
             // See http://go.microsoft.com/fwlink/?LinkId=257395 for more information on how to register Entity Data Model with Dynamic Data            
             DefaultModel.RegisterContext(() =>
             {
-                return ((IObjectContextAdapter)new ecommersEntities()).ObjectContext;
+                return ((IObjectContextAdapter)new ecommersEntities1()).ObjectContext;
             }, new ContextConfiguration() { ScaffoldAllTables = true });
 
             // The following registration should be used if YourDataContextType does not derive from DbContext

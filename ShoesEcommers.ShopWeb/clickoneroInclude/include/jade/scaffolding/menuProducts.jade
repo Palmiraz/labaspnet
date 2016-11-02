@@ -1,0 +1,59 @@
+div.clickoneroNavServices.largeMenu.ck-menu-products
+	ul.menu-ul
+		each val, index in ['LO MEJOR DE HOY', 'HOMBRE', 'MUJER', 'INFANTILES', 'HOGAR', 'TECNOLOGIA']
+			- var currentCls = ''
+			if index == crt
+				- currentCls = 'current'
+			if index == 0
+				li.menu-li.ck-best-today
+					div.menuli-div
+						a.menu-a(href="#") #{val}
+			else
+				li.menu-li(class=currentCls)
+					div.menuli-div
+						a.menu-a(href="#") #{val}
+						div.subMenu
+								div.subMenu-col
+									h3 DESTACADAS
+									ul
+										each val in ['LACOSTE', 'Soda Stream', 'Star Pad Turbo', 'As Seen on TV', 'Mikel', 'Vasconia', 'Skechers', 'Puma', 'Reebok', 'Shantal']
+											li
+												a(href="#") #{val}
+								div.subMenu-col
+									h3 ESTRENOS
+									ul
+										each val in ['LACOSTE', 'Soda Stream', 'Star Pad Turbo', 'As Seen on TV', 'Mikel']
+											li
+												a(href="#") #{val}
+									h3 TERMINAN HOY
+									ul
+										each val in ['LACOSTE', 'Soda Stream', 'Star Pad Turbo', 'As Seen on TV', 'Mikel']
+											li
+												a(href="#") #{val}
+								div.subMenu-col
+									h3 CATEGORIAS
+									ul
+										each val in ['Accesorios', 'Bolsos', 'Calzado', 'Deportes', 'Joyería', 'Ropa']
+											li
+												a(href="#") #{val}
+								div.subMenu-col.subMenu-col-banner
+									div.subMenuCol-banner.ck-banner-campaing
+										a(href="#")
+											img(src="http://da5aufqgr64hz.cloudfront.net/Medium/Medium_2014432815_664x419.jpg", alt="LACOSTE")
+											div.subMenu-col-service
+												p Campaña destacada con un texto muy largo, tan largo que no cabe
+									div.subMenuCol-banner.ck-banner-campaing
+										a(href="#") 
+											img(src="http://da5aufqgr64hz.cloudfront.net/Medium/Medium_2014212806_664x419.jpg", alt="LACOSTE")
+											div.subMenu-col-service
+												p Campaña destacada
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/modahombre.jpg", alt="Moda Hombre")
+											div.subMenu-col-service
+												p Moda
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/sportshombre.jpg", alt="Deportes Hombre")
+											div.subMenu-col-service
+												p Deportes											

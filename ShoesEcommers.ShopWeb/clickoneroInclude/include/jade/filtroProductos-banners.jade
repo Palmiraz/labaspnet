@@ -1,0 +1,59 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			include scaffolding/header.jade
+			div.clickoneroWrapper
+				div.clickoneroFilter
+					aside
+						div.clickoneroFilter-item
+							h3 Servicios
+							div.clickoneroFilter-div
+								a(href="#") Restaurantes
+								a(href="#") Salud y Belleza
+								a(href="#") Teatro
+								a(href="#") Entretenimiento
+								a(href="#") Otros
+						h4: a(href="#") LO MÁS VENDIDO <span class="iconFont-right"></span>
+						h4: a(href="#") TERMINAN HOY <span class="iconFont-right"></span>
+					div.clickoneroFilter-products
+						div.clickoneroFP-banners
+							each val in [[{size: 'largeBanner', banner: 'campania', top1: 69, left1: 140, color1: '#f00', top2: 26, left2: 55, color2: '#000'}], [{size: 'halfBanner', banner: '2_1', top1: 190, left1: 30, color1: '#f00', top2: 166, left2: 45, color2: '#fc0'}], [{size: 'halfBanner', banner: '2_2', top1: 90, left1: 140, color1: '#f00', top2: 26, left2: 54, color2: '#ed0'}]]
+								div.clickoneroFPB-banner(class="#{val[0].size}")
+									a(href="#"): img(src="clickoneroInclude/images/assets/#{val[0].banner}.jpg", alt="Relojes SWATCH")
+									a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Reloj Negro", data-top="#{val[0].top1}", data-left="#{val[0].left1}", style="color: #{val[0].color1}")
+									a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Reloj Azul", data-top="#{val[0].top2}", data-left="#{val[0].left2}", style="color: #{val[0].color2}")
+						include scaffolding/carruselFilter.jade
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				DocumentReady();
+				$('.clickoneroFilter-div').customCheckbox();
+				$('.clickoneroFP-productSize').customRadio();
+				$('.clickoneroFPC-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroFPC-slide',
+						wrapperClass: 'clickoneroFPC-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 4,
+						watchActiveIndex: true,
+						onSlideClick: function(swiper){
+							$('.clickoneroFP-productSize').customRadio({justClick: true});
+						},
+						onSwiperCreated: function(swiper){
+							$(swiper.activeSlide()).find('.clickoneroFP-overlay').trigger('click');
+						}
+					},
+					arrowLeft: '.iconFontArrow-prev',
+					arrowRight: '.iconFontArrow-next',
+					loop: true,
+					slidesNum: 4,
+					slideCSS: '.clickoneroFPC-slide',
+					calculateHeight: true
+				});
+				$('.iconBlock').point();
+			})();

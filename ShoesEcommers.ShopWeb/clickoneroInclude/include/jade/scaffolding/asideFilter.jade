@@ -1,0 +1,35 @@
+aside
+	h3 Mujeres
+	div.clickoneroFilter-div
+		h4 Categorías
+		each val in ['Deportes', 'Ropa', 'Joyería', 'Accesorios', 'Bolsos', 'Calzado', 'Ofertas Locales', 'Salud y Belleza']
+			a(href="#") #{val}
+	div.clickoneroFilter-div
+		h4 Marcas
+		each val in ['Ralph Laurent', 'Champs', 'Armani Woman']
+			a(href="#") #{val}
+		//- h3 TODAS LAS CATEGORÍAS
+		//- h3 MUJERES
+		//- div.clickoneroFilter-sub
+		//- 	h4 CATEGORIAS
+		//- 	div.clickoneroFilter-subsub
+		//- 		h5 Deportes
+		//- 		div.clickoneroFilter-div
+		//- 			each subsub, index in ['Outerwear', 'Tops', 'Bottoms', 'Ropa interior', 'Trajes de baño']
+		//- 				input(type="checkbox", class="clickoneroCheckbox-filter")
+		//- 				label #{subsub}
+		//- 		h5 Calzado
+		//- 		div.clickoneroFilter-div
+		//- 			each subsub, index in ['Tenis deportivo', 'Tenis casual', 'Sandalias deportivas', 'Otro']
+		//- 				input(type="checkbox", class="clickoneroCheckbox-filter")
+		//- 				label #{subsub}
+		//- 		h5 Accesorios
+		//- 		div.clickoneroFilter-div
+		//- 			each subsub, index in ['Calcetas / Calcetines', 'Sombreros / Gorras', 'Lentes', 'Cinturones', 'Para el pelo', 'Guantes', 'Acuaticos', 'OTROS']
+		//- 				input(type="checkbox", class="clickoneroCheckbox-filter")
+		//- 				label #{subsub}
+		//- 	h4 MARCAS
+		//- 	div.clickoneroFilter-div
+		//- 		each subsub, index in ['Ralph Laurent', 'Champs']
+		//- 			input(type="checkbox", class="clickoneroCheckbox-filter")
+		//- 			label #{subsub}

@@ -1,0 +1,31 @@
+doctype transitional
+html(xmlns="http://www.w3.org/1999/xhtml")
+	head
+		title clickOnero
+		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+		style(type="text/css").
+			td img {
+				display: block;
+			}
+			p {
+				margin: 15px 0;
+			}
+	body(bgcolor="#ffffff", style="text-align: center", topmargin="0", leftmargin="0")
+		include scaffolding/header-mail.jade
+		+topTable
+		+headerLogo
+		table(align="center", border="0", cellpadding="5", cellspacing="0")
+			tr: td: table(width="100%", cellpadding="0", cellspacing="0")
+				tr: td: a(href="#"): img(src="images/NYC.jpg" alt="NYC" width="575" height="183")
+				tr: td: a(href="#"): img(src="images/cancun.jpg" alt="Cancún" width="575" height="183")
+			tr: td: table(width="100%")
+				tr 
+					td(align="left"): +fontFace('21px', '', 'VIAJES')
+					td(align="right"): a(href="#"): +fontFace('', '5574f9', 'VER MÁS OFERTAS DE VIAJES &gt;')
+			tr: td: table(cellspacing="3")
+				- for (var i=1;i<6;i++)
+					tr
+						td(align="left"): +product('2_9', 190, 120)
+						td(align="left"): +product('2_4', 190, 120)
+						td(align="left"): +product('2_8', 190, 120)
+		+mainFooter

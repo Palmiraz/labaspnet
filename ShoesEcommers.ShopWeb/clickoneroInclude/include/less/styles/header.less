@@ -1,0 +1,687 @@
+.clickoneroMainHeader {
+	background: @white;
+	margin-top: -260px;
+	padding: 100px 0 0 0;
+	//position: fixed;
+	position: relative;
+	width: 100%;
+	//z-index: 99;
+	.transition(margin-top .4s);
+	&.downBar {
+		margin-top: 50px;
+	}
+	.clickoneroHeader {
+		padding: 10px 0;
+	}
+	.clickoneroLogoLink {
+		height: 40px;
+		margin-right: 40px;
+		position: relative;
+		.inline-block;
+		a {
+			display: block;
+			text-decoration: none;
+			&:hover {
+				.opacity(50);
+			}
+			[class^="iconFont-"], [class*=" iconFont-"] {
+				line-height: 40px;
+			}
+			.iconFont-o {
+				color: @blueClickonero;
+				font-size: 40px;
+				left: 70px;
+				position: absolute;
+				top: 3px;
+				z-index: 0;
+			}
+			.iconFont-clicknero {
+				color: @black;
+				font-size: 180px;
+				position: relative;
+				z-index: 1;
+			}
+		}
+	}
+	
+	.clickoneroSecundaryNav {
+		color: @black;
+		float: right;
+		font-size: 11px;
+		.inline-block;
+		.no-list;
+		li {
+			border-right: 1px solid lighten(@black, 27%);
+			line-height: 11px;
+			padding: 0 10px;
+			&:last-child {
+				border: none;
+				padding-right: 0;
+			}
+			a {
+				color: ;
+				&:hover {
+					color: lighten(@black, 27%);
+				}
+			}
+		}
+		p {
+			margin: 0;
+			padding-top: 10px;
+			text-align: right;
+		}
+		.clickoneroBtn {
+			background: @yellow;
+			color: @black;
+			font-size: 11px;
+			padding: 3px 20px;
+			&:hover {
+				background: @black;
+				color: @yellow;
+			}
+			.iconFont-bit {
+				margin: -2px 0 0 5px;
+			}
+		}
+	}
+	.clickoneroMainNav {
+		border-top: 1px solid lighten(@black, 90%);
+		position: relative;
+		label {
+			color: @black;
+			font-size: 10px;
+			margin: 0 10px;
+		}
+		a {
+			&:hover{
+				text-decoration: none;
+			}
+		}
+		ul {
+			overflow: visible;
+		}
+		.clickoneroWrapper {
+			background: lighten(@black, 95%);
+			padding: 10px 0;
+			margin: 10px auto;
+			overflow: visible;
+		}
+		.clickoneroNavFilter {
+			margin-left: 340px;
+			.inline-block(283px, top);
+		}
+		.clickoneroNavGender {
+			float: right;
+			font-size: 10px;
+			margin-right: 5px;
+			.inline-block(332px, top);
+			.no-list;
+			ul {
+				.inline-block;
+			}
+			li {
+				margin: 0 2px;
+				.transition(.3s);
+				a {
+					background: @white;
+					color: @black;
+					display: block;
+					padding: 5px 20px;
+					&:hover, &.current {
+						background: @grey;
+						color: @white;
+					}
+				}
+				&.current {
+					cursor: default;
+					a {
+						background: @grey;
+						color: @white;
+						cursor: default;
+					}
+				}
+			}
+		}
+		.clickoneroNavServices {
+			margin: 0 auto;
+			margin-top: 10px;
+			//padding-bottom: 10px;
+			width: @widthLayout;
+			.no-list;
+			.menu-ul {
+				position: relative;
+			}
+			.menu-li {
+				margin: 0 -1px 0 7px;
+				width: 189px;
+				.transition(.3s);
+				&:first-child{
+					margin-left: 0;
+				}
+				.menu-a {
+					background: lighten(@black, 95%);
+					color: @black;
+					display: block;
+					font-size: 16px;
+					padding: 10px 20px;
+					text-align: center;
+					.font('OmnesMedium');
+					&:hover {
+						background: @grey;
+						color: @white;
+					}
+				}
+				&.current {
+					cursor: default;
+					.menu-a {
+						background: @grey;
+						color: @white;
+						cursor: default;
+					}
+				}
+			}
+			.menuli-div.menuOverMe {
+				&:hover{
+					.subMenu {
+						.transition(.2s);
+						visibility: visible;
+						.opacity(100);
+					}
+					.menu-a {
+						background: @black;
+						color: @white;
+					}
+				}
+			}
+			.subMenu {
+				background: @whiteTransparent;
+				background: rgba(255,255,255,0.9);
+				left: 0;
+				//margin-top: 10px;
+				padding: 25px 0 15px 0;
+				position: absolute;
+				visibility: hidden;
+				width: 100%;
+				z-index: 5;
+				.opacity(0);
+				.box-shadow(0 2px 2px rgba(0,0,0,0.3));
+				.transition(.1s);
+				.subMenu-column, .subMenu-col {
+					margin-right: -2px;
+					.inline-block(245px, top);
+					&.subMenu-banner {
+						border: 10px solid lighten(@black, 95%);
+						overflow: hidden;						
+						position: relative;
+						.size(160px, 215px);
+						a {
+							display: block;
+						}
+						&:hover {
+							.clickoneroFP-termina{
+								bottom: 0;
+							}
+						}
+						.clickoneroFP-termina {
+							font-size: 16px;
+						}
+					}
+					h3 {
+						color: @black;
+						font-size: 16px;
+						margin: 5px 15px;
+						text-transform: none;
+					}
+					ul {
+						margin: 0 10px;
+						width: 225px;
+					}
+					li {
+						display: block;
+						a {
+							color: @black;
+							display: block;
+							padding: 5px;
+							position: relative;
+							.subMenu-num {
+								color: @white;
+								.transition(.3s);
+							}
+							&:hover {
+								/*background: lighten(@black, 95%);*/
+								text-decoration: underline;
+								.subMenu-num {
+									background: @white;
+									color: lighten(@blueClickonero, 40%);
+								}
+							}
+						}
+					}
+					.subMenu-num {
+						background: lighten(@blueClickonero, 40%);
+						font-size: 10px;
+						padding: 2px 5px;
+						position: absolute;
+						right: 5px;
+						.inline-block;
+						.border-radius(5px);
+					}
+					.subMenu-new {
+						background: @magentaBars;
+						color: @white;
+						font-size: 10px;
+						margin: 0 10px;
+						padding: 2px 5px;
+						.inline-block;
+						.border-radius(5px);
+						.font('OmnesMedium');
+					}
+				}
+				.subMenu-col {
+					width: 175px;
+					h3 {
+						margin: 10px 15px;
+					}
+					li {
+						a {
+							padding: 2px 5px;
+						}
+					}
+					ul {
+						width: auto;
+					}
+				}
+				.subMenu-col-banner {
+					margin-bottom: 10px;
+					width: 440px;
+					.subMenuCol-banner {
+						height: 133px;
+						margin: 10px 10px 0 0;
+						overflow: hidden;
+						position: relative;
+						.inline-block(210px);
+						&:nth-child(2n+0){
+							margin-right: 0;
+						}
+						&:hover {
+							.clickoneroFP-termina {
+								bottom: 0;
+							}
+							/*.subMenu-col-service {
+								padding: 55px 0;
+							}*/
+						}
+						p {
+							text-overflow: ellipsis;
+							overflow: hidden;
+							padding: 0 10px;
+							white-space: nowrap;
+						}
+					}
+				}
+				.subMenu-col-travel {
+					text-align: center;
+					width: auto;
+					.subMenuCol-banner {
+						height: 142px;
+						margin-right: 10px;
+						overflow: hidden;
+						position: relative;
+						.inline-block(225px);
+						&:nth-child(4n+0){
+							margin-right: 0;
+						}
+						&:nth-child(n+5){
+							margin-top: 10px;
+						}
+						/*&:hover {
+							.subMenu-col-service {
+								padding: 60px 0;
+							}
+						}*/
+					}
+					.subMenuCol-banner2 {
+						margin-top: 12px;
+						overflow: hidden;
+						position: relative;
+						.inline-block(462px);
+						/*&:hover {
+							.subMenu-col-service {
+								padding: 60px 0;
+							}
+						}*/
+					}
+				}
+				.subMenu-col-services {
+					margin-bottom: 10px;
+					width: 800px;
+					.subMenuCol-banner {
+						height: 160px;
+						margin: 10px 10px 0 0;
+						overflow: hidden;
+						position: relative;
+						.inline-block(250px);
+						&:nth-child(3n+0){
+							margin-right: 0;
+						}
+
+						/*&:hover {
+							.subMenu-col-service {
+								padding: 70px 0;
+							}
+						}*/
+					}
+				}
+			}
+			&.largeMenu {
+				.menu-li {
+					width: auto;
+					.menu-a {
+						padding: 10px 22px;
+					}
+				}
+			}
+		}
+		.clickoneroSelect-navFilter {
+			font-size: 10px;
+			.select-input {
+				padding: 2px 20px 2px 13px;
+				width: 90px;
+			}
+			.select-trigger {
+				background-position: -125px -165px;
+				.size(10px, 10px);
+				.iconButton;
+			}
+		}
+	}
+}
+// - Modificaciones al Widget
+
+.ck-agosto2015 {
+	header {
+		background: @white;
+		position: fixed;
+		width: 100%;
+		z-index: 4;
+	}
+	.wb-header-wrapper {
+		position: relative;
+	}
+	.widgetWinbitsMain {
+		margin-top: 0;
+		padding-top: 115px;
+		.clickoneroMainHeader {
+			margin-top: 0;
+			padding: 0;
+		}
+	}
+	.widgetWinbitsHeader {
+		right: 0;
+		position: absolute;
+		width: auto;
+		min-width: 0;
+		.mainHeader {
+			height: 75px;
+			background: none;
+			nav {
+				display: none;
+			}
+			.wrapper {
+				width: auto;
+				padding-top: 0;
+			}
+		}
+	}
+	.knowmoreFolder {
+		display: none;
+	}
+	.dropMenu.miCuentaDiv {
+		position:fixed !important;
+		top: 50px !important;
+		left: 0 !important;
+		.wrapper {
+			width: 980px;
+		}
+		.icon.triangle {
+			margin-left: 111px !important;
+		}
+	}
+	.miCuenta {
+		.mc-noitems-icon::before {
+			content: "!";
+		}
+		.mc-noitems-container {
+			left: -91px !important;
+			position: fixed !important;
+			top: 62px !important;
+		}
+		.mc-noitems-arrow {
+			margin-top: -20px;
+		}
+		.mc-noitems-div {
+			padding: 5px 10px;
+		}
+		.wb-video, .link.wb-wait {
+			display: none;
+		}
+		.bits {
+			font-size: 18px !important;
+			.font('OmnesLight');
+		}
+		.spanDropMenu {
+			margin-top: 2px;
+			&.link {
+				font-size: 13px !important;
+				text-transform: uppercase;
+				.font('OmnesMedium');
+			}
+		}
+		.iconFont-cart.wb-wait {
+			margin-left: 5px;
+			&:before {
+				content: "\e722";
+			}
+		}
+		.btnTopNav {
+			background: @green;
+			font-size: 16px;
+			padding: 16px !important;
+			text-transform: uppercase;
+			.font('OmnesLight');
+			&:after {
+				content: ' o regístrarse';
+			}
+			&:hover {
+				background: @grey;
+			}
+		}
+	}
+}
+// - Nuevo Header Agosto 2015
+.ck-main-header {
+	.ck-header-top {
+		background: lighten(@black, 90%);
+		.clickoneroWrapper {
+			position: relative;
+			overflow: visible;
+		}
+		.ck-header-logo {
+			margin-top: -5px;
+			.inline-block;
+			.size(40px, 180px);
+			a {
+				display: block;
+				text-decoration: none;
+				position: relative;
+				&:hover {
+					.opacity(50);
+				}
+				[class^="iconFont-"], [class*=" iconFont-"] {
+					line-height: 40px;
+				}
+				.iconFont-o {
+					color: @blueClickonero;
+					font-size: 40px;
+					left: 70px;
+					position: absolute;
+					top: 3px;
+					z-index: 0;
+				}
+				.iconFont-clicknero {
+					color: @black;
+					font-size: 180px;
+					position: absolute;
+					top: 0;
+					z-index: 1;
+				}
+			}
+		}
+		.ck-header-nav {
+			font-size: 14px;
+			text-transform: uppercase;
+			.inline-block;
+			.no-list;
+			a {
+				color: lighten(@black, 40%);
+				display: block;
+				padding: 18px 10px;
+				position: relative;
+				.transition(.3s);
+				&:hover {
+					color: @blueClickonero;
+					text-decoration: none;
+				}
+				&.current {
+					color: @blueClickonero;
+					cursor: default;
+					&:before {
+						bottom: -2px;
+						color: @white;
+						content: "\e613";
+						font-size: 10px;
+						left: 48%;
+						position: absolute;
+						text-align: center;
+						.font('winbits');
+					}
+				}
+				.iconFont-bit {
+					margin-top: -2px;
+				}
+			}
+		}
+	}
+	.ck-header-bottom {
+		width: 100%;
+		.ck-header-pagetitle {
+			color: lighten(@black, 50%);
+			font-size: 20px;
+			margin: 15px 10px 0 0;
+			text-align: center;
+			text-transform: uppercase;
+			.inline-block(180px);
+		}
+		.ck-header-search {
+			margin-top: 15px;
+			position: relative;
+			.inline-block(500px);
+			input[type="text"]{
+				border-color: lighten(@black, 70%);
+				font-size: 18px;
+				padding: 7px 10px;
+				width: 96%;
+				.font('OmnesLight');
+			}
+			.iconFont-lupa {
+				font-size: 20px;
+				position: absolute;
+				top: 7px;
+				right: 7px;
+			}
+		}
+		.ck-header-sales {
+			background: lighten(@blueClickonero, 50%);
+			float: right;
+			text-align: center;
+			padding: 12px 0;
+			.inline-block(250px);
+		}
+		.ck-sales-phone {
+			padding-top: 5px;
+		}
+		.iconFont-phoneHear {
+			font-size: 18px;
+			margin-right: 10px;
+		}
+		.ck-sales-title {
+			color: @blueClickonero;
+			font-size: 15px;
+			letter-spacing: 3px;
+			text-transform: uppercase;
+			.margin-padding;
+		}
+		a.ck-sales-text {
+			color: @blueClickonero;
+		}
+		.ck-sales-text {
+			margin: 0 2px;
+			.inline-block;
+		}
+	}
+}
+.ck-menu-products {
+	padding-bottom: 5px;
+	.menu-a {
+		padding: 10px 38px !important;
+	}
+	.ck-best-today .menu-a {
+		background: lighten(@blueClickonero, 50%) !important;
+		&:hover {
+			background: @black !important;
+		}
+	}
+}
+.ck-menu-services {
+	padding-bottom: 5px;
+	.menu-a {
+		padding: 10px 11px !important;
+		font-size: 12px !important;
+	}
+	.ck-best-today .menu-a {
+		background: lighten(@blueClickonero, 50%) !important;
+		&:hover {
+			background: @black !important;
+		}
+	}
+}
+.ck-menu-travel {
+	padding-bottom: 5px;
+	.menu-a {
+		padding: 10px 12px !important;
+		font-size: 12px !important;
+	}
+	.ck-best-today .menu-a {
+		background: lighten(@blueClickonero, 50%) !important;
+		&:hover {
+			background: @black !important;
+		}
+	}
+}
+// - Fin Nuevo Header Agosto 2015
+.clickoneroMainSearch {
+	margin-top: 5px;
+	position: relative;
+	.inline-block(300px);
+	input[type="text"]{
+		font-size: 11px;
+		width: 290px;
+	}
+	.iconFont-lupa {
+		position: absolute;
+		right: 4px;
+		top: 6px;
+		font-size: 13px;
+		.iconButton;
+	}
+}

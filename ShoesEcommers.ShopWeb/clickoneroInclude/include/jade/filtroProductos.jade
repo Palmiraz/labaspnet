@@ -1,0 +1,49 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			- var crt = 2
+			include scaffolding/header.jade
+			div.clickoneroWrapper
+				div.clickoneroFilter.filterDepartment
+					aside
+						h3 Productos
+						div.clickoneroFilter-div
+							h4 Categorías
+							each val in ['Mujer', 'Hombre', 'Hogar', 'Tecnología', 'Infantiles']
+								a(href="#") #{val}
+						div.clickoneroFilter-div
+							h4 Marcas
+							each val in ['Ralph Laurent', 'Champs', 'Armani Woman']
+								a(href="#") #{val}
+					div.clickoneroFilter-products
+						- var filtro = 3
+						include scaffolding/filtro.jade
+						+productDiv('leggings4', 1)
+						+productDiv('leggings5', 1)
+						+productDiv('leggings6', 1)
+						+productDiv('leggings7', 1)
+						+productDiv('leggings8', 1)
+						+productDiv('leggings9', 1)
+						+productDiv('leggings10', 1)
+						+productDiv('leggings11', 1)
+						+productDiv('leggings12', 1)
+						+productDiv('leggings13', 1)
+						+productDiv('leggings14', 1)
+						+productDiv('leggings15', 1)
+						+productDiv('leggings4', 1)
+						+productDiv('leggings5', 1)
+						+productDiv('leggings6', 1)
+						+productDiv('leggings7', 1)
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				DocumentReady();
+				$('.clickoneroFilter-div').customCheckbox();
+				$('.clickoneroFP-productSize').customRadio();
+				// $('.clickoneroNavGender').changeOffer();
+				$('.clickoneroFilter-div').resizeFilter();
+			})();

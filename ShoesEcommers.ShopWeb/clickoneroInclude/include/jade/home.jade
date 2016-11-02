@@ -1,0 +1,77 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			include scaffolding/header.jade
+			div.clickoneroWrapper
+				div.clickoneroHome-banner
+					div.clickoneroHB-carrusel
+						div.clickoneroHB-wrapper
+							- for (i=0;i<3;i++)
+								each val in ['bannerAmor', 'benettonHome']
+									div.clickoneroHB-slide
+										a(href="#"): img(src="clickoneroInclude/images/assets/#{val}.jpg", alt="Banner #{val}")
+										a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Camisa cuadros Hombre", data-top="90", data-left="414", style="color: #000")
+										a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Tenis Nike Hombre", data-top="170", data-left="550", style="color: #000")
+										a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Chaleco Azul Mujer", data-top="103", data-left="281", style="color: #fff")
+										a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Tenis Nike Mujer", data-top="200", data-left="335", style="color: #f00")
+					div.iconFontArrow.iconFontArrow-prev
+						span.iconFont-left
+						span.iconFont-rightA
+					div.iconFontArrow.iconFontArrow-next
+						span.iconFont-right
+						span.iconFont-leftA
+				+carruselHomeProduct('Mujeres', ['Deportes', 'Ropa', 'Joyería', 'Accesorios', 'Bolsos', 'Calzado', 'Ofertas Locales', 'Salud y Belleza'])
+				+carruselHomeProduct('Hombres', ['Deportes', 'Ropa', 'Joyería', 'Accesorios', 'Maletas / Carteras', 'Calzado', 'Ofertas Locales', 'Salud y Belleza'])
+				+carruselHomeProduct('Hogar', ['Cocina', 'Recámara', 'Baño', 'Muebles', 'Decoración', 'Ofertas Locales'], 1)
+				+carruselHomeProduct('Tecnología', ['Audio', 'Computadoras', 'Video / TV', 'Celulares', 'Accesorios', 'Videojuegos'], 1)
+				+carruselHomeProduct('Salud y Belleza', ['Productos', 'Belleza', 'Spas', 'Salud'], 1)
+				+carruselHomeProduct('Infantiles', ['Deportes', 'Ropa', 'Accesorios', 'Calzado', 'Ofertas Locales', 'Salud y Belleza', 'Juguetes'])
+				+carruselHomeProduct('Viajes', ['Playa', 'Internacionales', 'Pueblos Mágicos', 'Ciudades Nacionales', 'Cruceros', 'Eventos Deportivos', 'Eventos Musicales', 'Al D.F.', 'Semana Santa', 'Verano'], '', 1)
+				+carruselHomeProduct('Ofertas Locales', ['Belleza', 'Spas', 'Salud', 'Ejercicio y Deportes', 'Cine / Teatro', 'Actividades y Eventos', 'Restaurantes / Bares', 'Servicios Locales', 'Cursos y Clases', 'Cupones Gratis'], 1)
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				$('.clickoneroFilter-div').customCheckbox();
+				$('.clickoneroFP-productSize').customRadio();
+				$('.clickoneroHB-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroHB-slide',
+						wrapperClass: 'clickoneroHB-wrapper',
+						grabCursor: true,
+						loop: true
+					},
+					arrowLeft: '.iconFontArrow-prev',
+					arrowRight: '.iconFontArrow-next',
+					loop: true,
+					slideCSS: '.clickoneroHB-slide',
+					calculateHeight: true
+				});
+				$('.clickoneroFPHS-carrusel').each(function(){
+					$(this).carouselSwiper({
+						optionsSwiper: {
+							slideClass: 'clickoneroFPHS-slide',
+							wrapperClass: 'clickoneroFPHS-wrapper',
+							grabCursor: true,
+							loop: true,
+							onSlideClick: function(swiper){
+								$('.clickoneroFP-productSize').customRadio({justClick: true});
+							},
+							onSwiperCreated: function(swiper){
+								$(swiper.activeSlide()).find('.clickoneroFP-overlay').trigger('click');
+								$(swiper.activeSlide()).find('.clickoneroToolTip').trigger('mouseover');
+							}
+						},
+						arrowLeft: '.iconFontArrow-prev',
+						arrowRight: '.iconFontArrow-next',
+						loop: true,
+						slideCSS: '.clickoneroFPHS-slide',
+						calculateHeight: true
+					});
+				});
+				$('.iconBlock').point();
+				DocumentReady();
+			})();

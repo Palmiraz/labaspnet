@@ -1,0 +1,124 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			- var crt = 0
+			include scaffolding/header.jade
+			div.clickoneroWrapper
+				div.wb-breadcrums.wb-listado
+					div.wb-breadcrums-div
+						span: a(href="#") Home
+						span.iconFont-right3
+						span: a(href="#") Mujer
+						span.iconFont-right3
+						span Deportes
+				div.clickoneroFilter.filterFilter
+					aside
+						div.clickoneroFilter-div
+							h4
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Deportes
+							div.clickoneroFilter-sub
+								each subsub, index in ['Ropa', 'Calzado', 'Accesorios', 'Maletas', 'Equipamiento', 'Viajes a eventos', 'Actividades y eventos', 'Otros']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{subsub}
+						div.clickoneroFilter-div
+							h4
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Ropa
+							div.clickoneroFilter-sub
+								each subsub, index in ['Outwear', 'Tops', 'Bottoms', 'Vestidos', 'Ropa Interior', 'Trajes de baño']
+									- if (index == 2)
+										div.clickoneroFilter-subContainer
+											input(type="checkbox", class="clickoneroCheckbox-filter")
+											label #{subsub}	
+											div.clickoneroFilter-subsub
+												each subsub, index in ['Pantalones', 'Shorts', 'Jeans', 'Pants', 'Faldas', 'Leggins']
+													input(type="checkbox", class="clickoneroCheckbox-filter")
+													label #{subsub}
+									- else 
+										input(type="checkbox", class="clickoneroCheckbox-filter")
+										label #{subsub}
+						div.clickoneroFilter-div
+							h4
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Joyería
+							div.clickoneroFilter-sub
+								each subsub, index in ['Collares', 'Pendientes', 'Pulseras', 'Broches', 'Anillos', 'Relojes']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{subsub}
+						div.clickoneroFilter-div
+							h4
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Bolsos
+							div.clickoneroFilter-sub
+								each subsub, index in ['Bolsos', 'Monederos', 'Bolsos de Mano', 'Mochilas']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{subsub}
+						div.clickoneroFilter-div
+							h4
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Calzado
+							div.clickoneroFilter-sub
+								each subsub, index in ['Zapatos con tacón', 'Botines', 'Botas', 'Tenis deportivos', 'Tenis casual', 'Zapatos con cuña', 'Sandalias', 'Sandalias deportivas', 'Balerinas', 'Mocasines']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{subsub}
+						div.clickoneroFilter-div
+							h4
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Ofertas Locales
+							div.clickoneroFilter-sub
+								each subsub, index in ['Belleza', 'Spas', 'Salud', 'Servicios Locales', 'Cursos y Clases', 'Cupones Gratis']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{subsub}
+						div.clickoneroFilter-div
+							h4
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Actividades
+						div.clickoneroFilter-div
+							h4
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Otros
+						div.clickoneroSEO
+							div.clickoneroSEO-div
+								h1 Gran variedad de Celulares
+								p A partir del siglo XXI, la funcionabilidad de los celulares no se limita solamente a recibir llamadas o a enviar un mensajes. Con el avance de la tecnología el celular pueden ser de gran utilidad para ayudar a organizar tu vida.
+								p
+									b Es posible descargar aplicaciones de la <a href="http://www.xxx.com">tienda en internet</a> para lo que necesites, hay unos celulares baratos con android con los que puedes hacer muchas cosas.
+									| Si se te olvidan las cosas del supermercado puedes tener una ayuda con tu dispositivo. Haz una lista y llévala contigo a donde vayas, puedes ir tachando lo que ya tienes.
+								p Si lo que no recuerdas es hacer los pagos el día que es necesario, tu <a href="http://www.xxx.com">smartphone</a> te puede recordar con alguna alarma de calendario, así no pagarás intereses e irás al corriente de todo. Cada aplicación tiene su función y si la sabes aprovechar puede ayudar a hacer tu vida más simple.
+								h2 Elige alguno de nuestros celulares y disfruta de lo mejor en tecnología
+					div.clickoneroFilter-products
+
+						- var filtro = 3
+						include scaffolding/filtro.jade
+						+productDiv('leggings4')
+						+productDiv('leggings5')
+						+productDiv('leggings6')
+						+productDiv('leggings7')
+						+viajesDiv('2_1')
+						+viajesDiv('2_2')
+						+productDiv('leggings8')
+						+viajesDiv('2_3')
+						+productDiv('leggings9')
+						+viajesDiv('2_4')
+						+productDiv('leggings10')
+						+productDiv('leggings11')
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				DocumentReady();
+				$('.clickoneroFilter-div').customCheckbox({
+					onClickCall: function(input, wrapper){
+						$(wrapper).toggleCheck({
+							subDiv: '.clickoneroFilter-subContainer',
+							subSubDiv: '.clickoneroFilter-subsub'
+						});
+					}
+				});
+				$('.clickoneroFP-productSize').customRadio();
+				$('.clickoneroFilter-sub').resizeFilter();
+			})();

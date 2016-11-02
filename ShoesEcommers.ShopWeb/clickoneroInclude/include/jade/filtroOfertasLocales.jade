@@ -1,0 +1,95 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			- var crt = 4
+			include scaffolding/header.jade
+			div.clickoneroWrapper
+				div.wb-breadcrums.wb-listado
+					div.wb-breadcrums-div
+						span: a(href="#") Home
+						span.iconFont-right3
+						span: a(href="#") Servicios
+						span.iconFont-right3
+						span Belleza
+				div.clickoneroFilter.filterFilter
+					aside
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Categorías
+								span.openAcordeon.iconFont-down
+							div.clickoneroFilter-sub
+								each val, index in ['Belleza', 'Spas', 'Salud', 'Ejercicio y Deportes', 'Cine / Teatro', 'Actividades y Eventos', 'Restaurantes / Bares', 'Sevicios Locales', 'Cursos y Clases', 'Cupones Gratis', 'Para este fin de semana']
+									if index == 1
+										div.clickoneroFilter-subContainer
+											div.subFilter-input
+												input.clickoneroCheckbox-filter(type="checkbox")
+												label #{val}
+											div.clickoneroFilter-subsub
+												each val2 in ['Chocolate', 'Temascal', 'Shiatsu', 'Masaje']
+													input.clickoneroCheckbox-filter(type="checkbox", checked)
+													label #{val2}
+									else
+										input.clickoneroCheckbox-filter(type="checkbox")
+										label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Mujer
+								span.openAcordeon.iconFont-down
+							div.clickoneroFilter-sub
+								each val in ['Ralph Laurent', 'Champs', 'Armani Woman']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox", checked)
+								label Hombre
+								span.openAcordeon.iconFont-down
+							div.clickoneroFilter-sub
+								each val in ['Ralph Laurent', 'Champs', 'Armani Woman']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+					div.clickoneroFilter-products
+						
+						- var filtro = 2
+						include scaffolding/filtro.jade
+						+principalService('clickoneroFP', '2_9', '', 1)
+						+viajesDiv('2_1', '', '')
+						+viajesDiv('2_2', '', '')
+						+viajesDiv('2_3', '', '')
+						+viajesDiv('2_4', '', '')
+						+principalService('clickoneroFP', '2_6', '', 1)
+						+viajesDiv('2_7', '', '')
+						+viajesDiv('2_8', '', '')
+						+viajesDiv('2_8', '', '')
+						+viajesDiv('2_1', '', '')
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				DocumentReady();
+				var filterCheckbox = new WBFilterToggle('.clickoneroFilter-div', { 
+					doCheckbox: true, 
+					doAcordeon: true, 
+					doToggle: true,
+					doAddMoreButton: true,
+					acordeonContainer: '.clickoneroFilter-sub',
+					toggleCheckSubContainer: '.clickoneroFilter-subContainer',
+					toggleCheckSubContainerContent: '.clickoneroFilter-subsub',
+					toggleCheckSubContainerTitle: '.subFilter-input',
+					addMoreItems: '.checkbox-wrapper ,.clickoneroFilter-subContainer',
+					addMoreContainer: 'clickoneroFilter-more',
+					addMoreIcon: 'clickoneroFilter-icon',
+					addMoreClass: 'clickoneroFilter-txt',
+					addMoreHide: 'clickoneroFilter-hide',
+				});
+				//- Para agregar funciones al click en el input
+				filterCheckbox.defaults.customCheckOnClickCall = function(input){
+					//- Lo que deseamos haga en el click
+				};
+				$('.clickoneroFP-productSize').customRadio();
+			})();

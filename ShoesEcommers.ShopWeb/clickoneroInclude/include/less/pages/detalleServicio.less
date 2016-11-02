@@ -1,0 +1,802 @@
+.clickoneroServiceDetail {
+	padding: 0 0 20px 0;
+	.ck-share-submit {
+		width: 280px;
+	}
+	.clickonero-sold-out {
+		bottom: inherit;
+		font-size: 16px;
+		text-align: center;
+		top: 382px;
+		width: 634px;
+		z-index: 3;
+	}
+	.clickoneroServiceImage {
+		position: relative;
+		.inline-block(664px, top);
+		.clickoneroServiceImage-img {
+			.inline-block(664px, top);
+			img {
+				.size(420px, 664px);
+			}
+		}
+		.clickoneroServiceImage-soldout {
+			background: @whiteTransparent;
+			background: rgba(255,255,255,0.74);
+			top: 341px;
+			padding: 20px 0;
+			position: absolute;
+			text-align: center;
+			width: 664px;
+			a {
+				color: @black;
+				text-decoration: underline;
+				.font('OmnesLight');
+				&:hover {
+					color: @blueLink;
+				}
+			}
+			h3 {
+				font-size: 21px;
+			}
+		}
+		.clickoneroServiceImage-carousel, .clickoneroServiceImage-modal-carousel {
+			background: lighten(@black, 20%);
+			position: relative;
+			text-align: center;
+			width: 664px;
+			.clickoneroArrow {
+				background: lighten(@black, 20%);
+				cursor: pointer;
+				height: 80px;
+				padding: 0 5px;
+				position: absolute;
+				top: 0;
+				z-index: 2;
+				&:hover {
+					background: @black;
+					
+					span {
+						color: @yellow;
+					}
+				}
+				.clickoneroIcon {
+					margin-top: 30px;
+				}
+				.iconFont-prev3, .iconFont-next3 {
+					color: @white;
+					line-height: 85px;
+				}
+			}
+			.clickoneroArrowLeft {
+				left: 0;
+			}
+			.clickoneroArrowRight {
+				right: 0;	
+			}
+		}
+		.clickoneroServiceImage-carrusel {
+			.clickoneroServiceImage-slide {
+				.opacity(40);
+				.transition(opacity .3s);
+				&:hover {
+					.opacity(100);
+				}
+				img {
+					.size(80px, 126px);
+				}
+				&.imageProduct-current {
+					.opacity(100);
+				}
+			}
+		}
+		.clickoneroServiceImage-tabs {
+			background: none;
+			border: none;
+			border-top: 1px solid lighten(@black, 80%);
+			margin-top: 20px;
+			.border-radius(0);
+			.inline-block(440px, top);
+			ul.ui-tabs-nav {
+				background: none;
+				border: none;
+				font-size: 12px;
+				text-transform: uppercase;
+				.border-radius(0);
+				.margin-padding;
+				li {
+					background: none;
+					border: none;				
+					padding: 5px 0;
+					text-align: center;
+					.border-radius(0);
+					.font('OmnesMedium');
+					a {
+						color: lighten(@black, 40%);
+						padding: 0;
+						span {
+							background: none;
+							display: block;
+							padding: 5px 10px;
+						}
+						.clickoneroSArrow {
+							.arrowBottom(lighten(@black, 20%), 10px, 5px, 5px, 10px);
+							visibility: hidden;
+						}
+						/*&:hover{
+							color: @white;
+							span {
+								background: lighten(@black, 20%);
+							}
+							.clickoneroSArrow {
+								visibility: visible;
+							}
+						}*/
+					}
+						
+				}
+				.ui-tabs-active {
+					a {
+						color: @white;
+						span {
+							background: lighten(@black, 20%);
+						}
+						.clickoneroSArrow {
+							visibility: visible;
+						}
+					}
+				}
+			}
+			.clickoneroService-tab {
+				font-size: 15px;
+				margin-bottom: 10px;
+				padding: 0;
+				text-align: justify;
+				text-transform: none;
+				.font('OmnesLight') !important;
+				a {
+					color: @blueLink2;
+					text-decoration: underline;
+					&:hover {
+						color: lighten(@black, 50%);
+					}
+				}
+				p {
+					margin: 10px 0;
+				}
+				ul {
+					list-style: none;
+					.margin-padding;
+					ul {
+						list-style: none !important;
+						margin-left: 5px !important;
+					}
+				}
+				li {
+					background: @lineLi no-repeat 5px 15px;
+					margin: 0;
+					padding: 5px 5px 5px 25px;
+				}
+				.scrollTab {
+					max-height: 300px;
+					padding-top: 0;
+				}
+				.jspVerticalBar {
+					.transition(.3s);
+				}
+			}
+		}
+		.clickoneroServiceImage-info {
+			float: right;
+			margin-top: 20px;
+			.inline-block(200px, top);
+			.clickoneroInfo-div {
+				border-top: 1px solid lighten(@black, 80%);
+				[class^="iconFont-"], [class*=" iconFont-"] {
+					color: @black;
+					font-size: 20px;
+					margin: 7px 5px;
+					.inline-block;
+				}
+				.clickoneroInfo-text {
+					padding: 10px;
+					.inline-block(145px, top);
+					a {
+						text-decoration: underline;
+					}
+					address {
+						span {
+							display: block;
+						}
+					}
+					h4 {
+						font-size: 13px;
+						.font('OmnesMedium');
+					}
+					p {
+						margin: 10px 0;
+					}
+				}
+			}
+		}
+	}
+	.clickoneroServiceDescription {
+		color: @black;
+		margin-left: 30px;
+		.inline-block(280px, top);
+		h2 {
+			background: none;
+			color: @black;
+			font-size: 21px;
+			margin: 0;
+			padding: 0;
+			text-transform: none;
+			.font('OmnesRegular');
+		}
+		h3 {
+			color: lighten(@black, 30%);
+			font-size: 14px;
+			margin: 5px 0;
+			text-transform: uppercase;
+			.font('OmnesLight')
+		}
+		h4 {
+			font-size: 13px;
+			margin: 15px 0 10px;
+		}
+		.clickoneroFP-icons{
+			margin: 10px 0;
+			.iconTravel {
+				font-size: 30px;
+			}
+		}
+		.clickoneroService-tags {
+			color: lighten(@black, 6%);
+			font-size: 10px;
+			margin: 5px 0;
+			.no-list;
+			.font('OmnesLight');
+			li {
+				margin-right: 10px;
+			}
+		}
+		.clickoneroService-description {
+			font-size: 14px;
+			margin: 10px 0;
+			.font('OmnesLight');
+		}
+		.clickoneroService-winbits {
+			background: lighten(@black, 95%);
+			margin-top: 10px;
+			padding: 10px;
+			position: relative;
+			width: 270px;
+			.clickoneroWinbits-price {
+				.inline-block(100px, top);
+			}
+			.clickoneroWinbits-slider {
+				padding-top: 7px;
+				.inline-block(155px, top);
+				.slider-wrapper {
+					width: 155px;
+					.slider-holder {
+						background: none;
+						.size(8px, 155px);
+					}
+					.slider-minValue {
+						left: -3px;
+					}
+					.slider-maxValue {
+						right: -3px;
+					}
+					.iconFont-slideBG {
+						font-size: 175px;
+					}
+				}
+				.clickoneroService-win {
+					margin: -7px 0 7px 0;
+					span, label {
+						color: @black;
+						font-size: 18px;
+						.font('OmnesLight');
+					}
+					.iconBit, .clickoneroIcon {
+						margin: -6px 2px 0 2px;
+					}
+				}
+				.clickoneroService-save {
+					.slideInput-percent {
+						padding-left: 5px;
+						vertical-align: text-top;
+					}
+				}
+			}
+			.clickoneroServiceActualPrice {
+				font-size: 23px;
+				margin-top: 0;
+				.font('OmnesLight');
+			}
+			.clickoneroServiceListPrice {
+				color: lighten(@black, 70%);
+			}
+			.clickoneroService-prepaid {
+				bottom: 7px;
+				position: absolute;
+				width: 100px;
+				.prepaid-title {
+					color: lighten(@black, 50%);
+					display: block;
+					font-size: 9px;
+				}
+				.prepaid-price {
+					color: @green;
+					font-size: 24px;
+				}
+			}
+		}
+		.clickoneroService-sucursal, .clickoneroService-options {
+			.select-trigger {
+				right: 8px;
+				top: 8px;
+				.iconButton;
+			}
+			.select-input {
+				font-size: 12px;
+				padding: 4px 15px 4px 5px;
+			}
+		}
+		.clickoneroService-dates {
+			.ui-datepicker-trigger {
+				position: absolute;
+				right: 10px;
+				top: 1px;
+				.size-icon (@iconBackground, 20px, 20px, -540px -145px);
+				.iconButton;
+			}
+			.datepicker-wrapper {
+				float: left;
+				margin-bottom: 20px;
+				position: relative;
+				.inline-block(135px);
+				&:last-child {
+					float: right;
+				}
+				input {
+					width: 115px;
+				}
+			}
+		}
+		/*.clickoneroService-share{
+			bottom: 0;
+			font-size: 11px;
+			left: 0;
+			padding-right: 60px;
+			position: absolute;
+			.inline-block(100px, top);
+			.clickoneroSocialShare {
+				margin-right: -3px;
+			}
+			a {
+				color: lighten(@black, 50%);
+				text-decoration: none;
+				&:hover {
+					.iconFont-facebook{
+						color: @blueFacebook;
+					}
+					.iconFont-twitter {
+						color: @blueTwitter;
+					}
+					.iconFont-pinterest {
+						color: @redPinterest;
+					}
+				}
+			}
+			p {
+				margin-bottom: 10px;
+			}
+			[class^="iconFont-"], [class*=" iconFont-"]{
+				font-size: 22px;
+				margin-right: 5px;
+			}
+		}*/
+		.clickoneroServiceActualPrice {
+			display: block;
+			font-size: 25px;
+			margin-top: 10px;
+		}
+		.clickoneroServiceListPrice {
+			font-size: 14px;
+			text-decoration: line-through;
+			.font('OmnesLight');
+		}
+		.clickoneroService-quantity {
+			.inline-block(120px, top);
+		}
+		/*.clickoneroService-submit {
+			bottom: 0;
+			font-size: 11px;
+			padding-top: 20px;
+			position: absolute;
+			right: 0;
+			.inline-block(115px, top);
+			span {
+				color: @black;
+				font-size: 11px;
+				padding-bottom: 6px;
+				margin-left: -35px;
+				text-align: right;
+				.inline-block(150px);
+				strong {
+					color: lighten(@black, 60%);
+				}
+			}
+			.clickoneroBtn {
+				font-size: 12px;
+				margin-left: -5px;
+				.inline-block(120px);
+			}
+		}*/
+		.clickoneroService-msi {
+			border: 1px solid lighten(@black, 70%);
+			color: lighten(@black, 10%);
+			padding: 10px 20px;
+			.font('OmnesLight');
+			h4 {
+				border-bottom: 1px solid lighten(@black, 80%);
+				font-size: 16px;
+				line-height: normal;
+				margin: 0;
+				padding: 7px 0;
+				.font('OmnesRegular');
+			}
+			ul {
+				margin: 10px 0 0 10px;
+				padding: 0;
+			}
+			li {
+				background: @lineMSI no-repeat left 12px;
+				color: lighten(@black, 40%);
+				margin: 0;
+				list-style-type: none;
+				padding: 2px 2px 2px 12px;
+				span {
+					.font('OmnesMedium');
+				}
+			}
+			strong {
+				font-size: 14px;
+				.font('OmnesRegular');
+			}
+			.slideInput-msi {
+				.font('OmnesLight');
+			}
+		}
+		.clickoneroService-cupons {
+			background: lighten(@black, 94%);
+			color: lighten(@black, 10%);
+			font-size: 30px;
+			padding: 7px 20px;
+			.font('OmnesRegular');
+			span {
+				font-size: 12px;
+				line-height: 10px;
+				margin: -3px 0 0 5px;
+				.inline-block(50px);
+			}
+		}
+		.clickoneroService-buyers {
+			background: lighten(@black, 94%);
+			color: lighten(@black, 10%);
+			font-size: 10px;
+			padding: 10px;
+			.font('OmnesLight');
+			h4 {
+				color: lighten(@black, 10%);
+				font-size: 16px;
+				margin: 5px 0 20px 0;
+				.font('OmnesRegular');
+			}
+			ul {
+				.margin-padding;
+			}
+			li {
+				list-style-type: none;
+				.margin-padding(0, 2px 0);
+			}
+			.clickoneroBar-bar {
+				background: @magentaBars;
+				float: left;
+				height: 10px;
+				.inline-block(140px);
+			}
+			.clickoneroBuyers-bar {
+				padding-right: 40px;
+				position: relative;
+				.inline-block(85px);
+			}
+			.clickoneroBars {
+				vertical-align: top;
+			}
+			.clickoneroBuyers-text {
+				padding: 0 0 10px 10px;
+				.inline-block(200px);
+			}
+			.clickoneroBar-percent {
+				padding: 0 5px;
+				position: absolute;
+				.inline-block(20px);
+			}
+			.clickoneroBuyers-number {
+				margin-right: 10px;
+				.inline-block(60px);
+			}
+			.iconFont-graphic {
+				color: lighten(@black, 40%);
+				font-size: 30px;
+				margin: 15px 5px 0;
+				.inline-block;
+				vertical-align: top;
+			}
+		}
+		.clickoneroService-smileys {
+			background: @yellow;
+			color: lighten(@black, 10%);
+			padding: 10px 20px 15px 10px;
+			margin-bottom: 15px;
+			h4 {
+				color: lighten(@black, 10%);
+				font-size: 16px;
+				margin: 3px 0 5px 0;
+				.font('OmnesRegular');
+			}
+			p {
+				font-size: 10px;
+				margin: 0;
+				.font('OmnesLight');
+			}
+			.clickoneroTumb {
+				vertical-align: top;
+			}
+			.clickoneroSmileys-text {
+				margin-left: 10px;
+				.inline-block(190px);
+			}
+			.iconFont-like {
+				color: lighten(@black, 40%);
+				font-size: 35px;
+				margin: 7px 2px;
+				.inline-block;
+				vertical-align: top;
+			}
+		}
+		.clickoneroService-phoneTravel {
+			background: @blueClickonero;
+			color: @white;
+			padding: 10px 20px 15px 10px;
+			margin-bottom: 15px;
+			h4 {
+				color: @white;
+				font-size: 16px;
+				margin: 0;
+				.font('OmnesRegular');
+			}
+			h3 {
+				color: @white;
+				font-size: 20px;
+				margin: 3px 0;
+				.font('OmnesLight');
+			}
+			p {
+				font-size: 10px;
+				margin: 0;
+				.font('OmnesLight');
+			}
+			.clickoneroPhoneTravel-text {
+				margin-left: 10px;
+				.inline-block(190px);
+			}
+			.iconFont-phoneHear {
+				color: @white;
+				font-size: 35px;
+				margin: 7px 2px;
+				.inline-block;
+				vertical-align: top;
+			}
+		}
+	}
+}
+.clickoneroService-msi, .clickoneroService-cupons, .clickoneroService-buyers, .clickoneroService-smileys {
+	margin-top: 15px;
+}
+.clickoneroService-SVR {
+	border-top: 1px solid lighten(@black, 90%);
+	padding: 30px 0 50px 0;
+	position: relative;
+	.clickoneroService-SVR-divLink {
+		position: absolute;
+		z-index: 3;
+		span {
+			color: lighten(@black, 70%);
+			cursor: pointer;
+			display: block;
+			font-size: 11px;
+			padding-bottom: 5px;
+			.transition(.3s);
+			&.active {
+				color: @black;
+			}
+			&:hover {
+				color: @black;
+			}
+		}
+	}
+	.clickoneroSRV {
+		padding-left: 140px;
+	}
+	.clickoneroArrows {
+		position: absolute;
+		overflow: hidden;
+		top: 140px !important;
+		z-index: 2;
+		.size(30px, 30px);
+		span {
+			font-size: 30px;
+			line-height: 1px;
+			margin-top: 15px;
+			text-indent: 0;
+			position: relative;
+		}
+	}
+	.clickoneroArrowLeft {
+		left: 122px;
+	}
+	.clickoneroArrowRight {
+		right: -5px;
+	}
+
+}
+.clickoneroService-SVR-carrusel {
+	.clickoneroService-SVR-slide {
+		padding: 0;
+		position: relative;
+		&:hover {
+			.clickoneroService-SVR-buynow {
+				top: 0;
+			}
+		}
+		h3 {
+			color: lighten(@black, 8%);
+			font-size: 14px;
+			text-transform: inherit;
+			.font('OmnesLight');
+		}
+		h4 {
+			font-size: 13px;
+			margin: 5px 0;
+			.font('OmnesMedium');
+		}
+		img {
+			.size(243px, 383px);
+		}
+		.tag-div ul {
+			position: relative;
+		}
+		.clickoneroQuantity-days {
+			right: 20px;
+		}
+		.clickoneroService-SVR-price {
+			display: block;
+			font-size: 14px;
+			.font('OmnesMedium');
+		}
+		.clickoneroService-SVR-oldprice {
+			color: lighten(@black, 70%);
+			display: block;
+			font-size: 13px;
+			text-decoration: line-through;
+			.font('OmnesLight');
+		}
+		.clickoneroService-SVR-win {
+			.clickoneroWinbits12px {
+				margin: -2px 3px 0 2px;
+			}
+			strong {
+				.font('OmnesMedium');
+			}
+			.iconBit {
+				margin: -2px 3px 0 3px;
+			}
+			label {
+				color: @black;
+			}
+		}
+		.clickoneroService-SVR-msi {
+			border: 1px solid lighten(@black, 70%);
+			color: lighten(@black, 10%);
+			font-size: 10px;
+			margin-top: 20px;
+			padding: 3px 10px;
+			.font('OmnesLight');
+			h4 {
+				border-bottom: 1px solid lighten(@black, 80%);
+				font-size: 10px;
+				line-height: normal;
+				margin: 0;
+				padding: 3px 0;
+				.font('OmnesRegular');
+			}
+			ul {
+				margin: 4px 0 0 2px;
+				padding: 0;
+			}
+			li {
+				background: @lineMSI no-repeat left 5px;
+				color: lighten(@black, 40%);
+				margin: 0;
+				list-style-type: none;
+				padding: 0 2px 0 10px;
+				span {
+					.font('OmnesMedium');
+				}
+			}
+			strong {
+				font-size: 10px;
+				.font('OmnesRegular');
+			}
+			.slideInput-msi {
+				.font('OmnesLight');
+			}
+		}
+		.clickoneroService-SVR-description {
+			margin: 15px 20px 0 0;
+			.inline-block(200px, top); 
+		}
+		.clickoneroService-SVR-largeDescription {
+			margin: 15px 20px 0 0;
+		}
+		.clickoneroService-SVR-services {
+			.inline-block(160px, top);
+		}
+		.clickoneroService-SVR-icons {
+			margin: 5px 0;
+			img {
+				.size(24px, 24px);
+			}
+			[class^="iconFont-"], [class*=" iconFont-"] {
+				color: @black;
+				font-size: 24px;
+				line-height: 24px;
+			}
+		}
+		.clickoneroSuggestionRecentViewPrice {
+			color: @black;
+			display: block;
+			font-size: 11px;
+			margin-top: 5px;
+			.font('OmnesMedium');
+		}
+		.clickoneroService-SVR-buynow {
+			background: @fancyboxBackground;
+			background: rgba(0,0,0,0.5);
+			color: @white;
+			display: block;
+			position: absolute;
+			text-align: center;
+			top: -300px;
+			z-index: 4;
+			.size(243px, 383px);
+			.transition(.3s);
+			a {
+				display: block;
+				padding-top: 90px;
+				.size(auto, 383px);
+				&:hover {
+					text-decoration: none;
+					.clickoneroCompraAhora {
+						 background: @yellow;
+					}
+				}
+			}
+		}
+	}
+}

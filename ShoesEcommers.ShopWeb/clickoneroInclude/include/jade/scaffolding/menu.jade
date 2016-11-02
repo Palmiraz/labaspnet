@@ -1,0 +1,170 @@
+div.clickoneroNavServices
+	ul.menu-ul
+		each val, index in ['MUJER', 'HOMBRE', 'SERVICIOS', 'PRODUCTOS', 'VIAJES']
+			- var currentCls = ''
+			if index == crt
+				- currentCls = 'current'
+			li.menu-li(class=currentCls)
+				if !menuDiciembre
+					div.menuli-div
+						a.menu-a(href="#") #{val}
+						div.subMenu
+							div.subMenu-column.subMenu-list
+								h3 Productos
+								ul
+									each val in [[{item: 'Deportes', num: '123'}], [{item: 'Ropa', num: '234'}], [{item: 'Joyería', num: '23'}], [{item: 'Accesorios', num: '34'}], [{item: 'Bolsos', num: '29'}], [{item: 'Calzado', num: '56'}], [{item: 'Salud y Belleza', num: '4'}], [{item: 'Ofertas Locales', num: '2'}]]
+										li
+											a(href="#") #{val[0].item}
+												//- span.subMenu-num #{val[0].num}
+							div.subMenu-column.subMenu-list
+								h3 Marcas
+								ul
+									each val, index in [[{item: 'Ralph Laurent', num: '123'}], [{item: 'Champs', num: '234'}], [{item: 'Armani Woman', num: '23'}], [{item: 'Armani Home', num: '34'}], [{item: 'Armani', num: '29'}], [{item: 'Hugo Boss', num: '56'}]]
+										li
+											a(href="#") #{val[0].item}
+												if index == 4
+													span.subMenu-new Nuevo
+												//- span.subMenu-num #{val[0].num}
+							if index == 1
+								div.subMenu-column.subMenu-list
+									h3 &nbsp;
+									ul
+										each val, index in [[{item: 'Ralph Laurent', num: '123'}], [{item: 'Champs', num: '234'}], [{item: 'Armani Woman', num: '23'}], [{item: 'Armani Home', num: '34'}], [{item: 'Armani', num: '29'}], [{item: 'Hugo Boss', num: '56'}]]
+											li
+												a(href="#") #{val[0].item}
+													if index == 4
+														span.subMenu-new Nuevo
+													//- span.subMenu-num #{val[0].num}
+							div.subMenu-column.subMenu-banner
+								a(href="#"): img(src="clickoneroInclude/images/assets/onitsuka.jpg", alt="ONITSUKA: New Collection")
+								div.clickoneroFP-termina
+									span.iconFont-clock
+									span termina en 7 días
+							if index != 1
+								div.subMenu-column.subMenu-banner
+									a(href="#"): img(src="clickoneroInclude/images/assets/mercurial.jpg", alt="MERCURIAL: Be fast be seen")
+									div.clickoneroFP-termina
+										span.iconFont-clock
+										span termina en 7 días
+				else
+					div.menuli-div
+						a.menu-a(href="#") #{val}
+						if (index < 2 || index == 3)
+							div.subMenu
+								div.subMenu-col
+									h3 OFERTAS DE HOY
+									ul
+										each val in ['LACOSTE', 'Soda Stream', 'Star Pad Turbo', 'As Seen on TV', 'Mikel', 'Vasconia', 'Skechers', 'Puma', 'Reebok', 'Shantal']
+											li
+												a(href="#") #{val}
+								div.subMenu-col
+									h3 DESTACADAS
+									ul
+										each val in ['LACOSTE', 'Soda Stream', 'Star Pad Turbo', 'As Seen on TV', 'Mikel']
+											li
+												a(href="#") #{val}
+									h3 TERMINAN HOY
+									ul
+										each val in ['LACOSTE', 'Soda Stream', 'Star Pad Turbo', 'As Seen on TV', 'Mikel']
+											li
+												a(href="#") #{val}
+								div.subMenu-col
+									h3 CATEGORIAS
+									ul
+										each val in ['Accesorios', 'Bolsos', 'Calzado', 'Deportes', 'Joyería', 'Ropa']
+											li
+												a(href="#") #{val}
+								div.subMenu-col.subMenu-col-banner
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="http://da5aufqgr64hz.cloudfront.net/Medium/Medium_2014432815_664x419.jpg", alt="LACOSTE")
+											div.subMenu-col-service
+												p Campaña destacada
+									div.subMenuCol-banner
+										a(href="#") 
+											img(src="http://da5aufqgr64hz.cloudfront.net/Medium/Medium_2014212806_664x419.jpg", alt="LACOSTE")
+											div.subMenu-col-service
+												p Campaña destacada
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="http://da5aufqgr64hz.cloudfront.net/Medium/Medium_2014342754_664x419-lacostebolsas.jpg", alt="LACOSTE")
+											div.subMenu-col-service
+												p Calzado
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="http://da5aufqgr64hz.cloudfront.net/Medium/Medium_2014362443_lacoste.png", alt="LACOSTE")
+											div.subMenu-col-service
+												p Vestido
+						else if (index == 2)
+							div.subMenu
+								div.subMenu-col
+									h3 CIUDADES
+									ul
+										each val in ['D.F. Centro', 'D.F. Sur', 'D.F. Oriente', 'D.F. Poniente', 'D.F. Norte', 'Guadalajara']
+											li
+												a(href="#") #{val}
+								div.subMenu-col.subMenu-col-services
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/salud.jpg", alt="Salud y Belleza")
+											div.subMenu-col-service
+												p Salud y Belleza
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/restaurant.jpg", alt="Restaurantes")
+											div.subMenu-col-service
+												p Restaurantes
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/cine.jpg", alt="Cine y Teatro")
+											div.subMenu-col-service
+												p Cine y Teatro
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/servicios.jpg", alt="Servicios Locales")
+											div.subMenu-col-service
+												p Servicios Locales
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/actividad.jpg", alt="Actividades y Eventos")
+											div.subMenu-col-service
+												p Actividades y Eventos
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/cursos.jpg", alt="Cursos y Clases")
+											div.subMenu-col-service
+												p Cursos y Clases
+						else if (index == 4)
+							div.subMenu 
+								//- (style="visibility: visible; opacity: 1")
+								div.subMenu-col.subMenu-col-travel
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/playa.jpg", alt="Playas")
+											div.subMenu-col-service
+												p Playas
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/ciudad.jpg", alt="Ciudades Nacionales")
+											div.subMenu-col-service
+												p Ciudades Nacionales
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/ciudadInt.jpg", alt="Ciudades Internacionales")
+											div.subMenu-col-service
+												p Ciudades Internacionales
+									div.subMenuCol-banner
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/deportivos.jpg", alt="Eventos Deportivos")
+											div.subMenu-col-service
+												p Eventos Deportivos
+									div.subMenuCol-banner2(style="margin-right: 10px")
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/navidad.jpg", alt="Navidad y Año Nuevo")
+											div.subMenu-col-service
+												p Navidad y Año Nuevo
+									div.subMenuCol-banner2
+										a(href="#")
+											img(src="clickoneroInclude/images/assets/navidad.jpg", alt="Navidad y Año Nuevo")
+											div.subMenu-col-service
+												p Navidad y Año Nuevo

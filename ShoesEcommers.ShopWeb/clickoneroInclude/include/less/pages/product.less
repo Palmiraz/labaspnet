@@ -1,0 +1,166 @@
+.clickoneroFP-item {
+	color: @black;
+	margin-bottom: 30px;
+	padding-left: 1px;
+	.inline-block(184px, top);
+	a {
+		color: @black;
+		&:hover {
+			color: @blueLink2;
+			text-decoration: none;
+		}
+	}
+	h3, h5, h4 {
+		text-transform: none !important;
+		margin: 0 !important;
+	}
+	.clickoneroFP-largeDescription {
+		margin-left: 2px;
+		.clickoneroFP-icons {
+			text-align: left !important;
+			margin: 5px 0;
+		}
+	}
+	&.itemServicio {
+		.inline-block(381px, top);
+		.clickoneroFP-image {
+			.size(236px, 382px);
+			a {
+				.bitAnimate(236px);
+			}
+		}
+		.clickoneroFP-description {
+			margin-left: 2px;
+			.inline-block(200px, top);
+		}
+
+		.clickoneroFP-services {
+			float: right;
+			.inline-block(170px, top);
+		}
+		.clickoneroFP-icons {
+			height: 24px;
+			text-align: right;
+			overflow: hidden;
+		}
+	}
+	&.itemServicio-home {
+		.inline-block(320px, top);
+		.clickoneroFP-image {
+			.size(203px, 320px);
+			a {
+				.bitAnimate(203px);
+			}
+		}
+		.clickoneroFP-description {
+			margin-left: 2px;
+			.inline-block(200px, top);
+		}
+		.clickoneroFP-services {
+			float: right;
+			.inline-block(170px, top);
+		}
+		.clickoneroFP-icons {
+			text-align: right;
+		}
+	}
+	.clickoneroFP-termina {
+		font-size: 15px;
+	}
+}
+.clickoneroFP-image {
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 15px;
+	.size(236px,185px);
+	&:hover {
+		.clickoneroFP-termina, .clickoneroFP-overlay {
+			bottom: 0;
+		}
+	}
+	.clickoneroFP-overlay {
+		background: @whiteTransparent;
+		background: rgba(255,255,255, 0.7);
+		bottom: -250px;
+		position: absolute;
+		width: 100%;
+		z-index: 4;
+		.transition(.3s);
+		h3 {
+			font-size: 16px;
+			.font('OmnesMedium');
+			.margin-padding;
+		}
+		a {
+			color: @black;
+			font-size: 11px;
+			text-decoration: underline;
+			.font('OmnesLight');
+			&:hover {
+				color: lighten(@black, 50%);
+			}
+		}
+		.clickoneroFP-soldout {
+			margin: 25px 15px;
+		}
+		.clickoneroFP-productSize {
+			margin: 20px 15px;
+			.radio-wrapper {
+				margin: -1px -2px;
+			}
+			.radio-span {
+				background: @white !important;
+				font-size: 11px;
+				height: 12px;
+				line-height: normal;
+				margin: 0 1px; 
+				padding: 4px 2px !important;
+				text-indent: 0;
+				&.radio-soldout{
+					background: @white @noLine no-repeat center center !important;
+				}
+			}
+			.clickoneroBtnCart {
+				display: block;
+				font-size: 13px;
+				margin-top: 5px;
+				padding: 15px 25px;
+				text-transform: uppercase;
+				.font('OmnesLight');
+			}
+			.radio-selected {
+				border-color: lighten(@black, 50%);
+				background: @grey !important;
+				color: @white;
+			}
+		}
+	}
+}
+.clickoneroFP-actualPrice {
+	display: block;
+	font-size: 14px;
+	margin-top: 5px;
+	.font('OmnesMedium');
+}
+.clickoneroFP-listPrice {
+	color: lighten(@black, 50%);
+	font-size: 12px;
+	text-decoration: line-through;;
+	.font('OmnesExtraLight');
+}
+.clickoneroFP-winWinbits{
+	margin-bottom: 10px;
+	.font('OmnesLight');
+	span {
+		.inline-block;
+	}
+	.iconBit {
+		margin-left: 5px;
+	}
+	label {
+		color: @black;
+		.inline-block;
+		margin-left: 3px;
+		.font('OmnesLight');
+	}
+}

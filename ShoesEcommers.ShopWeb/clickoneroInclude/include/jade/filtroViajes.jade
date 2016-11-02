@@ -1,0 +1,149 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			- var crt = 4
+			include scaffolding/header.jade
+			div.clickoneroWrapper
+				div.clickoneroFilter.filterFilter
+					aside
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Playa
+							div.clickoneroFilter-sub
+								each val in ['Acapulco', 'Ixtapa', 'Cabos', 'Huatulco']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Internacionales
+							div.clickoneroFilter-sub
+								each val in ['USA', 'Canada', 'Europa', 'Australia']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Pueblos Mágicos
+							div.clickoneroFilter-sub
+								each val in ['Taxco', 'Puebla', 'Querétaro']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Ciudades Nacionales
+							div.clickoneroFilter-sub
+								each val in ['Guadalajara', 'Monterrey', 'Tijuana']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Cruceros
+							div.clickoneroFilter-sub
+								each val in ['Caribe', 'Mediterráneo', 'Pacífico']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Eventos Deportivos
+							div.clickoneroFilter-sub
+								each val in ['DF', 'Guadalajara', 'Monterrey']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Eventos Musicales
+							div.clickoneroFilter-sub
+								each val in ['Conciertos de Rock', 'Conciertos de Cámara']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Al D.F.
+							div.clickoneroFilter-sub
+								each val in ['Día de Muertos', 'Grito de Independencia']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Semana Santa
+							div.clickoneroFilter-sub
+								each val in ['Taxco', 'Puebla', 'Querétaro']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Verano
+							div.clickoneroFilter-sub
+								each val in ['Taxco', 'Puebla', 'Querétaro']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Puente Día de la Independencia
+							div.clickoneroFilter-sub
+								each val in ['Taxco', 'Puebla', 'Querétaro']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Año Nuevo / Navidad
+							div.clickoneroFilter-sub
+								each val in ['Taxco', 'Puebla', 'Querétaro']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Incluye
+							div.clickoneroFilter-sub
+								each val in ['Hotel', 'Alimentos', 'Viaje Redondo', 'Transportación']
+									input(type="checkbox", class="clickoneroCheckbox-filter")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Cuántos días
+							div.clickoneroFilter-sub
+								each val in ['1 día', '2 días', '3 días', '4 días', '5 días', '6 días']
+									input(type="checkbox", class="clickoneroCheckbox-filter")
+									label #{val}
+					div.clickoneroFilter-products
+						- var filtro = 1
+						include scaffolding/filtro.jade
+						+principalService('clickoneroFP', '2_9', 1)
+						+viajesDiv('2_1', 1, '', '', 1)
+						+viajesDiv('2_2', 1, '', '', 1)
+						+viajesDiv('2_3', 1, '', '', 1)
+						+viajesDiv('2_4', 1, '', '', 1)
+						+principalService('clickoneroFP', '2_6', 1)
+						+viajesDiv('2_7', 1, '', '', 1)
+						+viajesDiv('2_8', 1, '', '', 1)
+						+viajesDiv('2_8', 1, '', '', 1)
+						+viajesDiv('2_1', 1, '', '', 1)
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				DocumentReady();
+				$('.clickoneroFilter-div').customCheckbox({
+					onClickCall: function(input, wrapper){
+						$(wrapper).toggleCheck();
+					}
+				});
+				$('.clickoneroFP-productSize').customRadio();
+				$('.clickoneroFilter-subsub').resizeFilter();
+			})();

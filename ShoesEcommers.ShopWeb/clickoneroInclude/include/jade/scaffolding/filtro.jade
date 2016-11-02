@@ -1,0 +1,31 @@
+div.clickoneroFP-filter
+	case filtro
+		when 0
+			ul
+				each val in ['tops', 'bottoms', 'outerwere', 'vestidos', 'underwear', 'calzado', 'bags']
+					li: a.clickoneroToolTip(href="#", class="iconFont-c-#{val}", title=val)
+		when 1
+			div.clickonero-searchFilter
+				div.input-filtro
+					span.iconFont-destino
+					input(placeholder="DESTINO", type="text")
+				div.input-filtro.datePicker-div
+					span.iconFont-calendar3
+					div.dateDiv.divFrom
+						input.fromDate(type="text", placeholder="FECHA")
+						span.iconFont-close(title="Quitar fecha")
+					span.toSpan -
+					div.dateDiv.divTo
+						input.toDate(type="text")
+						span.iconFont-close(title="Quitar fecha")
+				input.btn(type="submit", value="Buscar Viaje")
+		when 2
+			div.clickonero-searchFilter
+				div.input-filtro
+					+selects('selectRegister', ['Ciudad', 'Monterrey', 'Distrito Federal', 'Guadalajara'])
+				div.input-filtro
+					+selects('selectRegister', ['Zona', 'D.F. Centro', 'D.F. Sur', 'D.F. Norte'])
+				input.btn(type="submit", value="Buscar")
+	div.clickoneroFP-order
+		label Ordenar por:
+		+selects('selectRegister', ['Precio mayor a menor', 'Precio menor a mayor', 'Fecha', 'Destino'])

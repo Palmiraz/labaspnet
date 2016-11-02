@@ -1,0 +1,891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ecommersModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ecommersModelStoreContainer">
+          <EntitySet Name="AttributeSkus" EntityType="ecommersModel.Store.AttributeSkus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Brands" EntityType="ecommersModel.Store.Brands" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Categories" EntityType="ecommersModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customers" EntityType="ecommersModel.Store.Customers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Department" EntityType="ecommersModel.Store.Department" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GroupsAttributes" EntityType="ecommersModel.Store.GroupsAttributes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ImagesSkus" EntityType="ecommersModel.Store.ImagesSkus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderDetail" EntityType="ecommersModel.Store.OrderDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Orders" EntityType="ecommersModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Products" EntityType="ecommersModel.Store.Products" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Skus" EntityType="ecommersModel.Store.Skus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StatusOrders" EntityType="ecommersModel.Store.StatusOrders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SubCategories" EntityType="ecommersModel.Store.SubCategories" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AttributeSkus_GroupsAttributes" Association="ecommersModel.Store.FK_AttributeSkus_GroupsAttributes">
+            <End Role="GroupsAttributes" EntitySet="GroupsAttributes" />
+            <End Role="AttributeSkus" EntitySet="AttributeSkus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttributeSkus_Skus" Association="ecommersModel.Store.FK_AttributeSkus_Skus">
+            <End Role="Skus" EntitySet="Skus" />
+            <End Role="AttributeSkus" EntitySet="AttributeSkus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_Department" Association="ecommersModel.Store.FK_Categories_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImagesSkus_Skus" Association="ecommersModel.Store.FK_ImagesSkus_Skus">
+            <End Role="Skus" EntitySet="Skus" />
+            <End Role="ImagesSkus" EntitySet="ImagesSkus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Orders" Association="ecommersModel.Store.FK_OrderDetail_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Skus" Association="ecommersModel.Store.FK_OrderDetail_Skus">
+            <End Role="Skus" EntitySet="Skus" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customers" Association="ecommersModel.Store.FK_Orders_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_StatusOrders" Association="ecommersModel.Store.FK_Orders_StatusOrders">
+            <End Role="StatusOrders" EntitySet="StatusOrders" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Brands" Association="ecommersModel.Store.FK_Products_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_SubCategories" Association="ecommersModel.Store.FK_Products_SubCategories">
+            <End Role="SubCategories" EntitySet="SubCategories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skus_Products" Association="ecommersModel.Store.FK_Skus_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Skus" EntitySet="Skus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategories_Categories" Association="ecommersModel.Store.FK_SubCategories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="SubCategories" EntitySet="SubCategories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AttributeSkus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdGroup" Type="int" Nullable="false" />
+          <Property Name="IdSku" Type="int" Nullable="false" />
+          <Property Name="ValueLabel" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Label" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Brand" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdDepartment" Type="int" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DateBirth" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Department" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GroupsAttributes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="TypeGroup" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ImagesSkus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdSku" Type="int" Nullable="false" />
+          <Property Name="UrlImage" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="IdSku" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdCustomer" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="IdStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdBrand" Type="int" Nullable="false" />
+          <Property Name="IdSubcategory" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Model" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Skus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="Sku" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="ListPrice" Type="money" Nullable="false" />
+          <Property Name="Thumbnail" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="StatusOrders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SubCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdCategory" Type="int" Nullable="false" />
+          <Property Name="SubCategory" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AttributeSkus_GroupsAttributes">
+          <End Role="GroupsAttributes" Type="ecommersModel.Store.GroupsAttributes" Multiplicity="1" />
+          <End Role="AttributeSkus" Type="ecommersModel.Store.AttributeSkus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupsAttributes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AttributeSkus">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AttributeSkus_Skus">
+          <End Role="Skus" Type="ecommersModel.Store.Skus" Multiplicity="1" />
+          <End Role="AttributeSkus" Type="ecommersModel.Store.AttributeSkus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AttributeSkus">
+              <PropertyRef Name="IdSku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_Department">
+          <End Role="Department" Type="ecommersModel.Store.Department" Multiplicity="1" />
+          <End Role="Categories" Type="ecommersModel.Store.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="IdDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImagesSkus_Skus">
+          <End Role="Skus" Type="ecommersModel.Store.Skus" Multiplicity="1" />
+          <End Role="ImagesSkus" Type="ecommersModel.Store.ImagesSkus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ImagesSkus">
+              <PropertyRef Name="IdSku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Orders">
+          <End Role="Orders" Type="ecommersModel.Store.Orders" Multiplicity="1" />
+          <End Role="OrderDetail" Type="ecommersModel.Store.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Skus">
+          <End Role="Skus" Type="ecommersModel.Store.Skus" Multiplicity="1" />
+          <End Role="OrderDetail" Type="ecommersModel.Store.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="IdSku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customers">
+          <End Role="Customers" Type="ecommersModel.Store.Customers" Multiplicity="1" />
+          <End Role="Orders" Type="ecommersModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="IdCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_StatusOrders">
+          <End Role="StatusOrders" Type="ecommersModel.Store.StatusOrders" Multiplicity="1" />
+          <End Role="Orders" Type="ecommersModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOrders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="IdStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Brands">
+          <End Role="Brands" Type="ecommersModel.Store.Brands" Multiplicity="1" />
+          <End Role="Products" Type="ecommersModel.Store.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="IdBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_SubCategories">
+          <End Role="SubCategories" Type="ecommersModel.Store.SubCategories" Multiplicity="1" />
+          <End Role="Products" Type="ecommersModel.Store.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="IdSubcategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skus_Products">
+          <End Role="Products" Type="ecommersModel.Store.Products" Multiplicity="1" />
+          <End Role="Skus" Type="ecommersModel.Store.Skus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Skus">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategories_Categories">
+          <End Role="Categories" Type="ecommersModel.Store.Categories" Multiplicity="1" />
+          <End Role="SubCategories" Type="ecommersModel.Store.SubCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubCategories">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DeleteCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="DateBirth" Type="datetime" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ecommersModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ecommersEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AttributeSkus" EntityType="ecommersModel.AttributeSkus" />
+          <EntitySet Name="Brands" EntityType="ecommersModel.Brands" />
+          <EntitySet Name="Categories" EntityType="ecommersModel.Categories" />
+          <EntitySet Name="Customers" EntityType="ecommersModel.Customers" />
+          <EntitySet Name="Department" EntityType="ecommersModel.Department" />
+          <EntitySet Name="GroupsAttributes" EntityType="ecommersModel.GroupsAttributes" />
+          <EntitySet Name="ImagesSkus" EntityType="ecommersModel.ImagesSkus" />
+          <EntitySet Name="OrderDetail" EntityType="ecommersModel.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="ecommersModel.Orders" />
+          <EntitySet Name="Products" EntityType="ecommersModel.Products" />
+          <EntitySet Name="Skus" EntityType="ecommersModel.Skus" />
+          <EntitySet Name="StatusOrders" EntityType="ecommersModel.StatusOrders" />
+          <EntitySet Name="SubCategories" EntityType="ecommersModel.SubCategories" />
+          <AssociationSet Name="FK_AttributeSkus_GroupsAttributes" Association="ecommersModel.FK_AttributeSkus_GroupsAttributes">
+            <End Role="GroupsAttributes" EntitySet="GroupsAttributes" />
+            <End Role="AttributeSkus" EntitySet="AttributeSkus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttributeSkus_Skus" Association="ecommersModel.FK_AttributeSkus_Skus">
+            <End Role="Skus" EntitySet="Skus" />
+            <End Role="AttributeSkus" EntitySet="AttributeSkus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Brands" Association="ecommersModel.FK_Products_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categories_Department" Association="ecommersModel.FK_Categories_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategories_Categories" Association="ecommersModel.FK_SubCategories_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="SubCategories" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customers" Association="ecommersModel.FK_Orders_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImagesSkus_Skus" Association="ecommersModel.FK_ImagesSkus_Skus">
+            <End Role="Skus" EntitySet="Skus" />
+            <End Role="ImagesSkus" EntitySet="ImagesSkus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Orders" Association="ecommersModel.FK_OrderDetail_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Skus" Association="ecommersModel.FK_OrderDetail_Skus">
+            <End Role="Skus" EntitySet="Skus" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_StatusOrders" Association="ecommersModel.FK_Orders_StatusOrders">
+            <End Role="StatusOrders" EntitySet="StatusOrders" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_SubCategories" Association="ecommersModel.FK_Products_SubCategories">
+            <End Role="SubCategories" EntitySet="SubCategories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skus_Products" Association="ecommersModel.FK_Skus_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Skus" EntitySet="Skus" />
+          </AssociationSet>
+          <FunctionImport Name="DeleteCustomer">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetCustomer" ReturnType="Collection(ecommersModel.GetCustomer_Result)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertCustomer" ReturnType="Collection(Decimal)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="DateBirth" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="AttributeSkus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdGroup" Type="Int32" Nullable="false" />
+          <Property Name="IdSku" Type="Int32" Nullable="false" />
+          <Property Name="ValueLabel" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Label" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="GroupsAttributes" Relationship="ecommersModel.FK_AttributeSkus_GroupsAttributes" FromRole="AttributeSkus" ToRole="GroupsAttributes" />
+          <NavigationProperty Name="Skus" Relationship="ecommersModel.FK_AttributeSkus_Skus" FromRole="AttributeSkus" ToRole="Skus" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brand" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Products" Relationship="ecommersModel.FK_Products_Brands" FromRole="Brands" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDepartment" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Department" Relationship="ecommersModel.FK_Categories_Department" FromRole="Categories" ToRole="Department" />
+          <NavigationProperty Name="SubCategories" Relationship="ecommersModel.FK_SubCategories_Categories" FromRole="Categories" ToRole="SubCategories" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DateBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Orders" Relationship="ecommersModel.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department1" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Categories" Relationship="ecommersModel.FK_Categories_Department" FromRole="Department" ToRole="Categories" />
+        </EntityType>
+        <EntityType Name="GroupsAttributes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TypeGroup" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="AttributeSkus" Relationship="ecommersModel.FK_AttributeSkus_GroupsAttributes" FromRole="GroupsAttributes" ToRole="AttributeSkus" />
+        </EntityType>
+        <EntityType Name="ImagesSkus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdSku" Type="Int32" Nullable="false" />
+          <Property Name="UrlImage" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Skus" Relationship="ecommersModel.FK_ImagesSkus_Skus" FromRole="ImagesSkus" ToRole="Skus" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdOrder" Type="Int32" Nullable="false" />
+          <Property Name="IdSku" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Orders" Relationship="ecommersModel.FK_OrderDetail_Orders" FromRole="OrderDetail" ToRole="Orders" />
+          <NavigationProperty Name="Skus" Relationship="ecommersModel.FK_OrderDetail_Skus" FromRole="OrderDetail" ToRole="Skus" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCustomer" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="ecommersModel.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
+          <NavigationProperty Name="OrderDetail" Relationship="ecommersModel.FK_OrderDetail_Orders" FromRole="Orders" ToRole="OrderDetail" />
+          <NavigationProperty Name="StatusOrders" Relationship="ecommersModel.FK_Orders_StatusOrders" FromRole="Orders" ToRole="StatusOrders" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdBrand" Type="Int32" Nullable="false" />
+          <Property Name="IdSubcategory" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Brands" Relationship="ecommersModel.FK_Products_Brands" FromRole="Products" ToRole="Brands" />
+          <NavigationProperty Name="SubCategories" Relationship="ecommersModel.FK_Products_SubCategories" FromRole="Products" ToRole="SubCategories" />
+          <NavigationProperty Name="Skus" Relationship="ecommersModel.FK_Skus_Products" FromRole="Products" ToRole="Skus" />
+        </EntityType>
+        <EntityType Name="Skus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduct" Type="Int32" Nullable="false" />
+          <Property Name="Sku" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ListPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Thumbnail" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="AttributeSkus" Relationship="ecommersModel.FK_AttributeSkus_Skus" FromRole="Skus" ToRole="AttributeSkus" />
+          <NavigationProperty Name="ImagesSkus" Relationship="ecommersModel.FK_ImagesSkus_Skus" FromRole="Skus" ToRole="ImagesSkus" />
+          <NavigationProperty Name="OrderDetail" Relationship="ecommersModel.FK_OrderDetail_Skus" FromRole="Skus" ToRole="OrderDetail" />
+          <NavigationProperty Name="Products" Relationship="ecommersModel.FK_Skus_Products" FromRole="Skus" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="StatusOrders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Orders" Relationship="ecommersModel.FK_Orders_StatusOrders" FromRole="StatusOrders" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="SubCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCategory" Type="Int32" Nullable="false" />
+          <Property Name="SubCategory" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Categories" Relationship="ecommersModel.FK_SubCategories_Categories" FromRole="SubCategories" ToRole="Categories" />
+          <NavigationProperty Name="Products" Relationship="ecommersModel.FK_Products_SubCategories" FromRole="SubCategories" ToRole="Products" />
+        </EntityType>
+        <Association Name="FK_AttributeSkus_GroupsAttributes">
+          <End Role="GroupsAttributes" Type="ecommersModel.GroupsAttributes" Multiplicity="1" />
+          <End Role="AttributeSkus" Type="ecommersModel.AttributeSkus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupsAttributes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AttributeSkus">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AttributeSkus_Skus">
+          <End Role="Skus" Type="ecommersModel.Skus" Multiplicity="1" />
+          <End Role="AttributeSkus" Type="ecommersModel.AttributeSkus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AttributeSkus">
+              <PropertyRef Name="IdSku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Brands">
+          <End Role="Brands" Type="ecommersModel.Brands" Multiplicity="1" />
+          <End Role="Products" Type="ecommersModel.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="IdBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categories_Department">
+          <End Role="Department" Type="ecommersModel.Department" Multiplicity="1" />
+          <End Role="Categories" Type="ecommersModel.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="IdDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategories_Categories">
+          <End Role="Categories" Type="ecommersModel.Categories" Multiplicity="1" />
+          <End Role="SubCategories" Type="ecommersModel.SubCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubCategories">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customers">
+          <End Role="Customers" Type="ecommersModel.Customers" Multiplicity="1" />
+          <End Role="Orders" Type="ecommersModel.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="IdCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImagesSkus_Skus">
+          <End Role="Skus" Type="ecommersModel.Skus" Multiplicity="1" />
+          <End Role="ImagesSkus" Type="ecommersModel.ImagesSkus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ImagesSkus">
+              <PropertyRef Name="IdSku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Orders">
+          <End Role="Orders" Type="ecommersModel.Orders" Multiplicity="1" />
+          <End Role="OrderDetail" Type="ecommersModel.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Skus">
+          <End Role="Skus" Type="ecommersModel.Skus" Multiplicity="1" />
+          <End Role="OrderDetail" Type="ecommersModel.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="IdSku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_StatusOrders">
+          <End Role="StatusOrders" Type="ecommersModel.StatusOrders" Multiplicity="1" />
+          <End Role="Orders" Type="ecommersModel.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOrders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="IdStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_SubCategories">
+          <End Role="SubCategories" Type="ecommersModel.SubCategories" Multiplicity="1" />
+          <End Role="Products" Type="ecommersModel.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="IdSubcategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skus_Products">
+          <End Role="Products" Type="ecommersModel.Products" Multiplicity="1" />
+          <End Role="Skus" Type="ecommersModel.Skus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Skus">
+              <PropertyRef Name="IdProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetCustomer_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DateBirth" Nullable="false" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ecommersModelStoreContainer" CdmEntityContainer="ecommersEntities1">
+          <EntitySetMapping Name="AttributeSkus">
+            <EntityTypeMapping TypeName="ecommersModel.AttributeSkus">
+              <MappingFragment StoreEntitySet="AttributeSkus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+                <ScalarProperty Name="IdSku" ColumnName="IdSku" />
+                <ScalarProperty Name="ValueLabel" ColumnName="ValueLabel" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="ecommersModel.Brands">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="ecommersModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdDepartment" ColumnName="IdDepartment" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ecommersModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateBirth" ColumnName="DateBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="ecommersModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Department1" ColumnName="Department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupsAttributes">
+            <EntityTypeMapping TypeName="ecommersModel.GroupsAttributes">
+              <MappingFragment StoreEntitySet="GroupsAttributes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="TypeGroup" ColumnName="TypeGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImagesSkus">
+            <EntityTypeMapping TypeName="ecommersModel.ImagesSkus">
+              <MappingFragment StoreEntitySet="ImagesSkus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdSku" ColumnName="IdSku" />
+                <ScalarProperty Name="UrlImage" ColumnName="UrlImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetail">
+            <EntityTypeMapping TypeName="ecommersModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="IdSku" ColumnName="IdSku" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="ecommersModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdCustomer" ColumnName="IdCustomer" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="ecommersModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
+                <ScalarProperty Name="IdSubcategory" ColumnName="IdSubcategory" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skus">
+            <EntityTypeMapping TypeName="ecommersModel.Skus">
+              <MappingFragment StoreEntitySet="Skus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ListPrice" ColumnName="ListPrice" />
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusOrders">
+            <EntityTypeMapping TypeName="ecommersModel.StatusOrders">
+              <MappingFragment StoreEntitySet="StatusOrders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="ecommersModel.SubCategories">
+              <MappingFragment StoreEntitySet="SubCategories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteCustomer" FunctionName="ecommersModel.Store.DeleteCustomer" />
+          <FunctionImportMapping FunctionImportName="GetCustomer" FunctionName="ecommersModel.Store.GetCustomer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ecommersModel.GetCustomer_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateBirth" ColumnName="DateBirth" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertCustomer" FunctionName="ecommersModel.Store.InsertCustomer" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

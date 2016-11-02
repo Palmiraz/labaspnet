@@ -1,0 +1,617 @@
+//- Creador de selects:
+//- +selects(clase del div padre, [options del select], option seleccionado, si el select tiene input o no(true/false), atributo id)
+mixin selects(clase, opciones, num, inputselect, ide)
+	if inputselect
+		- var sel = 'true'
+	if ide
+		- var id = ide
+	select.clickoneroSelect(data-clase=clase, data-inputselect=sel, name=id, id=id)
+		each opcion, index in opciones
+			if num
+				- var ind = num
+			else
+				- var ind = 0
+			if index == ind
+				option(selected="selected")= opcion
+			else
+				option= opcion
+
+//- Creador de bits:
+//- +iconBits(atributos[class, data, etc.])
+mixin iconBits
+	em.iconBit&attributes(attributes)
+		em.iconFont-circle
+		em.iconFont-bit
+
+//- Creador de productos:
+//- +productDiv(nombre de la imágen, si requiere div de soldout)
+mixin productDiv(img, soldout, addCart)
+	div.clickoneroFP-item
+		div.clickoneroFP-image
+			//- div.clickoneroQuantity-items Quedan <span>12</span>
+			//- div.clickoneroQuantity-days Quedan <span>12 días</span>
+			+percent
+			a(href="#"): img(src="clickoneroInclude/images/assets/#{img}.jpg", alt="Leggings #{j}")
+			//- +terminaen('clickoneroFP', 7)
+			if soldout
+				div.clickonero-sold-out AGOTADO
+					//- a.clickoneroFancybox(href="waitinglist.html", data-fancyboxWidth="745") Añadir a waitinglist
+			else if addCart
+				div.clickoneroFP-overlay
+					div.clickoneroFP-scroll
+						div.clickoneroFP-productSize
+							input.clickoneroBtnCart(type="submit", value="Añadir a carrito")
+			else
+				div.clickoneroFP-overlay
+					div.clickonero-scroll
+						div.clickoneroFP-productSize
+							each val, index in ['XS', 'S', 'M', 'L', 'XL', 'XXXL', 'XXXX']
+								if index < 1
+									input(type="radio", name="ckSize", value=val, data-soldout="true")
+								else
+									input(type="radio", name="ckSize", value=val)
+							input.clickoneroBtnCart(type="submit", value="Añadir a carrito")
+							// p.clickoneroError Por favor escoja una talla
+		h3.product-ck-title Denim look leggings
+		+tagOctubre([[{tag: 'Pull & Bear', titulo: 'Añadir a Favoritos', tagRemove: ''}]])
+		//- h4 Pull &amp; Bear
+		//- 	if soldout
+		//- 		span.iconFont-star2.favoriteTag.clickoneroToolTip(title="Añadir a Favoritos")
+		//- 	else
+		//- 		span.iconFont-star2.favoriteTag.favoriteTag-remove.clickoneroToolTip(title="Eliminar de Favoritos")
+		span.clickoneroFP-actualPrice $540
+		span.clickoneroFP-listPrice $760
+		div.clickoneroFP-winWinbits
+			span GANA
+			+iconBits(class="bit13px")
+			label 307
+
+//- Creador de productos de sugerencia:
+mixin productDivSuggestion(img, txt)
+	div.clickoneroSRV-slide
+		img(src="clickoneroInclude/images/assets/#{img}.jpg", alt="DENIM LOOK LEGGINGS")
+		if txt 
+			h3.product-ck-title #{txt}
+		else
+			h3.product-ck-title Denim look leggings
+		//- h4 Pull &amp; Bear
+		+tagOctubre([[{tag: 'Pull & Bear', titulo: 'Añadir a Favoritos', tagRemove: ''}]])
+		span.clickoneroSuggestionRecentViewPrice $599
+		div.clickoneroSuggestionRecentViewBuyNow
+			a.clickoneroSuggestionRecentViewButton(href="#"): span.clickoneroCompraAhora compra ahora
+
+//- Creador de íconos para viaje
+//- +iconsTravel(clase del padre de los íconos)
+mixin iconsTravel(clase)
+	div(class="#{clase}-icons")
+		each val in [[{icon: 'alimentos-y-bebidas', titulo: 'Alimentos y Bebidas'}], [{icon: 'avion', titulo: 'Avión'}], [{icon: 'camion', titulo: 'Camión'}], [{icon: 'comida', titulo: 'Comida'}], [{icon: 'crucero', titulo: 'Crucero'}], [{icon: 'hotel', titulo: 'Hotel'}]]
+			//- span.iconTravel.clickoneroToolTip(class="iconFont-#{val[0].icon}",title="#{val[0].titulo}")
+			img.clickoneroToolTip.iconImg(src="clickoneroInclude/images/misc/#{val[0].icon}.png", alt="#{val[0].titulo}")
+//- Creador de viajes/servicios:
+//- +viajesDiv(nombre de la imágen, si requiere cuadro de meses sin intereses)
+mixin viajesDiv(img, msi, clase, notags, icons)
+	if clase
+		- var service = clase
+	else
+		- var service = 'itemServicio'
+	div.clickoneroFP-item(class=service)
+		div.clickoneroFP-image
+			//- div.clickoneroQuantity-items Quedan <span>12</span>
+			//- div.clickoneroQuantity-days Quedan <span>12 días</span>
+			+percent
+			a(href="#"): img(src="clickoneroInclude/images/assets/#{img}.jpg", alt="Imagen #{img}")
+			+terminaen('clickoneroFP', 7)
+		- var descClas = 'clickoneroFP-largeDescription'
+		//- if msi
+		//- 	- descClas = 'clickoneroFP-description'
+		div(class=descClas)
+			h3.product-ck-title Descripción / Hotel en dos renglones
+			h4.product-ck-merchant Merchant
+			+tagOctubre
+			if icons
+				+iconsTravel('clickoneroFP')
+			//- h4 
+			//- 	span Acapulco
+			//- 	span.iconFont-star2.favoriteTag.favoriteTag-remove.clickoneroToolTip(title="Eliminar de Favoritos")
+			//- 	span Playas Nacionales
+			//- 	span.iconFont-star2.favoriteTag.clickoneroToolTip(title="Agregar a Favoritos")
+			//- h5 7 días
+			
+			span.clickoneroFP-actualPrice $350
+			span.clickoneroFP-listPrice $650
+			div.clickoneroFP-winWinbits
+				span GANA
+				+iconBits(class="bit13px")
+				label 307
+		//- if notags
+		//- 	div.clickoneroFP-services
+		//- 		if msi
+		//- 			+iconsTravel('clickoneroFP')
+		//- 			+msi('clickoneroFP')
+		//- 		else
+		//- 			+tagOctubre
+					//- +tagServices('clickoneroFP-tags')
+//- Creador de viajes/servicios para suggestions:
+//- +viajesDivSuggestions(nombre de la imágen)
+mixin viajesDivSuggestions(img, padre)
+	if !padre
+		- var clase = 'clickoneroService-SVR'
+	else
+		- var clase = padre
+	div(class="#{clase}-slide")
+		div.clickoneroQuantity-items Quedan <span>12</span>
+		div.clickoneroQuantity-days Termina en <span>12 días</span>
+		a(href="#"): img(src="clickoneroInclude/images/assets/#{img}.jpg", alt="Imagen #{img}")
+		div(class="#{clase}-largeDescription")
+			h3.product-ck-title Descripción / Hotel en dos renglones
+			+tagOctubre
+			//- h4 Acapulco
+			//- 	span.iconFont-star2.favoriteTag.favoriteTag-remove.clickoneroToolTip(title="Eliminar de Favoritos")
+			//- h5 7 días
+			- var iconos = '#{clase}-icons'
+			+iconsTravel(clase)
+			span(class="#{clase}-price") $350
+			span(class="#{clase}-oldprice") $650
+			div(class="#{clase}-win")
+				span GANA
+				+iconBits(class="bit13px")
+				label 307
+		//- div(class="#{clase}-services")
+			
+			//- - var msii = "+#{clase}-msi"
+			
+			//- +msi(clase)
+		div(class="#{clase}-buynow")
+			a.clickoneroSuggestionRecentViewButton(href="#")
+				span.clickoneroCompraAhora compra ahora
+
+//- Creador de meses sin intereses
+//- +msi(clase del div padre)
+mixin msi(clase)
+	div(class="#{clase}-msi")
+		h4 3, 6 y 12 Meses sin intereses
+		ul
+			each val in [[{meses: 3, pago: 289}], [{meses: 6, pago: 120}], [{meses: 12, pago: 30}]]
+				li 
+					span.slideInput-msi #{val[0].meses}
+					| pagos de 
+					strong $
+						span.slideInput-msiPrice #{val[0].pago}
+
+//- Creador de detalle de viaje/servicio:
+//- +viajeDetail(si se agrega la clase para el modal, si es la descripción completa, si es viaje)
+mixin viajeDetail (modalService, completeDesc, travel, prepaid)
+	div.clickoneroServiceDetail
+		div.wb-breadcrums
+			div.wb-breadcrums-div
+				span: a(href="#") Home
+				span.iconFont-right3
+				span: a(href="#") Servicios
+				span.iconFont-right3
+				span: a(href="#") Teatro
+				span.iconFont-right3
+				span Raúl Araiza en "Cama para dosmildoscientos"
+		div.clickoneroServiceImage
+			//- div.clickoneroQuantity-items Quedan <span>12</span>
+			//- div.clickoneroQuantity-days Termina en <span>12 días</span>
+			+percent
+			div.clickoneroServiceImage-img
+			div.clickonero-sold-out AGOTADO
+				//- a.clickoneroFancybox(href="waitinglist.html", data-fancyboxWidth="745") Añadir a waitinglist
+			- var modal
+			if modalService
+				- modal = 'modal-'
+			else
+				- modal = ''
+			div(class="clickoneroServiceImage-#{modal}carousel")
+				div(class="clickoneroServiceImage-#{modal}carrusel")
+					div(class="clickoneroServiceImage-#{modal}wrapper")
+						div(class="clickoneroServiceImage-#{modal}slide")
+							img(src="clickoneroInclude/images/assets/rock-climbing.jpg", alt="Rock Climbing")
+						- for (var i = 1; i < 1; i++)
+							if i!=5
+								div(class="clickoneroServiceImage-#{modal}slide")
+									img(src="clickoneroInclude/images/assets/2_#{i}.jpg" alt="Imagen #{i}")
+				div.clickoneroArrow.clickoneroArrowLeft
+					span.iconFont-prev3(title="Anterior")
+				div.clickoneroArrow.clickoneroArrowRight
+					span.iconFont-next3(title="Siguiente")
+			if completeDesc
+					div.clickoneroServiceImage-tabs
+						ul
+							each val, index in ['¿PORQUÉ NOS ENCANTA?', 'DETALLES', 'CONDICIONES']
+								li: a(href="#clickoneroService-0#{index+1}") <span>#{val}</span><em class="clickoneroSArrow"></em>
+						div.clickoneroService-tab#clickoneroService-01
+							div.scrollTab
+								div.scrollTab-content
+									ul
+										li ¿Quién <a href="#">dice que un hombre</a> no puede exaltar sus atributos? Un abdomen marcado y bien tonificado es la clave para llamar la atención de las mujeres. Si no tienes tiempo pare ejercitarte y deseas obtener una figura grandiosa, acude a Body Performance Center y observa cómo tu barriga se convierte en lavadero.
+										li Body Solutions Center ofrece servicios específicos para el cuidado del cuerpo vigilando que el trato en sus sucursales sea profesional, personalizado y esmeradamente respetuoso, garantizando resultados visibles desde la primera sesión, tanto en la fase de tonificación como la de modelación, gracias a la eficacia de sus técnicas, equipos y productos.
+										li 5 cavitaciones + 5 radiofrecuencias + 5 vacumterapias + 5 infrarrojos + 5 aplicaciones de gel tensor. De $8,000 a $299. ¡Ahorra 96%!
+											ul(style="padding: 0px; margin: 0px 0px 0px 25px; list-style: disc;")
+												li 5 cavitaciones + 5 radiofrecuencias + 5 vacumterapias + 5 infrarrojos + 5 aplicaciones de gel tensor. De $8,000 a $299. ¡Ahorra 96%!
+												li 5 cavitaciones + 5 radiofrecuencias + 5 vacumterapias + 5 infrarrojos + 5 aplicaciones de gel tensor. De $8,000 a $299. ¡Ahorra 96%!
+												li 5 cavitaciones + 5 radiofrecuencias + 5 vacumterapias + 5 infrarrojos + 5 aplicaciones de gel tensor. De $8,000 a $299. ¡Ahorra 96%!
+										li 5 cavitaciones + 5 radiofrecuencias + 5 vacumterapias + 5 infrarrojos + 5 aplicaciones de gel tensor. De $8,000 a $299. ¡Ahorra 96%!
+										li 5 cavitaciones + 5 radiofrecuencias + 5 vacumterapias + 5 infrarrojos + 5 aplicaciones de gel tensor. De $8,000 a $299. ¡Ahorra 96%!
+										li 5 cavitaciones + 5 radiofrecuencias + 5 vacumterapias + 5 infrarrojos + 5 aplicaciones de gel tensor. De $8,000 a $299. ¡Ahorra 96%!
+						div.clickoneroService-tab#clickoneroService-02
+							div.scrollTab
+								div.scrollTab-content Hola como estas :D
+									ul
+
+										li ¿Quién dice que un hombre no puede exaltar sus atributos? Un abdomen marcado y bien tonificado es la clave para llamar la atención de las mujeres. Si no tienes tiempo pare ejercitarte y deseas obtener una figura grandiosa, acude a Body Performance Center y observa cómo tu barriga se convierte en lavadero.
+										li 5 cavitaciones + 5 radiofrecuencias + 5 vacumterapias + 5 infrarrojos + 5 aplicaciones de gel tensor. De $8,000 a $299. ¡Ahorra 96%!
+						div.clickoneroService-tab#clickoneroService-03
+							div.scrollTab
+								div.scrollTab-content
+									ul
+										li Body Solutions Center ofrece servicios específicos para el cuidado del cuerpo vigilando que el trato en sus sucursales sea profesional, personalizado y esmeradamente respetuoso, garantizando resultados visibles desde la primera sesión, tanto en la fase de tonificación como la de modelación, gracias a la eficacia de sus técnicas, equipos y productos.
+										li 5 cavitaciones + 5 radiofrecuencias + 5 vacumterapias + 5 infrarrojos + 5 aplicaciones de gel tensor. De $8,000 a $299. ¡Ahorra 96%!
+					div.clickoneroServiceImage-info
+						div.clickoneroInfo-div
+							span.iconFont-info
+							div.clickoneroInfo-text
+								h4 INFORMACIÓN DE LA EMPRESA
+								address
+									span Holbein 42, Piso 1
+									span 46334251, 4633 5345
+									span Colonia Napoles / Cd. de los Deportes,
+									span Benito Juarez
+								a(href="#") Ver Mapa
+						each val in [[{icon: 'calendar', h4: 'ÚSALO ANTES DEL'}], [{icon: 'ok', h4: 'DISPONIBILIDAD'}], [{icon: 'clock', h4: 'DURACIÓN'}]]
+							div.clickoneroInfo-div
+								span(class="iconFont-#{val[0].icon}")
+								div.clickoneroInfo-text
+									h4 #{val[0].h4}
+									p 15 de diciembre del 2013
+		div.clickoneroServiceDescription
+			if travel
+				- var travel = travel
+			if prepaid
+				- var prepaid = prepaid
+			include serviceDescription.jade
+			if completeDesc
+				+msi('clickoneroService')
+				div.clickoneroService-cupons 30 <span>Cupones vendidos</span>
+				div.clickoneroService-buyers
+					span.iconFont-graphic
+					div.clickoneroBuyers-text
+						h4 Nuestros compradores
+						ul
+							each val, index in [100, 18, 2]
+								li
+									div.clickoneroBuyers-bar
+										span.clickoneroBar-bar(style="width: #{val}%")
+										span.clickoneroBar-percent #{val}%
+									span.clickoneroBuyers-number Compraron #{index+1}
+				div.clickoneroService-smileys
+					span.iconFont-like
+					div.clickoneroSmileys-text
+						h4 Sonrisas garantizadas
+						p Si por cualquier razón no estas 100% feliz con tu experiencia en cualquiera de nuestros sitios,contactanos y lo arreglaremos
+				if travel
+					div.clickoneroService-phoneTravel
+						span.iconFont-phoneHear
+						div.clickoneroPhoneTravel-text
+							h4 ¿Tienes dudas?
+							h3 4160 - 1030
+							p Llama a nuestro Call Center de Viajes
+							p Lunes a Viernes de 9am a 9pm
+							p Sábados de 9am a 3pm
+				
+//- Creador de tags para servicios/viajes:
+//- +tagServices(clase del div)
+mixin tagServices(clase)
+	div(class=clase)
+		ul
+			each val in [[{tag: 'Condesa', titulo: 'Añadir a Favoritos', tagRemove: ''}], [{tag: 'Teatro', titulo: 'Eliminar de Favoritos', tagRemove: 'favoriteTag-remove'}], [{tag: 'Destinos', titulo: 'Añadir a Favoritos', tagRemove: ''}], [{tag: 'Emociones', titulo: 'Añadir a Favoritos', tagRemove: ''}]]
+				li
+					span.iconFont-star2.favoriteTag.clickoneroToolTip(title="#{val[0].titulo}", class="#{val[0].tagRemove}")
+					| #{val[0].tag}
+
+mixin tagOctubre(lista)
+	- lista = lista || [[{tag: 'Condesa', titulo: 'Añadir a Favoritos', tagRemove: ''}], [{tag: 'Teatro', titulo: 'Eliminar de Favoritos', tagRemove: 'favoriteTag-remove'}], [{tag: 'Destinos', titulo: 'Añadir a Favoritos', tagRemove: ''}], [{tag: 'Emociones', titulo: 'Añadir a Favoritos', tagRemove: ''}]]
+	div.tag-div
+		ul
+			each val in lista
+				li
+					span.tag-text #{val[0].tag}
+					span.iconFont-star2.tag-icon
+						//- .clickoneroToolTip(title="#{val[0].titulo}", class="#{val[0].tagRemove}")
+
+//- Creador de banners:
+//- +banner(clase para baner largo, imagen)
+mixin banner(clase, img)
+	div.clickoneroFPB-banner(class=clase)
+		a(href="#"): img(src="clickoneroInclude/images/assets/#{img}.jpg", alt="Relojes SWATCH")
+		a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-top="129", data-left="400", data-tooltip="Reloj Negro", style="color: green")
+		a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-top="126", data-left="31", data-tooltip="Zapatos Hombre", style="color: pink")
+
+//- Creador de carruseles de producto en el home
+//- +carruselHomeProduct(departamento, categorías del departamento, si son servicios, si es viaje)
+mixin carruselHomeProduct(item, categorias, service, travel)
+	div.clickoneroFilter.productHome
+		aside
+			h3: a(href="#") #{item}
+			div.clickoneroFilter-item
+				div.clickoneroFilter-div 
+					- var its = categorias
+					each val in its
+						a(href="#") #{val}
+				h4: a(href="#") Estrenos<span class="iconFont-right"></span>
+				h4: a(href="#") Último día<span class="iconFont-right"></span>
+				h4: a(href="#") Popular<span class="iconFont-right"></span>
+				h4: a(href="#") Remate<span class="iconFont-right"></span>
+		div.clickoneroFilter-products
+			div.clickoneroFP-carousels
+				h2 Las Mejores Ofertas de <a href="#">#{item}</a>
+				div.clickoneroFPHS-carrusel
+					div.clickoneroFPHS-wrapper
+						if service
+							- for (i=1;i<3;i++)
+								div.clickoneroFPHS-slide
+									+viajesDiv('2_1')
+									+viajesDiv('2_2')
+									+viajesDiv('2_3')
+									+viajesDiv('2_4')
+								div.clickoneroFPHS-slide
+									+viajesDiv('2_6')
+									+viajesDiv('2_7')
+									+viajesDiv('2_8')
+									+viajesDiv('2_9')
+						else if travel
+							- for (i=1;i<3;i++)
+								div.clickoneroFPHS-slide
+									+viajesDiv('2_6', 1)
+									+viajesDiv('2_7', 1)
+									+viajesDiv('2_8', 1)
+									+viajesDiv('2_9', 1)
+								div.clickoneroFPHS-slide
+									+viajesDiv('2_1', 1)
+									+viajesDiv('2_2', 1)
+									+viajesDiv('2_3', 1)
+									+viajesDiv('2_4', 1)
+						else
+							div.clickoneroFPHS-slide
+								+banner('largeBanner','swatch')
+								+productDiv('leggings7', 1)
+								+productDiv('leggings8')
+								+productDiv('leggings9', 1)
+								+productDiv('leggings10')
+							div.clickoneroFPHS-slide
+								+banner('largeBanner','campania')
+								+productDiv('leggings1', 1)
+								+viajesDiv('2_8')
+								+productDiv('leggings6')
+							div.clickoneroFPHS-slide
+								+banner('largeBanner','campania')
+								+banner('halfBanner','2_1')
+								+banner('halfBanner','2_2')
+								+productDiv('leggings7', 1)
+								+productDiv('leggings8')
+								+productDiv('leggings9', 1)
+								+productDiv('leggings10')
+							div.clickoneroFPHS-slide
+								+banner('largeBanner','campania')
+								+viajesDiv('2_6')
+								+viajesDiv('2_7')
+				div.iconFontArrow.iconFontArrow-prev
+					span.iconFont-left
+				div.iconFontArrow.iconFontArrow-next
+					span.iconFont-right
+
+//-  Creador de descripción del detalle de producto;
+//- +descriptionDetail(clase padre, si tiene pestañas)
+mixin descriptionDetail(clase, tabs)
+	div(class=clase)
+		h3.product-ck-title LACE OFF-SHOULDER DRESS
+		+tagOctubre([[{tag: 'Pull & Bear', titulo: 'Añadir a Favoritos', tagRemove: ''}]])
+		//- h3 Pull &amp; Bear
+		//- 	span.favoriteTag.clickoneroToolTip.iconFont-star2(title="Agregar a Favoritos")
+		//- 	span.favoriteTag.favoriteTag-remove.clickoneroToolTip.iconFont-star2(title="Eliminar de Favoritos")
+		div.clickoneroProduct-div
+			div.clickoneroProduct-divsubdiv1
+				span.clickoneroProductActualPrice $<span class="slideInput-price"></span>
+				span.clickoneroProductListPrice $<span class="slideInput-realprice"></span>
+			div.clickoneroProduct-divsubdiv2
+				div.clickoneroProduct-win
+					span GANA
+					+iconBits(class="bit18px")
+					label 500
+				input.slider-input(type="text", value="30", data-min="0", data-max="300", data-step="2", data-moveprice="true", data-priceitem="slideInput-price", data-price="540", data-realpriceitem="slideInput-realprice", data-realprice="760", data-percent="slideInput-percent", data-totalprice="true", data-totalpriceitem="slideInput-price")
+				div.clickoneroProductWinWinbits.clickoneroProduct-save
+					span AHORRA <span class="slideInput-percent"></span> %
+		h4 Color
+		div.clickoneroProductText
+			each item in ['Descripcion 1', 'Otra descripcion', 'Toddler', 'No se']
+					input(type="radio", name="lookText", value="#{item}")
+		div.clickoneroProductColor
+			- var radioBtns = [[{ name: 'Negro', color: '000000'}], [{ name: 'Gris', color: 'd7d8d8'}], [{ name: 'Aquamarino', color: '7bdbdc'}], [{ name: 'Amarillo', color: 'cddc7b'}]]
+			each radioBtn in radioBtns
+				input(type="radio", name="lookColor", value="#{radioBtn[0].name}", data-color="#{radioBtn[0].color}")
+			input(type="radio", name="lookColor", value="Mezclilla", data-img="http://us.123rf.com/450wm/pixxart/pixxart1207/pixxart120700083/14388386-blue-jeans-textura-de-fondo.jpg")
+		div.clickoneroProductMesure
+			h4 Talla
+			div.clickoneroProductSize
+				input(type="radio", name="lookSize", value="XS", data-soldout="true")
+				each item in ['S', 'M', 'L', 'XXXL']
+					input(type="radio", name="lookSize", value="#{item}")
+		div.clickoneroProductQuantity
+			h4 Cantidad
+			+selects('clickoneroSelect-cantidad', ['1', '2', '3', '4'], 0)
+		div.ck-share-submit
+			div.clickoneroProductShare
+				p Comparte y gana 
+					// <a href="#">Conoce más</a>
+				a(href="#"): span.iconFont-facebook(title="Facebook")
+				a(href="#"): span.iconFont-twitter(title="Twitter")
+				//- a(href="#"): span.iconFont-pinterest(title="Pinterest")
+			div.clickoneroProductSubmit
+				span Termina en <strong>365 días</strong>
+				// input.clickoneroBtn.clickoneroFancybox(type="submit", value="Waitinglist", data-fancyboxhref="waitinglist.html", data-fancyboxwidth="745")
+				input.clickoneroBtn.clickoneroBtnCart(type="submit", value="Añadir a carrito")
+				// span.clickoneroBtn.disabled Agotado
+		-if(tabs)
+			div.clickoneroProductTabs
+				ul
+					li: a(href="#clickoneroPDTabDescription") DESCRIPCIÓN
+					li: a(href="#clickoneroPDTabSend") ENVIO
+					li: a(href="#clickoneroPDTabRefund") DEVOLUCIÓN
+					li: a(href="#clickoneroPDTabCare") CUIDADOS
+				div.clickoneroPTTab#clickoneroPDTabDescription
+					div.scrollTab
+						p The Lace off-shoulder dress is a densely hand embellished dres on an Italian shimmer base. The relaxed, simple silhouette juxtaposes with the provocative contrasting sheer and heavily embellished panels. Featuring gunmetal conicals combined with a mixture of textured black sequins, beads and hanging chains, this statement dress is both playful and seductive.
+						p Size 10 measures 73cm from back neck to hem.
+						p Fabric 100% Polyamide
+						a.clickoneroFancybox(href="guiaTallas.html", data-fancyboxwidth="575") Guía de tallas
+				div.clickoneroPTTab#clickoneroPDTabSend
+					div.scrollTab
+						p El tiempo estimado de entrega de producto es de 20 días naturales a partir de la finalización de la campaña.
+						p Una vez realizada tu compra no aplican cambios de tallas ni color del producto.
+				div.clickoneroPTTab#clickoneroPDTabRefund
+					div.scrollTab
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, cumque quam sed inventore fugiat? Tenetur, voluptatum, amet, ipsam repudiandae a eveniet ab neque sunt nihil nostrum voluptatem illum iusto in.
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, cumque quam sed inventore fugiat? Tenetur, voluptatum, amet, ipsam repudiandae a eveniet ab neque sunt nihil nostrum voluptatem illum iusto in.
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, cumque quam sed inventore fugiat? Tenetur, voluptatum, amet, ipsam repudiandae a eveniet ab neque sunt nihil nostrum voluptatem illum iusto in.
+				div.clickoneroPTTab#clickoneroPDTabCare
+					div.scrollTab
+						ul
+							each val, index in ['No usar lejía', 'No usar secadora', 'No limpieza en seco', 'Limpieza en seco percloroetileno', 'Lavar a máquina max. 30° C.', 'Lavar a mano max. 30° C.', 'Planchar a 110° C. max', 'No planchar', 'No lavar', 'Se puede usar secadora a temperatura reducida']
+								li
+									- var clase = ['clickoneroIcon', 'clickoneroCareIcon'+index]
+									span(class=clase)
+									span.clickoneroCareText #{val}
+
+//- Creador de carrusel suggestions:
+//- +carouselSuggestionVisited(clase padre)
+mixin carouselSuggestionVisited(clase)
+	div(class=clase)
+		div(class="#{clase}-divLink")
+			span(data-show="clickoneroSuggestionDiv", data-hide="clickoneroRecentViewDiv") SUGGESTIONS
+			span(data-show="clickoneroRecentViewDiv", data-hide="clickoneroSuggestionDiv") VISTOS RECIENTEMENTE
+		each tab in ['clickoneroSuggestionDiv', 'clickoneroRecentViewDiv']
+			div.clickoneroSRV(class="#{tab}")
+				div(class="#{clase}-carrusel")
+					div(class="#{clase}-wrapper")
+						+viajesDivSuggestions('2_1', clase)
+						+viajesDivSuggestions('2_2', clase)
+						+viajesDivSuggestions('2_3', clase)
+						+viajesDivSuggestions('2_4', clase)
+						+viajesDivSuggestions('2_6', clase)
+						+viajesDivSuggestions('2_7', clase)
+				div.clickoneroArrows.clickoneroArrowLeft
+					span.iconFont-left3(title="Anterior")
+				div.clickoneroArrows.clickoneroArrowRight
+					span.iconFont-right3(title="Siguiente")
+		
+//- Creador de Principal Servicio:
+//-  +principalService(clase del div padre, imágen, si vienen los msi)
+mixin terminaen(clase, dias)
+	div(class="#{clase}-termina")
+		span.iconFont-clock
+		span Termina en #{dias} días
+
+mixin percent ()
+	div.ck-percent
+		span.ck-percent-save AHORRA
+		span.ck-percent-percent 50%
+
+mixin principalService(clase, img, msi, btn)
+	div(class="#{clase}-filterServicio")
+		div(class="#{clase}-image")
+			//- div.clickoneroQuantity-items Quedan <span>12</span>
+			//- div.clickoneroQuantity-days Quedan <span>12 días</span>
+			+percent
+			a(href="#"): img(src="clickoneroInclude/images/assets/#{img}.jpg", alt="DENIM LOOK LEGGINGS")
+			+terminaen(clase, 7)
+		div(class="#{clase}-description")
+			if msi
+				h3 Descripción / Hotel en dos renglones lorem ipsum lorem
+				h4 Merchant
+				+iconsTravel('clickoneroFP-icons')
+			else
+				h3 Reduce peso y talla con auriculoterapia y homeopatía
+				h4 Fábrica de Sonrisas
+				//- +tagServices('clickoneroFP-tags')
+				//- +tagOctubre
+				div.tag-div
+					ul
+						li
+							span.tag-text Pérdida de Peso / Reductivos
+							span.iconFont-star2.tag-icon
+						li
+							span.tag-text Del Valle / Nápoles /Narvarte / Mixcoac
+							span.iconFont-star2.tag-icon
+			div(class="#{clase}-descService") ¡Obtén la figura que siempre has deseado y mejora tu salud con Fábrica de Sonrisas! ¡Obtén la figura que siempre has deseado y mejora tu salud con Fábrica de Sonrisas!
+			div.viewService
+				if btn
+					div.viewService-btn
+						a.btn(href="#") VER OFERTA
+				div.viewService-price
+					span(class="#{clase}-actualPrice") $540
+					span(class="#{clase}-listPrice") $760
+					div(class="#{clase}-winWinbits")
+						span GANA
+						+iconBits(class="bit13px")
+						label 500
+			//- if msi
+			//- 	+msi('clickoneroFP')
+
+mixin filterNotFound 
+	div.filterNotFound
+		h2 No se encontraron resultados que coincidan con la búsqueda.
+		p.filterNotFound-p Sugerencias para una mejor búsqueda:
+		ul
+			li Verifica que esté bien escrito.
+			li Intenta palabras más generales.
+			li Intenta con otras palabras que signifiquen lo mismo.
+		h2 ¿Quieres intentar otra búsqueda?
+		div.clickoneroMainSearch
+			input(type="text", placeholder="¿Qué estas buscando?")
+			span.iconFont-lupa
+		h2 Te recomendamos
+		h3.filterNotFound-h3 Productos
+		div.carruselFilter
+			div.clickoneroSRV-carrusel
+				div.clickoneroSRV-wrapper
+					+productDivSuggestion('sleeveless')
+					+productDivSuggestion('bluetransparent')
+					+productDivSuggestion('v-necksweater')
+					+productDivSuggestion('leatherbag')
+					+productDivSuggestion('leggings3')
+					+productDivSuggestion('sleeveless')
+			span.iconFont-left3(title="Anterior")
+			span.iconFont-right3(title="Siguiente")
+		h3.filterNotFound-h3 Servicios
+		div.carruselFilter.serviceCarrusel
+			div.clickoneroService-SVR-carrusel
+				div.clickoneroService-SVR-wrapper
+					+viajesDivSuggestions('2_1')
+					+viajesDivSuggestions('2_2')
+					+viajesDivSuggestions('2_3')
+					+viajesDivSuggestions('2_4')
+					+viajesDivSuggestions('2_6')
+					+viajesDivSuggestions('2_7')
+			span.iconFont-left3(title="Anterior")
+			span.iconFont-right3(title="Siguiente")
+		h3.filterNotFound-h3 Viajes
+		div.carruselFilter.serviceCarrusel
+			div.clickoneroService-SVR-carrusel
+				div.clickoneroService-SVR-wrapper
+					+viajesDivSuggestions('2_1', clase)
+					+viajesDivSuggestions('2_2', clase)
+					+viajesDivSuggestions('2_3', clase)
+					+viajesDivSuggestions('2_4', clase)
+					+viajesDivSuggestions('2_6', clase)
+					+viajesDivSuggestions('2_7', clase)
+			span.iconFont-left3(title="Anterior")
+			span.iconFont-right3(title="Siguiente")
+
+mixin footerAddress 
+	div.clickonero-direction
+		div.clickoneroWrapper
+			p: strong
+				a(href="http://www.clickonero.com.mx") www.clickonero.com.mx
+			p Acueducto Río Hondo #30, Col. Lomas de Chapultepec II Sección, Miguel Hidalgo, C.P. 11000 México D.F. 
+				a(href="mailto: info@clickonero.com") info@clickonero.com

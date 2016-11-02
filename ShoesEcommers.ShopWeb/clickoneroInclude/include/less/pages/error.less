@@ -1,0 +1,44 @@
+.errorServer {
+	.center-position(570px, 600px);
+}
+.errorServer-img {
+	border: 1px solid lighten(@black, 90%);
+	position: relative;
+}
+.errorServer-site {
+	bottom: -215px;
+	position: absolute;
+	right: -127px;
+	.size-icon (@tag, 249px, 166px, 0 0);
+	&:hover, &.blink {
+		background-image: @tagHover;
+	}
+}
+.errorServer-description {
+	padding: 30px;
+	h2 {
+		font-size: 50px;
+		.inline-block(220px);
+		.font('OmnesMedium');
+	}
+	.errorServer-text {
+		border-left: 1px solid lighten(@black, 90%);
+		font-size: 20px;
+		padding: 10px 0 10px 20px;
+		.inline-block(290px);
+		.font('OmnesLight');
+	}
+}
+.errorServer-return {
+	font-size: 20px;
+	text-align: center;
+	a {
+		color: @blueClickonero;
+		text-decoration: underline;
+		.font('OmnesMedium');
+		.transition(.3s);
+		&:hover {
+			color: lighten(@black, 50%);
+		}
+	}
+}

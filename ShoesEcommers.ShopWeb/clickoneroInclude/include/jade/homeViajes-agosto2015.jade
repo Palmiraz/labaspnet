@@ -1,0 +1,219 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body.ck-agosto2015
+		div.clickoneroPreloader: p
+		header
+			div.clickoneroWrapper.wb-header-wrapper
+				- var currentPage = 1
+				- var title = 'Viajes'
+				include scaffolding/headerAgosto2015.jade
+				div.widgetWinbitsHeader(data-wbh-current="4", id="winbits-widget")
+					link(rel="stylesheet", href="http://d2jw2cyi8xrpa4.cloudfront.net/css/hw-styles.min.css")
+					link(rel="stylesheet", href="http://d2jw2cyi8xrpa4.cloudfront.net/js/fancybox/jquery.fancybox.min.css")
+					div.knowmoreFolder
+						div.wrapper
+							div.knowMoreMax
+								span.icon.winbits22px Logo Winbits
+								div.knowMoreMax-item.item1
+									div.knowMoreMax-icons
+										a.iconFont-clickOnero(target="_blank", href="http://www.clickonero.com.mx")
+										a.iconFont-bebitos(target="_blank", href="http://www.bebitos.mx")
+									h2 VARIAS TIENDAS
+									p Nos hemos asociado con sitios especializados para ofrecerte los mejores productos a los mejores precios.
+								div.knowMoreMax-item.item2
+									div.knowMoreMax-icons.iconFont-cart
+									h2 UNA SOLA CUENTA
+									p Para hacertelo todavía más fácil puedes utilizar tu cuenta winbits y sumar productos a un mismo carrito sin importar en que sitio estés.
+								div.knowMoreMax-item.item3
+									div.knowMoreMax-icons
+									img(alt="", src="http://wbf.winbits.com/img/iconTop2.png")
+									h2 CON TUS COMPRAS GANAS WINBITS
+									p Con todas tus compras podrás ganar winbits que puedes usar como dinero electrónico en compras futuras.
+								div.knowMoreMax-buttons
+									span.wb-video.wb-buttons VE NUESTRO VIDEO
+										span.iconFont-video
+									span.wb-wait.wb-buttons REGISTRATE AHORA
+										span.iconFont-candado
+								span.iconFont-upbanner.openClose(data-hidediv=".knowMoreMax", data-showdiv=".knowMoreMin")
+							div.knowMoreMin
+								p ¡Compra en nuestro sitio y gana! 
+									a.wb-wait(href="#") Conoce más
+									span.iconFont-downbanner.openClose(data-hidediv=".knowMoreMin", data-showdiv=".knowMoreMax")
+								div.language
+									a(href="#")
+										div.winbits-white.iconWinbit75px
+											span.iconFont-bit.firstI
+											span.iconFont-bit.secondI
+											span.iconFont-winbits
+											span.iconFont-circle.firstI
+											span.iconFont-circle.secondI
+					div.mainHeader
+						div.wrapper
+							nav: ul
+								li: a.iconVertical-n.vertical12.wbc-vertical(title="Invita Amigos", href="http://www.winbits.com")
+								li: a.iconVertical-n.vertical4.wbc-vertical.current(title="clickOnero", href="http://www.clickonero.com.mx")
+								li: a.iconVertical-n.vertical11.wbc-vertical(title="Bebitos", href="http://bebitos.mx")
+							div.miCuenta.log-in
+								ul
+									li: span.link.wb-video(data-fancybox-href="unapagina.html") ¿Qué es Winbits?
+									li: span.link.wb-wait(data-fancybox-href="otrapagina.html") Regístrate
+									li
+										div.spanDropMenu(data-cart="true") 0
+											span.iconFont-cart.wb-wait
+										div.dropMenu.miCarritoDiv.mc-noitems-container(style="display: none")
+											div.mc-noitems-arrow
+											div.wrapper
+												div.mc-noitems-div
+													span.mc-noitems-icon
+													span.mc-noitems-content No tienes productos en tu carrito
+									li: span.wb-wait.btn.btnTopNav Entrar
+		main.clickoneroMain.widgetWinbitsMain
+			div.clickoneroMainHeader
+				nav.clickoneroMainNav
+					include scaffolding/menuTravel.jade
+			div.clickoneroWrapper
+				div.wb-breadcrums.wb-listado
+					div.wb-breadcrums-div
+						span: a(href="#") Home
+						span.iconFont-right3
+						span Viajes
+				div.clickoneroFilter.filterFilter
+					aside
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Playa
+							div.clickoneroFilter-sub
+								each val in ['Acapulco', 'Ixtapa', 'Cabos', 'Huatulco']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Internacionales
+							div.clickoneroFilter-sub
+								each val in ['USA', 'Canada', 'Europa', 'Australia']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Pueblos Mágicos
+							div.clickoneroFilter-sub
+								each val in ['Taxco', 'Puebla', 'Querétaro']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Ciudades Nacionales
+							div.clickoneroFilter-sub
+								each val in ['Guadalajara', 'Monterrey', 'Tijuana']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Cruceros
+							div.clickoneroFilter-sub
+								each val in ['Caribe', 'Mediterráneo', 'Pacífico']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Eventos Deportivos
+							div.clickoneroFilter-sub
+								each val in ['DF', 'Guadalajara', 'Monterrey']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Eventos Musicales
+							div.clickoneroFilter-sub
+								each val in ['Conciertos de Rock', 'Conciertos de Cámara']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Al D.F.
+							div.clickoneroFilter-sub
+								each val in ['Día de Muertos', 'Grito de Independencia']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Semana Santa
+							div.clickoneroFilter-sub
+								each val in ['Taxco', 'Puebla', 'Querétaro']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Verano
+							div.clickoneroFilter-sub
+								each val in ['Taxco', 'Puebla', 'Querétaro']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Puente Día de la Independencia
+							div.clickoneroFilter-sub
+								each val in ['Taxco', 'Puebla', 'Querétaro']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Año Nuevo / Navidad
+							div.clickoneroFilter-sub
+								each val in ['Taxco', 'Puebla', 'Querétaro']
+									input.clickoneroCheckbox-filter(type="checkbox")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Incluye
+							div.clickoneroFilter-sub
+								each val in ['Hotel', 'Alimentos', 'Viaje Redondo', 'Transportación']
+									input(type="checkbox", class="clickoneroCheckbox-filter")
+									label #{val}
+						div.clickoneroFilter-div
+							h4 
+								input.clickoneroCheckbox-filter(type="checkbox")
+								label Cuántos días
+							div.clickoneroFilter-sub
+								each val in ['1 día', '2 días', '3 días', '4 días', '5 días', '6 días']
+									input(type="checkbox", class="clickoneroCheckbox-filter")
+									label #{val}
+					div.clickoneroFilter-products
+						- var filtro = 1
+						include scaffolding/filtro.jade
+						+principalService('clickoneroFP', '2_9', 1)
+						+viajesDiv('2_1', 1, '', '', 1)
+						+viajesDiv('2_2', 1, '', '', 1)
+						+viajesDiv('2_3', 1, '', '', 1)
+						+viajesDiv('2_4', 1, '', '', 1)
+						+principalService('clickoneroFP', '2_6', 1)
+						+viajesDiv('2_7', 1, '', '', 1)
+						+viajesDiv('2_8', 1, '', '', 1)
+						+viajesDiv('2_8', 1, '', '', 1)
+						+viajesDiv('2_1', 1, '', '', 1)
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				$('.clickoneroFilter-div').customCheckbox({
+					onClickCall: function(input, wrapper){
+						$(wrapper).toggleCheck();
+					}
+				});
+				$('.clickoneroFP-productSize').customRadio();
+				$('.clickoneroFilter-subsub').resizeFilter();
+				DocumentReady();
+			})();

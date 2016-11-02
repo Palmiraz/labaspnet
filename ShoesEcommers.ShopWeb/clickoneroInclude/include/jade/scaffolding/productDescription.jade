@@ -1,0 +1,37 @@
+h2 LACE OFF-SHOULDER DRESS
+h3 Pull &amp; Bear
+div.clickoneroProduct-div
+	div.clickoneroProduct-divsubdiv1
+		span.clickoneroProductActualPrice $<span class="slideInput-price"></span>
+		span.clickoneroProductListPrice $<span class="slideInput-realprice"></span>
+	div.clickoneroProduct-divsubdiv2
+		div.clickoneroProduct-win
+			span GANA 500
+			+iconBits(class="bit18px")
+		input.slider-input(type="text", value="0", data-min="0", data-max="300", data-step="2", data-moveprice="true", data-priceitem="slideInput-price", data-price="540", data-realpriceitem="slideInput-realprice", data-realprice="760", data-percent="slideInput-percent", data-totalprice="true", data-totalpriceitem="slideInput-price")
+		div.clickoneroProductWinWinbits.clickoneroProduct-save
+			span AHORRA <span class="slideInput-percent"></span>%
+h4 Color
+div.clickoneroProductColor	
+	- var radioBtns = [[{ name: 'Negro', color: '000000'}], [{ name: 'Gris', color: 'd7d8d8'}], [{ name: 'Aquamarino', color: '7bdbdc'}], [{ name: 'Amarillo', color: 'cddc7b'}]]
+	each radioBtn in radioBtns
+		input(type="radio", name="lookColor", value="#{radioBtn[0].name}", data-color="#{radioBtn[0].color}")
+div.clickoneroProductMesure
+	h4 Talla
+	div.clickoneroProductSize
+		input(type="radio", name="lookSize", value="XS", data-soldout="true")
+		each item in ['S', 'M', 'L', 'XXXL']
+			input(type="radio", name="lookSize", value="#{item}")
+div.clickoneroProductQuantity
+	h4 Cantidad
+	+selects('clickoneroSelect-cantidad', ['1', '2', '3', '4'], 0, true)
+div.ck-share-submit
+	div.clickoneroProductShare
+		p Comparte y gana <a href="#">Conoce más</a>
+		a(href="#"): span.iconFont-facebook(title="Facebook")
+		a(href="#"): span.iconFont-twitter(title="Twitter")
+		a(href="#"): span.iconFont-pinterest(title="Pinterest")
+	div.clickoneroProductSubmit
+		span Termina en <strong>1 día, 10 hrs</strong>
+		// input.clickoneroBtn.clickoneroFancybox(type="submit", value="Waitinglist", data-fancyboxhref="waitinglist.html", data-fancyboxwidth="745")
+		input.clickoneroBtn.clickoneroBtnCart(type="submit", value="Añadir a carrito")

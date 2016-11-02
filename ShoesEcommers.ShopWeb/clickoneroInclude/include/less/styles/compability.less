@@ -1,0 +1,46 @@
+.safari {
+	.clickoneroMain {
+		/*margin-top: 270px !important;*/
+		/*display: block*/
+	}
+	.clickoneroMainHeader {
+		/*margin-top: -275px;*/
+	}
+}
+.msie1, .msie10, .msie11 {
+	.clickoneroMain {
+		display: block;
+	}
+}
+.msie8, .msie7 {
+	.clickoneroCompraAhora {
+		background: transparent @buyNow no-repeat center center;
+	}	
+	.clickoneroProductLook-hover {
+		top: 300px !important;
+		.opacity(100) !important;
+		.clickoneroCompraAhora {
+			background: transparent @buyNow no-repeat center center !important;
+		}
+	}
+	.clickoneroSuggestionRecentViewBuyNow {
+		.clickoneroCompraAhora {
+			background: transparent @buyNow no-repeat center center !important;
+		}
+	}
+	.clickoneroProductLookItem {
+		&:hover {
+			.clickoneroProductLook-hover {
+				top: 0 !important;
+			}
+		}
+	}
+	.clickoneroFooter-links li {
+		width: 150px !important;
+	}
+	.products-slide {
+		.clickoneroFP-productSize {
+			display: none;
+		}
+	}
+}

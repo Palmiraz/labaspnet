@@ -1,0 +1,31 @@
+each carrousel in ['Vendidos', 'Populares']
+	div.clickoneroFP-carousels
+		h2 Productos <small>Más #{carrousel}</small>
+		div.clickoneroFPC-carrusel
+			div.clickoneroFPC-wrapper
+				-for(j=4;j<15;j++)
+					div.clickoneroFPC-slide
+						div.clickoneroFP-item
+							div.clickoneroFP-image
+								a(href="#"): img(src="clickoneroInclude/images/assets/leggings#{j}.jpg", alt="Leggings #{j}")
+								div.clickoneroFP-overlay
+									div.clickoneroFP-productSize
+										each val, index in ['XS', 'S', 'M', 'L', 'XL', 'XXXL']
+											- if(index < 1)
+												input(type="radio", name="ckSize", value=val, data-soldout="true")
+											- else
+												input(type="radio", name="ckSize", value=val)
+										input.clickoneroBtnCart(type="submit", value="Añadir a carrito")
+										p.clickoneroError Por favor escoja una talla
+							h3 Denim look leggings
+							h4 Pull &amp; Bear
+							span.clickoneroFP-actualPrice $540
+							span.clickoneroFP-listPrice $760
+							div.clickoneroFP-winWinbits
+								span GANA
+								em.clickoneroIcon.clickoneroWinbits12px
+								label 307
+		div.iconFontArrow.iconFontArrow-prev
+			span.iconFont-left
+		div.iconFontArrow.iconFontArrow-next
+			span.iconFont-right

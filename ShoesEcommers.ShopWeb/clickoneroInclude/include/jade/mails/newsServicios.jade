@@ -1,0 +1,33 @@
+doctype transitional
+html(xmlns="http://www.w3.org/1999/xhtml")
+	head
+		title clickOnero
+		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+		style(type="text/css").
+			td img {
+				display: block;
+			}
+			p {
+				margin: 15px 0;
+			}
+	body(bgcolor="#ffffff", style="text-align: center", topmargin="0", leftmargin="0")
+		include scaffolding/header-mail.jade
+		+topTable
+		+headerLogo
+		table(align="center", border="0", cellpadding="5", cellspacing="0")
+			tr: td: table(width="100%", cellpadding="0", cellspacing="0")
+				tr: td: a(href="#"): img(src="images/temascal.jpg" alt="Day Span con Temascal y Tina" width="575" height="183")
+				tr: td: a(href="#"): img(src="images/cinepolis.jpg" alt="Cinépolis" width="575" height="183")
+				tr: td: a(href="#"): img(src="images/benedettis.jpg" alt="Pizza grande Benedettis" width="575" height="183")
+			each val in [[{seccion: 'GASTRONOMÍA', img1: '2_2', img2: 'chillis', img3:'cupcakes'}], [{seccion: 'BELLEZA', img1: '2_1', img2: 'chocolate', img3:'mask'}], [{seccion: 'ENTRETENIMIENTO', img1: 'teatro', img2: '2_6', img3:'2_7'}]]
+				tr: td: table(width="100%")
+					tr 
+						td(align="left"): +fontFace('21px', '', val[0].seccion)
+						td(align="right"): a(href="#"): +fontFace('', '5574f9', 'VER MÁS OFERTAS DE '+val[0].seccion+' &gt;')
+				tr: td: table(cellspacing="3")
+					- for (var i=1;i<3;i++)
+						tr
+							td(align="left"): +product(val[0].img1, 190, 120)
+							td(align="left"): +product(val[0].img2, 190, 120)
+							td(align="left"): +product(val[0].img3, 190, 120)
+		+mainFooter

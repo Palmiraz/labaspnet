@@ -1,0 +1,37 @@
+footer
+	div.clickoneroWrapper
+		div.clickoneroFooter-logos
+			a.iconFont-clickOnero(href="#")
+			span Es un sitio de la familia winbits
+			ul
+				li: a.iconFont-facebookCircle(href="#", title="Facebook")
+				li: a.iconFont-twitterCircle(href="#", title="Twitter")
+				li: a.iconFont-pinterestCircle(href="#", title="Pinterest")
+			p: a.footer-linkmail(href="mailto: info@winbits.com") info@winbits.com
+			p 4160 - 0550
+		div.clickoneroFooter-links
+			h2 Atención a Clientes
+			ul
+				li: a(href="faq.html") FAQ's
+				li: a(href="faq.html#faq4") Plazos de entrega
+				li: a(href="faq.html#faq3") ¿Cómo comprar?
+				li: a(href="devoluciones.html") Devoluciones
+				li: a(href="terminos.html") Términos y condiciones
+				li: a(href="politicas.html") Políticas de Privacidad
+		div.clickoneroFooter-links.clickoneroFooter-clickonero
+			div.clickoneroFooter-category
+				h2 Categorías
+				ul
+					li: a(href="#") Mujer
+					li: a(href="#") Hombre
+					li: a(href="#") Infantiles
+					li: a(href="#") Tecnología
+					li: a(href="#") Hogar
+					li: a(href="#") Servicios
+					li: a(href="#") Viajes
+			div.clickoneroFooter-brands
+				h2 Búsquedas favoritas
+				ul
+					each val in ['Ropa de moda', 'Ropa deportiva', 'Ropa para Bebé', 'Tenis', 'Tenis Nike', 'Tenis Adidas', 'Tenis Puma', 'Vestidos de Moda', 'Zapatos', 'Zapatos Flexi', 'Tommy Hilfiger', 'Lacoste', 'Pepe Jeans', 'Swarovsky', 'Viajes a la playa', 'Acapulco', 'Cancún', 'Riviera Maya', 'Obras de teatro', 'Cinepolis', 'Boletos de cine', 'Computadoras con descuento', 'Videojuegos', 'Electrodomésticos', 'Celulares con descuento', 'Televisiónes', 'Samsung', 'Sharp', 'Descuentos', 'Hot Sale', 'Buen Fin', 'Buen Noviembre', 'Cupones', 'Remates', 'Promociones']
+						li: a(href="#") #{val}
+script(src="clickoneroInclude/include/js/script.js")

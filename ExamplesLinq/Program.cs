@@ -41,10 +41,10 @@ namespace ExamplesLinq
             XDocument document = XDocument.Load("..\\..\\Models\\Categories.xml");
             if (document.Root != null)
             {
-                var query = from d in document.Root.Elements("department")
+                dynamic query = from d in document.Root.Elements("department")
                             let xAttribute = d.Attribute("deparment") 
                             where xAttribute != null 
-                            select new Deparment
+                            select new 
                             {
                                 Name=xAttribute.Value,
                                 Categories = (

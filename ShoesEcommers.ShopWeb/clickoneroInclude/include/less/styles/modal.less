@@ -1,0 +1,231 @@
+// Ventanas modales
+.clickoneroModalBody {
+	background: transparent;
+	overflow: hidden;
+	height: auto;
+}
+.widgetWinbitsModal {
+	overflow: hidden !important;
+}
+.clickoneroSizeChart {
+	background: @white;
+	padding: 50px;
+	width: 475px;
+	.center-block;
+	overflow: auto;
+	h1 {
+		border-bottom: 1px solid lighten(@black, 50%);
+		font-size: 19px;
+		padding-bottom: 10px;
+		.font('OmnesLight');
+	}
+	.clickoneroSizeChartTab {
+		background: white;
+		border: none;
+		.font('OmnesLight');
+		.border-radius(0);
+		.margin-padding;
+		&:focus {
+			outline: 0;
+		}
+		ul {
+			border: none;
+			background: none;
+			.border-radius(0);
+		}
+		li {
+			background: none;
+			border: none;
+			font-size: 19px;
+			.border-radius(0);
+		}
+		a {
+			color: @black !important;
+		}
+		p {
+			.margin-padding;
+		} 
+		h3 {
+			font-size: 14px;
+			padding: 10px 0;
+		}
+		.ui-tabs-active {
+			.font('OmnesMedium');
+			a {
+				color: @black;
+			}
+		}
+		.clickoneroSCT {
+			span {
+				.inline-block(45px, top);
+			}
+			.clickoneroSCTTitle {
+				.font('OmnesMedium');
+			}
+			.clickoneroSCTth {
+				width: 100px;
+			}
+		}
+			
+	}
+}
+.clickoneroMainModal-product {
+	.clickonero-sold-out{
+		font-size: 16px !important;
+		width: 214px !important;
+	}
+}
+.clickoneroMainModal {
+	background: @white;
+	padding: 30px;
+	width: 785px;
+	.center-block;
+	.clickoneroProductMesure {
+		.inline-block(160px, top);
+	}
+	.clickoneroServiceDescription {
+		.clickoneroWinbits-price {
+			width: 90px !important;
+		}
+	}
+	.clickoneroServiceDetail {
+		.clickoneroServiceImage-img {
+			.size(331px,523px) !important;
+			img {
+				.size(331px, 523px) !important;
+			}
+		}
+		.clickonero-sold-out{
+			top: 293px;
+			width: 493px;
+		}
+		.clickoneroArrow {
+			height: 62px !important;
+			.iconFont-prev3, .iconFont-next3 {
+				line-height: 62px !important;
+			}
+		}
+		.clickoneroServiceImage-soldout {
+			bottom: 62px;
+			top: inherit !important;
+			width: 523px !important;
+		}
+		.clickoneroServiceImage-modal-carousel {
+			width: 523px !important;
+		}
+		.clickoneroServiceImage {
+			width: 523px;
+		}
+		.clickoneroServiceDescription {
+			position: relative;
+			width: 229px;
+			h2 {
+				font-size: 16px;
+			}
+			h3 {
+				color: lighten(@black, 30%);
+				font-size: 12px;
+				margin: 5px 0;
+				text-transform: uppercase;
+			}
+			h4 {
+				font-size: 11px;
+				margin: 7px 0 5px;
+			}
+			.datepicker-wrapper {
+				width: 110px !important;
+			}
+			.clickoneroDatepicker {
+				width: 100px !important;
+			}
+		}
+		.clickoneroService-description {
+			font-size: 11px !important;
+		}
+		.clickoneroService-winbits {
+			width: 210px !important;
+		}
+		.clickoneroWinbits-slider {
+			width: 115px !important;
+		}
+		.slider-wrapper {
+			width: 115px !important;
+			.slider-holder {
+				width: 115px !important;
+			}
+			.iconFont-slideBG {
+				font-size: 135px !important;
+			}
+			.slider-maxValue {
+				right: -10px !important;
+			}
+		}
+		.clickoneroSelect {
+			.select-input {
+				font-size: 10px !important;
+				padding: 2px 15px 2px 3px !important;
+			}
+			.select-ul {
+				font-size: 10px;
+			}
+			.iconFont-downmenu {
+				//line-height: 21px;
+			}
+		}
+		.clickoneroService-quantity {
+			.clickoneroSelect{
+				width: 50px !important;
+			}
+			.select-input {
+				text-align: center;
+				width: 30px;
+			}
+			.select-ul {
+				text-align: center;
+				width: 50px;
+			}
+		}
+		.clickoneroServiceActualPrice {
+			font-size: 18px !important;
+		}
+		.clickoneroServiceListPrice {
+			font-size: 12px !important;
+		}
+		.clickoneroServiceWinWinbits {
+			font-size: 11px;
+		}
+		.clickoneroService-win {
+			span, label {
+				font-size: 14px !important;
+			}
+			.iconBit {
+				margin-left: 5px;
+			}
+		}
+		.clickoneroService-quantity {
+			width: 230px !important;
+		}
+		.clickoneroService-share {
+			margin-top: 10px !important;
+			padding-right: 0 !important;
+			p a {
+				text-decoration: underline;
+				&:hover {
+					color: @blueLink2;
+				}
+			}
+		}
+		.clickoneroService-submit {
+			margin-top: 10px !important;
+			position: absolute;
+			right: 0;
+		}
+	}
+	.clickonero-gotoLink {
+		font-size: 15px;
+		text-align: center;
+		a {
+			text-decoration: underline;
+		}
+	}
+}

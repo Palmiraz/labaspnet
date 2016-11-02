@@ -1,0 +1,53 @@
+h2 Raúl Araiza en "Cama para dosmildoscientos"
+if travel
+	+iconsTravel('clickoneroFP')
+else
+	h3.product-ck-title Merchant
++tagOctubre
+div.clickoneroService-description Descubre el lado positivo, divertido y romántico de las nuevas reglas para vivir en pareja con "Cama para dos".
+div.clickoneroService-winbits
+	div.clickoneroWinbits-price
+		span.clickoneroServiceActualPrice $
+			span.slideInput-price
+		span.clickoneroServiceListPrice $
+			span.slideInput-realprice
+	if prepaid
+		div.clickoneroService-prepaid
+			span.prepaid-title APARTA CON
+			span.prepaid-price $
+				span 100
+	div.clickoneroWinbits-slider
+		div.clickoneroService-win
+			span GANA
+			+iconBits(class="bit18px")
+			label 500
+		input.slider-input(type="text", value="0", data-min="0", data-max="60000", data-step="2", data-moveprice="true", data-priceitem="slideInput-price", data-price="49999", data-realpriceitem="slideInput-realprice", data-realprice="66666", data-percent="slideInput-percent", data-totalprice="true", data-totalpriceitem="slideInput-price")
+		div.clickoneroServiceWinWinbits.clickoneroService-save
+			span AHORRA
+				span.slideInput-percent
+				| %
+div.clickoneroService-sucursal
+	h4 Sucursal
+	+selects('clickoneroSelect', ['Escoger sucursal...', 'Condesa', 'Roma', 'Nativitas', 'Indios Verdes', 'Lomas de Chapultepec primera o segunda sección, no me acuerdo'])
+- if (travel == 1)
+	div.clickoneroService-dates
+		h4 Fechas para viajar
+		input.clickoneroDatepicker(type="text", value="Check in")
+		input.clickoneroDatepicker(type="text", value="Check out")
+div.clickoneroService-options
+	h4 Opción adicional
+	+selects('clickoneroSelect', ['Selecciona una opción...','15 de octubre - 21:30hrs y lorem ipsum lorem ipsum', 'Opción 2', 'Opción 3', 'Opción 4'], 2)
+div.clickoneroService-quantity
+	h4 Cantidad
+	+selects('clickoneroSelect-cantidad', ['1', '2', '3', '4', '10'], 0, true)
+div.ck-share-submit
+	div.clickoneroService-share
+		p Comparte y gana 
+			//- <a href="#">Descubre más</a>
+		a(href="#"): span.iconFont-facebook(title="Facebook")
+		a(href="#"): span.iconFont-twitter(title="Twitter")
+		a(href="#"): span.iconFont-pinterest(title="Pinterest")
+	div.clickoneroService-submit
+		span Termina en <strong>13 día(s)</strong>
+		// input.clickoneroBtn.clickoneroFancybox(type="submit", value="Waitinglist", data-fancyboxhref="waitinglist.html", data-fancyboxwidth="745")
+		input.clickoneroBtn.clickoneroBtnCart(type="submit", value="Añadir a carrito")

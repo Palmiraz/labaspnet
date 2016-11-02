@@ -4,42 +4,40 @@ using System.Data;
 using System.Data.SqlClient;
 using ShoeEcommers.LogicLayer.DataObjects;
 using ShoeEcommers.LogicLayer.Modelos;
+using ShoeEcommers.LogicLayer.Entities;
+using System.Linq;
+using MyCustomer = ShoeEcommers.LogicLayer.Modelos.Customers;
 
 namespace ShoeEcommers.LogicLayer.Repositories
 {
     public class CustomerRepository : IDisposable
     {
+        private readonly ecommersEntities1 _dc;
         private readonly SqlConnection _cn;
         public CustomerRepository()
         {
             _cn = ConnectionProvider.GetConnection();
+            _dc = new ecommersEntities1();
         }
-        public List<Customers> GetCustomers(string name = "")
+        public List<MyCustomer> GetCustomers(string name = "")
         {
-            //TODO: Consumir el store para obtener la lista de usuario
-            SqlCommand cmd = new SqlCommand("GetCustomers", _cn);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            SqlParameter param = new SqlParameter();
-            param.ParameterName = "@Name";
-            param.SqlDbType = SqlDbType.VarChar;
-            param.Value = name;
-
-            cmd.Parameters.Add(param);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            List<Customers> result = new List<Customers>();
-            while (reader.Read())
-            {
-                var customer = GetCustomerByReader(reader);
-                result.Add(customer);
-            }
-            return result;
+            var query = from c in _dc.Customers
+                        where string.IsNullOrEmpty(name) ||
+                        c.Name.Contains(name)
+                        select new MyCustomer{ 
+                            Id = c.Id,
+                            Name = c.Name,
+                            FirstName = c.FirstName,
+                            LastName = c.LastName,
+                            DateBirth = c.DateBirth,
+                            Email = c.Email
+                        }; ;
+            return query.ToList();
         }
 
-        private static Customers GetCustomerByReader(SqlDataReader reader)
+        private static MyCustomer GetCustomerByReader(SqlDataReader reader)
         {
-            Customers customer = new Customers();
+            MyCustomer customer = new MyCustomer();
             customer.Id = reader.GetInt32(0);
             customer.Name = reader.GetString(1);
             customer.FirstName = reader.GetString(2);
@@ -49,7 +47,7 @@ namespace ShoeEcommers.LogicLayer.Repositories
             return customer;
         }
 
-        public Customers GetCustomerById(int id)
+        public MyCustomer GetCustomerById(int id)
         {
             SqlCommand cmd = new SqlCommand("GetCustomers", _cn);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -62,7 +60,7 @@ namespace ShoeEcommers.LogicLayer.Repositories
             cmd.Parameters.Add(param);
 
             SqlDataReader reader = cmd.ExecuteReader();
-            Customers customer = null;
+            MyCustomer customer = null;
             while (reader.Read())
             {
                  customer = GetCustomerByReader(reader);
@@ -71,7 +69,7 @@ namespace ShoeEcommers.LogicLayer.Repositories
             return customer;
         }
 
-        public bool SaveCustomer(Customers customer)
+        public bool SaveCustomer(MyCustomer customer)
         {
             SqlCommand cmd = new SqlCommand("InsertCustomer", _cn);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -99,6 +97,7 @@ namespace ShoeEcommers.LogicLayer.Repositories
         public bool DeleteCustomer(int id)
         {
             //TODO: Borrar un cliente por id
+            _dc.DeleteCustomer(id);
             return false;
         }
 

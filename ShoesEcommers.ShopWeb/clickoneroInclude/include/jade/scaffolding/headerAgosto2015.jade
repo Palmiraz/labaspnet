@@ -1,0 +1,49 @@
+div.ck-main-header
+	div.ck-header-top
+		div.clickoneroWrapper
+			div.ck-header-logo
+				a(href="#")
+					span.iconFont-o
+					span.iconFont-clicknero
+			div.ck-header-nav
+				ul
+					each value,index in ['Productos', 'Viajes', 'Cupones']
+						if currentPage == index
+							li: a.current(href="#") #{value}
+						else
+							li: a(href="google.com") #{value}
+					li: a(href="#") Gana $ 
+						span.iconFont-bit
+	div.ck-header-bottom
+		div.clickoneroWrapper
+			if !title
+				div.ck-header-pagetitle Estrenos
+			else
+				div.ck-header-pagetitle #{title}
+			div.ck-header-search
+				input(type="text")
+				span.iconFont-lupa
+			div.ck-header-sales
+				h2.ck-sales-title Ventas por teléfono:
+				div.ck-sales-phone
+					span.iconFont-phoneHear
+					span.ck-sales-text 4160-0550
+					span.ck-sales-text |
+					a.ck-sales-text(href="maito:info@winbits.com") info@winbits.com
+
+//- div.clickoneroMainHeader
+//- 	div.clickoneroHeader
+//- 		div.clickoneroLogoLink
+//- 			a(href="#")
+//- 				span.iconFont-o
+//- 				span.iconFont-clicknero
+//- 		div.clickoneroMainSearch
+//- 			input(type="text", placeholder="¿Qué estas buscando?")
+//- 			span.iconFont-lupa
+//- 		div.clickoneroSecundaryNav
+//- 			ul
+//- 				li 4160-0550
+//- 				li: a(href="mailto:info@winbits.com") info@winbits.com 
+//- 			p: a.clickoneroBtn(href="#") Contesta y gana
+//- 				span.iconFont-bit
+//- 	nav.clickoneroMainNav

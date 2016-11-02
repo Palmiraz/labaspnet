@@ -1,0 +1,62 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			div.clickoneroMainHeader
+				div.clickoneroHeader
+					div.clickoneroLogoLink
+						a(href="#")
+							span.iconFont-o
+							span.iconFont-clicknero
+					div.clickoneroMainSearch
+						input(type="text", placeholder="¿Qué estas buscando?")
+						span.iconFont-lupa
+					div.clickoneroSecundaryNav
+						ul
+							li 4160-0550
+							li: a(href="mailto:info@winbits.com") info@winbits.com 
+						p: a.clickoneroBtn(href="#") Contesta y gana
+							span.iconFont-bit
+			div.clickonero-infotext
+				div.clickoneroWrapper
+					div.wb-breadcrums
+						div.wb-breadcrums-div
+							span: a(href="#") Home
+							span.iconFont-right3
+							span Políticas de Devolución
+					h2 POLITICAS DE DEVOLUCIÓN *
+					p Tu satisfacción es lo más importante para nosotros, por eso te ofrecemos la posibilidad de devolución en caso de que un producto no sea de tu entero agrado. Para hacer uso de este beneficio, sólo tienes que seguir las siguientes instrucciones.
+					ol 
+						li
+							p: strong Envíanos un mail
+							p A <a href="info@clickonero.com">info@clickonero.com</a> indicando el motivo de la devolución, dentro de los 10 días hábiles siguientes a la fecha de recepción de tu producto.
+						li
+							p: strong Obtén tu guía
+							p En respuesta a tu solicitud de devolución, te enviaremos tu número de guía de DHL para recolección de producto.
+						li
+							p: strong Empaca el producto
+							p Empaca cuidadosamente el producto junto con todos sus componentes y/o piezas, colócalo dentro de una caja para envío, pégale la guía de DHL y entrégalo en la oficina de DHL que mejor te acomode.
+						li
+							p: strong ¡Casi listo!
+							p Máximo en 48 hrs. hábiles después de recibir y evaluar tu producto, te realizaremos tu reembolso en crédito clickOnero.
+						li
+							p: strong Consideraciones importantes:
+							ul
+								li El tiempo para solicitar una devolución es en los 10 días hábiles, después de recibir tu producto.
+								li Debes incluir en la devolución los ganchos, envolturas, etiquetas colgantes, cajas y/o bolsas de la Marca, etc.
+								li Recuerda que el producto debe estar en perfecto estado y con todas sus piezas y/o componentes, si llega incompleto, usado o en mal estado, no podremos hacer el reembolso y tu paquete será regresado al remitente.
+								li El reembolso sólo será realizado cuando el departamento de control de calidad, haya evaluado el producto y éste se encuentre completo y en buen estado.
+								li Si el producto es enviado a clickOnero sin previa solicitud, éste será devuelto al remitente.
+								li Las guías de DHL/Fedex tienen una vigencia de 5 días naturales.
+								li Es muy importante que apuntes el número de tu guía y mensajería, ya que sólo así podrás rastrear tu paquete de regreso a nuestro almacén.
+								li Puedes localizar sucursales DHL en <a href="http://www.dhl.com.mx" target="_blank">www.dhl.com.mx</a> y sucursales Fedex en <a href="http://www.fedex.com/mx" target="_blank">www.fedex.com/mx</a>
+					p.text-note * Aplican restricciones.
+			+footerAddress
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				DocumentReady();
+			})();

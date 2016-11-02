@@ -1,0 +1,108 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			- var crt = 0
+			include scaffolding/header.jade
+			div.clickoneroWrapper.clickoneroHome
+				div.clickoneroFilter.filterDepartment
+					aside
+						div.clickoneroFilter-div
+							h4 Productos
+							each val in ['Deportes', 'Ropa', 'Joyería', 'Accesorios', 'Bolsos', 'Calzado', 'Salud y Belleza', 'Ofertas Locales']
+								a(href="#") #{val}
+						div.clickoneroFilter-div
+							h4 Marcas
+							each val in ['Ralph Laurent', 'Champs', 'Armani Woman', 'Armani Home', 'Armani', 'Hugo Boss']
+								a(href="#") #{val}
+					div.clickoneroFilter-products
+						div.clickoneroFPB-banner.largeBanner
+							a(href="#"): img(src="clickoneroInclude/images/assets/campania.jpg", alt="Relojes SWATCH")
+							a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Reloj Negro", data-top="69", data-left="140", style="color: #f00")
+							a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Reloj Azul", data-top="26", data-left="55", style="color: #000")
+						div.clickoneroFilter-campaings
+							- for (i=1;i<9;i++)
+								div.clickoneroFC-item
+									a(href="#")
+										img(src="clickoneroInclude/images/assets/3_#{i}.jpg" alt="Campaña #{i}")
+									+terminaen('clickoneroFP', 7)
+				each val, index in ['Mujer', 'Salud y Belleza','Hogar', 'Tecnología', 'Infantiles']
+					- if(index == 1)
+						div.clickoneroHome-itemHorizontal
+							h2 Las Mejores Ofertas de <a href="#">#{val}</a>
+								+selects('', ['Seleccione una zona', 'DF Norte', 'DF Sur', 'Guadalajara', 'Monterrey'], 0, true)
+							div.travel-carrusel
+								div.travel-wrapper
+									each val in ['2_1', '2_12', '2_13', '2_1', '2_12', '2_13']
+										div.travel-slide
+											+viajesDiv(val, '', 'itemServicio-home', 1)
+							span.iconFont-left.rightArrows
+							span.iconFont-right.rightArrows
+					- else
+						div.clickoneroHome-itemVertical
+							h2 Los Más Vendidos  de <a href="#">#{val}</a>
+							div.products-carrusel
+								div.products-wrapper
+									each val, index in ['leggings4', 'leggings5', 'leggings6', 'leggings7', 'leggings8', 'leggings9']
+										div.products-slide
+											+productDiv(val)
+									each val, index in ['product1', 'product2', 'product3', 'product4', 'product5']
+										div.products-slide
+											+productDiv(val)
+							span.iconFont-left.rightArrows
+							span.iconFont-right.rightArrows		
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				$('.clickoneroFilter-div').customCheckbox();
+				$('.clickoneroFP-productSize').customRadio();
+				$('.products-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'products-slide',
+						wrapperClass: 'products-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 5,
+						onSlideClick: function(swiper){
+							$('.clickoneroFP-productSize').customRadio({justClick: true});
+						},
+						onSwiperCreated: function(swiper){
+							$(swiper.activeSlide()).find('.clickoneroFP-overlay').trigger('click');
+							$(swiper.activeSlide()).find('.clickoneroToolTip').trigger('mouseover');
+						}
+					},
+					arrowLeft: '.iconFont-left',
+					arrowRight: '.iconFont-right',
+					loop: true,
+					slideCSS: '.products-slide',
+					calculateHeight: true,
+					slidesNum: 5
+				});
+				$('.travel-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'travel-slide',
+						wrapperClass: 'travel-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 3,
+						onSlideClick: function(swiper){
+							$('.clickoneroFP-productSize').customRadio({justClick: true});
+						},
+						onSwiperCreated: function(swiper){
+							$(swiper.activeSlide()).find('.clickoneroFP-overlay').trigger('click');
+							$(swiper.activeSlide()).find('.clickoneroToolTip').trigger('mouseover');
+						}
+					},
+					arrowLeft: '.iconFont-left',
+					arrowRight: '.iconFont-right',
+					loop: true,
+					slideCSS: '.travel-slide',
+					calculateHeight: true,
+					slidesNum: 3
+				});
+				$('.iconBlock').point();
+				DocumentReady();
+			})();

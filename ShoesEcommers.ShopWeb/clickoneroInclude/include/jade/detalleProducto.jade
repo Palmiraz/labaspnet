@@ -1,0 +1,99 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			include scaffolding/header.jade
+			div.clickoneroWrapper
+				div.clickoneroProductDetail
+					div.wb-breadcrums
+						div.wb-breadcrums-div
+							span: a(href="#") Home
+							span.iconFont-right3
+							span: a(href="#") Mujer
+							span.iconFont-right3
+							span: a(href="#") Ropa
+							span.iconFont-right3
+							span Lace off-shoulder dress
+					div.clickoneroProductImage
+						div.clickoneroProductImage-img
+						+percent
+						div.clickonero-sold-out AGOTADO
+							//- a.clickoneroFancybox(href="waitinglist.html", data-fancyboxWidth="745") Añadir a Lista de Espera
+						div.clickoneroProductImage-carrusel
+							div.clickoneroProductImage-wrapper
+								div.clickoneroProductImage-slide
+									- for (j = 1; j < 3; j++)
+										- for (var i = 1; i < 5; i++)
+												img(src="clickoneroInclude/images/assets/blackdress#{i}-tumb.jpg", alt="LACE OFF-SHOULDER DRESS", data-image="clickoneroInclude/images/assets/blackdress#{i}.jpg")
+							div.clickoneroProductImage-scrollbar
+					+descriptionDetail('clickoneroProductDescription', 1)
+					aside.clickoneroProductLook
+						h2 COMPLETA
+						div.clickoneroProductLookCarousel
+							div.clickoneroProductLook-wrapper
+								div.clickoneroProductLookCarousel-slide
+									each val, index in ['skirt1', 'jacket1', 'jacket2', 'skirt1', 'jacket1']
+										- var item = 'clickoneroInclude/images/assets/' + val + '.jpg'
+										div.clickoneroProductLookItem
+											img(src=item, alt="LACE OFF-SHOULDER DRESS")
+											div.clickoneroProductLook-hover
+												a(href="#") 
+													//- | Chamarra
+													span $540
+													span.clickoneroCompraAhora compra ahora
+				div.clickoneroSuggestionRecentView
+					div.clickoneroSRV-divLink
+						span(data-show="clickoneroSuggestionDiv", data-hide="clickoneroRecentViewDiv") SUGERENCIAS
+						span(data-show="clickoneroRecentViewDiv", data-hide="clickoneroSuggestionDiv") VISTOS RECIENTEMENTE
+					each tab in ['clickoneroSuggestionDiv', 'clickoneroRecentViewDiv']
+						div.clickoneroSRV(class="#{tab}")
+							div.clickoneroSRV-carrusel
+								div.clickoneroSRV-wrapper
+									+productDivSuggestion('sleeveless', 'Barra de Sonido con Subwoofer 280W')
+									+productDivSuggestion('bluetransparent')
+									+productDivSuggestion('v-necksweater')
+									+productDivSuggestion('leatherbag')
+									+productDivSuggestion('leggings3')
+									+productDivSuggestion('sleeveless')
+							div.clickoneroArrows.clickoneroArrowLeft
+								span.iconFont-left3(title="Anterior")
+							div.clickoneroArrows.clickoneroArrowRight
+								span.iconFont-right3(title="Siguiente")
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				DocumentReady();
+				$('.clickoneroSRV-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroSRV-slide',
+						wrapperClass: 'clickoneroSRV-wrapper',
+						grabCursor: true,
+						slidesPerView: 5
+					},
+					arrowLeft: '.clickoneroArrowLeft',
+					arrowRight: '.clickoneroArrowRight',
+					slidesNum: 5,
+					slideCSS: '.clickoneroSRV-slide'
+				});
+				$('.clickoneroProductImage-carrusel').carruselVerticalSwiper({
+					slide: 'clickoneroProductImage-slide',
+					wrapper: 'clickoneroProductImage-wrapper',
+					scrollbar: '.clickoneroProductImage-scrollbar'
+				});
+				$('.clickoneroProductColor, .clickoneroProductSize, .clickoneroProductText').customRadio({
+						onClickRadio: function(radio){
+							console.log(radio);
+						}
+					});
+				$('.radio-color, .radio-img').toolTip({clase: 'clickoneroTool-Tip'});
+				$('.clickoneroProductImage').imageProduct({
+					container: '.clickoneroProductImage-img',
+					imgs: '.clickoneroProductImage-slide'
+				});
+				$('.clickoneroSRV-divLink').showDiv();
+				$('.scrollTab').scrollpane({ parent: '.clickoneroProductTabs'});
+				$('.clickoneroProductTabs').tabs();
+			})();

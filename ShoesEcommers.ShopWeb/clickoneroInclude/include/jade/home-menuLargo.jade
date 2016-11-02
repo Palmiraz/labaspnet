@@ -1,0 +1,141 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget.widgetWinbitsHeader(data-wbh-current="4")
+		main.clickoneroMain.widgetWinbitsMain
+			- var menuLargo = 1
+			- var menuDiciembre = 1
+			include scaffolding/header.jade
+			div.clickoneroWrapper.clickoneroHome
+				div.clickoneroHome-banner
+					div.clickoneroHB-carrusel
+						div.clickoneroHB-wrapper
+							div.clickoneroHB-slide
+								a(href="#"): img(src="", alt="")
+								div
+							- for (i=0;i<3;i++)
+								each val in ['bannerAmor', 'benettonHome']
+									div.clickoneroHB-slide
+										a(href="#"): img(src="clickoneroInclude/images/assets/#{val}.jpg", alt="Banner #{val}")
+										div
+											a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Camisa cuadros Hombre", data-top="90", data-left="414", style="color: #000")
+											a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Tenis Nike Hombre", data-top="170", data-left="550", style="color: #000")
+											a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Chaleco Azul Mujer", data-top="103", data-left="281", style="color: #fff")
+											a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Tenis Nike Mujer", data-top="200", data-left="335", style="color: #f00")
+					div.iconFontArrow.iconFontArrow-prev
+						span.iconFont-left
+						span.iconFont-rightA
+					div.iconFontArrow.iconFontArrow-next
+						span.iconFont-right
+						span.iconFont-leftA
+				div.clickoneroHome-bestOffer
+					h2 Las Mejores Ofertas de <a href="#">Productos</a>
+					div.bestOffer-container
+						div.bestOffer-item
+							a(href="#"): img(src="" alt="")
+							+terminaen('clickoneroFP', 7)
+						- for (i=1;i<9;i++)
+							div.bestOffer-item
+								a(href="#"): img(src="clickoneroInclude/images/assets/3_#{i}.jpg" alt="Campaña #{i}")
+								+terminaen('clickoneroFP', 7)
+				div.clickoneroHome-itemVertical
+					h2 Los Más Vendidos  de <a href="#">Productos</a>
+					div.products-carrusel
+						div.products-wrapper
+							each val, index in ['', 'leggings4', 'leggings5', 'leggings6', 'leggings7', 'leggings8', 'leggings9']
+								div.products-slide
+									if index == 2
+										+productDiv(val, 1)
+									else
+										+productDiv(val)
+							each val, index in ['product1', 'product2', 'product3', 'product4', 'product5']
+								div.products-slide
+									if index == 1 || index == 4
+										+productDiv(val, 1)
+									else
+										+productDiv(val)
+					span.iconFont-left.rightArrows
+					span.iconFont-right.rightArrows
+				div.clickoneroHome-itemHorizontal
+					h2 Las Mejores Ofertas de <a href="#">Viajes</a>
+					div.travel-carrusel
+						div.travel-wrapper
+							each val in ['noimage', '2_9', '2_4', '2_3', '2_8']
+								div.travel-slide
+									+viajesDiv(val, '', 'itemServicio-home', '', 1)
+					span.iconFont-left.rightArrows
+					span.iconFont-right.rightArrows
+				div.clickoneroHome-itemHorizontal.clickoneroLocal
+					h2 Las Mejores <a href="#">Ofertas Locales</a>
+						+selects('', ['Seleccione una zona', 'DF Norte', 'DF Sur', 'Guadalajara', 'Monterrey'], 0, true)
+					div.localOffer-wrapper
+						each val in ['', '2_2', '2_10', '2_11', '2_1', '2_12', '2_13', '2_14', '2_6']
+							+viajesDiv(val, '', 'itemServicio-home')
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				$('.clickoneroFilter-div').customCheckbox();
+				$('.clickoneroFP-productSize').customRadio();
+				$('.clickoneroHB-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroHB-slide',
+						wrapperClass: 'clickoneroHB-wrapper',
+						grabCursor: true,
+						loop: true,
+						autoplay: 5000
+					},
+					arrowLeft: '.iconFontArrow-prev',
+					arrowRight: '.iconFontArrow-next',
+					loop: true,
+					slideCSS: '.clickoneroHB-slide',
+					calculateHeight: true
+				});
+				$('.products-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'products-slide',
+						wrapperClass: 'products-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 5,
+						onSlideClick: function(swiper){
+							$('.clickoneroFP-productSize').customRadio({justClick: true});
+						},
+						onSwiperCreated: function(swiper){
+							$(swiper.activeSlide()).find('.clickoneroFP-overlay').trigger('click');
+							$(swiper.activeSlide()).find('.clickoneroToolTip').trigger('mouseover');
+						}
+					},
+					arrowLeft: '.iconFont-left',
+					arrowRight: '.iconFont-right',
+					loop: true,
+					slideCSS: '.products-slide',
+					calculateHeight: true,
+					slidesNum: 5
+				});
+				$('.travel-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'travel-slide',
+						wrapperClass: 'travel-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 3,
+						onSlideClick: function(swiper){
+							$('.clickoneroFP-productSize').customRadio({justClick: true});
+						},
+						onSwiperCreated: function(swiper){
+							$(swiper.activeSlide()).find('.clickoneroFP-overlay').trigger('click');
+							$(swiper.activeSlide()).find('.clickoneroToolTip').trigger('mouseover');
+						}
+					},
+					arrowLeft: '.iconFont-left',
+					arrowRight: '.iconFont-right',
+					loop: true,
+					slideCSS: '.travel-slide',
+					calculateHeight: true,
+					slidesNum: 3
+				});
+				$('.iconBlock').point();
+				DocumentReady();
+			})();

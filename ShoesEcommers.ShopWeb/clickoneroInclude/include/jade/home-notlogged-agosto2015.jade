@@ -1,0 +1,201 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body.ck-agosto2015
+		div.clickoneroPreloader: p
+		//-  Header del widget
+		header
+			div.clickoneroWrapper.wb-header-wrapper
+				include scaffolding/headerAgosto2015.jade
+				div.widgetWinbitsHeader(data-wbh-current="4", id="winbits-widget")
+					link(rel="stylesheet", href="http://d2jw2cyi8xrpa4.cloudfront.net/css/hw-styles.min.css")
+					link(rel="stylesheet", href="http://d2jw2cyi8xrpa4.cloudfront.net/js/fancybox/jquery.fancybox.min.css")
+					div.knowmoreFolder
+						div.wrapper
+							div.knowMoreMax
+								span.icon.winbits22px Logo Winbits
+								div.knowMoreMax-item.item1
+									div.knowMoreMax-icons
+										a.iconFont-clickOnero(target="_blank", href="http://www.clickonero.com.mx")
+										a.iconFont-bebitos(target="_blank", href="http://www.bebitos.mx")
+									h2 VARIAS TIENDAS
+									p Nos hemos asociado con sitios especializados para ofrecerte los mejores productos a los mejores precios.
+								div.knowMoreMax-item.item2
+									div.knowMoreMax-icons.iconFont-cart
+									h2 UNA SOLA CUENTA
+									p Para hacertelo todavía más fácil puedes utilizar tu cuenta winbits y sumar productos a un mismo carrito sin importar en que sitio estés.
+								div.knowMoreMax-item.item3
+									div.knowMoreMax-icons
+									img(alt="", src="http://wbf.winbits.com/img/iconTop2.png")
+									h2 CON TUS COMPRAS GANAS WINBITS
+									p Con todas tus compras podrás ganar winbits que puedes usar como dinero electrónico en compras futuras.
+								div.knowMoreMax-buttons
+									span.wb-video.wb-buttons VE NUESTRO VIDEO
+										span.iconFont-video
+									span.wb-wait.wb-buttons REGISTRATE AHORA
+										span.iconFont-candado
+								span.iconFont-upbanner.openClose(data-hidediv=".knowMoreMax", data-showdiv=".knowMoreMin")
+							div.knowMoreMin
+								p ¡Compra en nuestro sitio y gana! 
+									a.wb-wait(href="#") Conoce más
+									span.iconFont-downbanner.openClose(data-hidediv=".knowMoreMin", data-showdiv=".knowMoreMax")
+								div.language
+									a(href="#")
+										div.winbits-white.iconWinbit75px
+											span.iconFont-bit.firstI
+											span.iconFont-bit.secondI
+											span.iconFont-winbits
+											span.iconFont-circle.firstI
+											span.iconFont-circle.secondI
+					div.mainHeader
+						div.wrapper
+							nav: ul
+								li: a.iconVertical-n.vertical12.wbc-vertical(title="Invita Amigos", href="http://www.winbits.com")
+								li: a.iconVertical-n.vertical4.wbc-vertical.current(title="clickOnero", href="http://www.clickonero.com.mx")
+								li: a.iconVertical-n.vertical11.wbc-vertical(title="Bebitos", href="http://bebitos.mx")
+							div.miCuenta.log-in
+								ul
+									li: span.link.wb-video(data-fancybox-href="unapagina.html") ¿Qué es Winbits?
+									li: span.link.wb-wait(data-fancybox-href="otrapagina.html") Regístrate
+									li
+										div.spanDropMenu(data-cart="true") 0
+											span.iconFont-cart.wb-wait
+										div.dropMenu.miCarritoDiv.mc-noitems-container(style="display: none")
+											div.mc-noitems-arrow
+											div.wrapper
+												div.mc-noitems-div
+													span.mc-noitems-icon
+													span.mc-noitems-content No tienes productos en tu carrito
+									li: span.wb-wait.btn.btnTopNav Entrar
+		main.clickoneroMain.widgetWinbitsMain
+			div.clickoneroWrapper.clickoneroHome
+				div.clickoneroHome-banner
+					div.clickoneroHB-carrusel
+						div.clickoneroHB-wrapper
+							div.clickoneroHB-slide
+								a(href="#"): img(src="", alt="")
+								div
+							- for (i=0;i<3;i++)
+								each val in ['bannerAmor', 'benettonHome']
+									div.clickoneroHB-slide
+										a(href="#"): img(src="clickoneroInclude/images/assets/#{val}.jpg", alt="Banner #{val}")
+										div
+											a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Camisa cuadros Hombre", data-top="90", data-left="414", style="color: #000")
+											a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Tenis Nike Hombre", data-top="170", data-left="550", style="color: #000")
+											a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Chaleco Azul Mujer", data-top="103", data-left="281", style="color: #fff")
+											a.iconBlock.iconFont-cruz.clickoneroToolTip(href="#", data-tooltip="Tenis Nike Mujer", data-top="200", data-left="335", style="color: #f00")
+					div.iconFontArrow.iconFontArrow-prev
+						span.iconFont-left
+						span.iconFont-rightA
+					div.iconFontArrow.iconFontArrow-next
+						span.iconFont-right
+						span.iconFont-leftA
+				div.clickoneroHome-bestOffer
+					h2 Las Mejores Ofertas de <a href="#">Productos</a>
+					div.bestOffer-container
+						div.bestOffer-item
+							a(href="#"): img(src="" alt="")
+							+terminaen('clickoneroFP', 7)
+						- for (i=1;i<9;i++)
+							div.bestOffer-item
+								a(href="#"): img(src="clickoneroInclude/images/assets/3_#{i}.jpg" alt="Campaña #{i}")
+								+terminaen('clickoneroFP', 7)
+				div.clickoneroHome-itemVertical
+					h2 Los Más Vendidos  de <a href="#">Productos</a>
+					div.products-carrusel
+						div.products-wrapper
+							each val, index in ['', 'leggings4', 'leggings5', 'leggings6', 'leggings7', 'leggings8', 'leggings9']
+								div.products-slide
+									if index == 2
+										+productDiv(val, 1)
+									else
+										+productDiv(val)
+							each val, index in ['product1', 'product2', 'product3', 'product4', 'product5']
+								div.products-slide
+									if index == 1 || index == 4
+										+productDiv(val, 1)
+									else
+										+productDiv(val)
+					span.iconFont-left.rightArrows
+					span.iconFont-right.rightArrows
+				div.clickoneroHome-itemHorizontal
+					h2 Las Mejores Ofertas de <a href="#">Viajes</a>
+					div.travel-carrusel
+						div.travel-wrapper
+							each val in ['noimage', '2_9', '2_4', '2_3', '2_8']
+								div.travel-slide
+									+viajesDiv(val, '', 'itemServicio-home', '', 1)
+					span.iconFont-left.rightArrows
+					span.iconFont-right.rightArrows
+				div.clickoneroHome-itemHorizontal.clickoneroLocal
+					h2 Las Mejores <a href="#">Ofertas Locales</a>
+						+selects('', ['Seleccione una zona', 'DF Norte', 'DF Sur', 'Guadalajara', 'Monterrey'], 0, true)
+					div.localOffer-wrapper
+						each val in ['', '2_2', '2_10', '2_11', '2_1', '2_12', '2_13', '2_14', '2_6']
+							+viajesDiv(val, '', 'itemServicio-home')
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				$('.clickoneroFilter-div').customCheckbox();
+				$('.clickoneroFP-productSize').customRadio();
+				$('.clickoneroHB-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroHB-slide',
+						wrapperClass: 'clickoneroHB-wrapper',
+						grabCursor: true,
+						loop: true,
+						autoplay: 5000
+					},
+					arrowLeft: '.iconFontArrow-prev',
+					arrowRight: '.iconFontArrow-next',
+					loop: true,
+					slideCSS: '.clickoneroHB-slide',
+					calculateHeight: true
+				});
+				$('.products-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'products-slide',
+						wrapperClass: 'products-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 5,
+						onSlideClick: function(swiper){
+							$('.clickoneroFP-productSize').customRadio({justClick: true});
+						},
+						onSwiperCreated: function(swiper){
+							$(swiper.activeSlide()).find('.clickoneroFP-overlay').trigger('click');
+							$(swiper.activeSlide()).find('.clickoneroToolTip').trigger('mouseover');
+						}
+					},
+					arrowLeft: '.iconFont-left',
+					arrowRight: '.iconFont-right',
+					loop: true,
+					slideCSS: '.products-slide',
+					calculateHeight: true,
+					slidesNum: 5
+				});
+				$('.travel-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'travel-slide',
+						wrapperClass: 'travel-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 3,
+						onSlideClick: function(swiper){
+							$('.clickoneroFP-productSize').customRadio({justClick: true});
+						},
+						onSwiperCreated: function(swiper){
+							$(swiper.activeSlide()).find('.clickoneroFP-overlay').trigger('click');
+							$(swiper.activeSlide()).find('.clickoneroToolTip').trigger('mouseover');
+						}
+					},
+					arrowLeft: '.iconFont-left',
+					arrowRight: '.iconFont-right',
+					loop: true,
+					slideCSS: '.travel-slide',
+					calculateHeight: true,
+					slidesNum: 3
+				});
+				$('.iconBlock').point();
+				DocumentReady();
+			})();

@@ -1,0 +1,59 @@
+doctype transitional
+html(xmlns="http://www.w3.org/1999/xhtml")
+	head
+		title clickOnero
+		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+		style(type="text/css").
+			td img {
+				display: block;
+			}
+			p {
+				margin: 15px 0;
+			}
+	body(bgcolor="#ffffff", style="text-align: center", topmargin="0", leftmargin="0")
+		include scaffolding/header-mail.jade
+		+topTable
+		+headerLogo
+		table(align="center", border="0", cellpadding="5", cellspacing="0")
+			tr: td: table(width="100%")
+				tr 
+					td(align="left"): +fontFace('21px', '', 'PRODUCTOS')
+					td(align="right"): a(href="#"): +fontFace('', '5574f9', 'VER MÁS OFERTAS DE PRODUCTOS &gt;')
+				tr
+					td: a(href="#"): img(src="images/incase.jpg" alt="incase" width="290" height="185")
+					td: a(href="#"): img(src="images/lacoste.jpg" alt="incase" width="290" height="185")
+			tr: td: table(cellspacing="3")
+				tr
+					td(align="left"): +product('product2', 140, 179)
+					td(align="left"): +product('product3', 140, 179)
+					td(align="left"): +product('product4', 140, 179)
+					td(align="left"): +product('product5', 140, 179)
+				tr
+					td(align="left"): +product('leggings11', 140, 179)
+					td(align="left"): +product('leggings12', 140, 179)
+					td(align="left"): +product('leggings13', 140, 179)
+					td(align="left"): +product('leggings14', 140, 179)
+			tr: td: table(width="100%")
+				tr 
+					td(align="left"): +fontFace('21px', '', 'SERVICIOS')
+					td(align="right"): a(href="#"): +fontFace('', '5574f9', 'VER MÁS OFERTAS DE SERVICIOS &gt;')
+			tr: td: table(cellspacing="3")
+				tr
+					td(align="left"): +product('2_2', 190, 120)
+					td(align="left"): +product('2_7', 190, 120)
+					td(align="left"): +product('2_7', 190, 120)
+				tr
+					td(align="left"): +product('2_1', 190, 120)
+					td(align="left"): +product('2_6', 190, 120)
+					td(align="left"): +product('2_1', 190, 120)
+			tr: td(align="left"): +fontFace('21px', '', 'OTRAS OFERTAS')
+			tr: td: table(cellspacing="0", cellpadding="0")
+				tr
+					td: a(href="#"): img(src="images/nike.jpg" alt="Nike" width="193" height="125")
+					td: a(href="#"): img(src="images/iphone.jpg" alt="iPhone cases" width="193" height="125")
+					td: a(href="#"): img(src="images/inks.jpg" alt="Inks" width="193" height="125")
+				tr
+					td: a(href="#"): img(src="images/herschel.jpg" alt="Herschel" width="193" height="125")
+					td: a(href="#"): img(src="images/bra.jpg" alt="Bra" width="193" height="125")
+					td: a(href="#"): img(src="images/cosmetic.jpg" alt="Cosmetic campaing" width="193" height="125")
+		+mainFooter

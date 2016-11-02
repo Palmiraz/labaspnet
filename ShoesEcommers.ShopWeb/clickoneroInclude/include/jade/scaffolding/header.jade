@@ -1,0 +1,30 @@
+div.clickoneroMainHeader
+	div.clickoneroHeader
+		div.clickoneroLogoLink
+			a(href="#")
+				span.iconFont-o
+				span.iconFont-clicknero
+		div.clickoneroMainSearch
+			input(type="text", placeholder="¿Qué estas buscando?")
+			span.iconFont-lupa
+		div.clickoneroSecundaryNav
+			ul
+				li 4160-0550
+				li: a(href="mailto:info@winbits.com") info@winbits.com 
+			p: a.clickoneroBtn(href="#") Contesta y gana
+				span.iconFont-bit
+	nav.clickoneroMainNav
+		//- div.clickoneroWrapper
+		//- 	div.clickoneroNavFilter
+		//- 		label(for="selectNavFilter") Muéstrame ofertas en:
+		//- 		+selects('clickoneroSelect-navFilter', ['Guadalajara', 'D.F. Sur', 'D.F. Centro', 'D.F. Norte'], 2, '','selectNavFilter')
+		//- 	div.clickoneroNavGender
+		//- 		label Ofertas para:
+		//- 		ul
+		//- 			li(data-filter="HOMBRES"): a(href="#") HOMBRES
+		//- 			li(data-filter="MUJERES"): a(href="#") MUJERES
+		//- 			li.current: a(href="#") AMBAS
+		if !menuLargo
+			include menu.jade
+		else
+			include menuLarge.jade

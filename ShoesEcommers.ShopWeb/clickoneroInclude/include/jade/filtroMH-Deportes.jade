@@ -1,0 +1,124 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			- var crt = 1
+			include scaffolding/header.jade
+			div.clickoneroWrapper
+				div.clickoneroFilter.filterFilter
+					aside
+						h3: a(href="#") Mujeres
+						div.clickoneroFilter-div
+							h4 Deportes
+							div.clickoneroFilter-subsub
+								h5 Marcas
+								each subsub, index in ['Ralph Laurent', 'Champs', 'Armani Exchange', 'Pepe Jeans', 'Tommy Hilfiger']
+									input(type="checkbox", class="clickoneroCheckbox-filter")
+									label #{subsub}
+							div.clickoneroFilter-subsub
+								h5 Categorías
+								each subsub, index in ['Fitness', 'Running', 'Zumba', 'Buceo', 'Jogging', 'Swimming']
+									input(type="checkbox", class="clickoneroCheckbox-filter")
+									label #{subsub}	
+							div.clickoneroFilter-subsub
+								h5 Color
+								//- each subsub, index in [[{ name: 'Negro', color: '000000'}], [{ name: 'Gris', color: 'd7d8d8'}], [{ name: 'Aquamarino', color: '7bdbdc'}], [{ name: 'Rojo', color: 'c00'}], [{ name: 'Rosa', color: 'f06eaa'}], [{ name: 'Verde', color: 'cddc7b'}], [{ name: 'Amarillo', color: 'fc6'}]]
+								//- 	input(type="checkbox", class="clickoneroCheckbox-filter")
+								//- 	label #{subsub[0].name}
+								//- 	span.colorFilter(style="background-color:##{subsub[0].color}")
+								div.clickoneroProductColor
+									- var radioBtns = [[{ name: 'Negro', color: '000000'}], [{ name: 'Gris', color: 'd7d8d8'}], [{ name: 'Aquamarino', color: '7bdbdc'}], [{ name: 'Rojo', color: 'c00'}], [{ name: 'Rosa', color: 'f06eaa'}], [{ name: 'Verde', color: 'cddc7b'}], [{ name: 'Amarillo', color: 'fc6'}]]
+									each radioBtn in radioBtns
+										input(type="radio", name="lookColor", value="#{radioBtn[0].name}", data-color="#{radioBtn[0].color}")
+							div.clickoneroFilter-subsub
+								h5 Talla
+								each subsub, index in ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+									input(type="checkbox", class="clickoneroCheckbox-filter")
+									label #{subsub}	
+					div.clickoneroFilter-products
+						- var filtro = 3
+						include scaffolding/filtro.jade
+						+productDiv('leggings4')
+						+productDiv('leggings5')
+						+productDiv('leggings6')
+						+productDiv('leggings7')
+						+viajesDiv('2_1')
+						+viajesDiv('2_2')
+						+productDiv('leggings8')
+						+viajesDiv('2_3')
+						+productDiv('leggings9')
+						+viajesDiv('2_4')
+						+productDiv('leggings10')
+						+productDiv('leggings11')
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				DocumentReady();
+				$('.clickoneroFilter-div').customCheckbox();
+				$('.clickoneroFP-productSize').customRadio();
+				$('.clickoneroFPB-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroFPB-slide',
+						wrapperClass: 'clickoneroFPB-wrapper',
+						grabCursor: true,
+						loop: true
+					},
+					arrowLeft: '.iconFontArrow-prev',
+					arrowRight: '.iconFontArrow-next',
+					loop: true,
+					slideCSS: '.clickoneroFPB-slide',
+					calculateHeight: true
+				});
+				$('.carrusel-filterProduct').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroFPHS-slide',
+						wrapperClass: 'clickoneroFPHS-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 4,
+						onSlideClick: function(swiper){
+							$('.clickoneroFP-productSize').customRadio({justClick: true});
+						},
+						onSwiperCreated: function(swiper){
+							$(swiper.activeSlide()).find('.clickoneroFP-overlay').trigger('click');
+							$(swiper.activeSlide()).find('.clickoneroToolTip').trigger('mouseover');
+						}
+					},
+					arrowLeft: '.iconFontArrow-prev',
+					arrowRight: '.iconFontArrow-next',
+					loop: true,
+					slideCSS: '.clickoneroFPHS-slide',
+					calculateHeight: true,
+					slidesNum: 4
+				});
+				$('.carrusel-filterService').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroFPHS-slide',
+						wrapperClass: 'clickoneroFPHS-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 2,
+						onSlideClick: function(swiper){
+							$('.clickoneroFP-productSize').customRadio({justClick: true});
+						},
+						onSwiperCreated: function(swiper){
+							$(swiper.activeSlide()).find('.clickoneroFP-overlay').trigger('click');
+							$(swiper.activeSlide()).find('.clickoneroToolTip').trigger('mouseover');
+						}
+					},
+					arrowLeft: '.iconFontArrow-prev',
+					arrowRight: '.iconFontArrow-next',
+					loop: true,
+					slideCSS: '.clickoneroFPHS-slide',
+					calculateHeight: true,
+					slidesNum: 2
+				});
+				$('.clickoneroProductColor').customRadio();
+				$('.clickoneroFilter-subsub').resizeFilter();
+				$('.datePicker-div').chooseDate();
+				$('.iconBlock').point();
+				$('.radio-color').toolTip({clase: 'clickoneroTool-Tip'});
+			})();

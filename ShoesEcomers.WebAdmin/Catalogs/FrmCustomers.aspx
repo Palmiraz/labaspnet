@@ -76,8 +76,24 @@
                     </div>
                     
                     <div class="row">
-                        <asp:GridView ID="GridCustomer" runat="server" CssClass="table" GridLines="None">
+                        <asp:GridView ID="GridCustomer" runat="server" CssClass="table" GridLines="None" AutoGenerateColumns="False" DataSourceID="ObjectCustomer">
+                            <Columns>
+                                <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
+                                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                                <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
+                                <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
+                                <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                                <asp:BoundField DataField="DateBirth" HeaderText="DateBirth" SortExpression="DateBirth" />
+                                <asp:BoundField DataField="DateCreated" HeaderText="DateCreated" SortExpression="DateCreated" />
+                                <asp:BoundField DataField="DateUpdate" HeaderText="DateUpdate" SortExpression="DateUpdate" />
+                            </Columns>
                         </asp:GridView>
+                        
+                        <asp:ObjectDataSource ID="ObjectCustomer" runat="server" SelectMethod="GetCustomers" TypeName="ShoeEcommers.LogicLayer.Repositories.CustomerRepository">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="TxtName" Name="name" PropertyName="Text" Type="String" />
+                            </SelectParameters>
+                        </asp:ObjectDataSource>
                         
                     </div>
 

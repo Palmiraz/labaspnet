@@ -1,0 +1,52 @@
+div.clickoneroService-SVR
+	div.clickoneroService-SVR-divLink
+		span(data-show="clickoneroSuggestionDiv", data-hide="clickoneroRecentViewDiv") SUGGESTIONS
+		span(data-show="clickoneroRecentViewDiv", data-hide="clickoneroSuggestionDiv") VISTOS RECIENTEMENTE
+	each val in ['clickoneroSuggestionDiv', 'clickoneroRecentViewDiv']
+		div.clickoneroSRV(class=val)
+			div.clickoneroService-SVR-carrusel
+				div.clickoneroService-SVR-wrapper
+					- for (var i = 1; i < 9; i++)
+							if i!=5
+								div.clickoneroService-SVR-slide
+									img(src="clickoneroInclude/images/assets/2_#{i}.jpg", alt="Imagen #{i}")
+									div.clickoneroService-SVR-description
+										h3 Descipción / Hotel en dos renglones
+										h4 7 días
+										span.clickoneroService-SVR-price $350
+										span.clickoneroService-SVR-oldprice $650
+										div.clickoneroService-SVR-win
+											span GANA 500
+											+iconBits(class="bit13px")
+									div.clickoneroService-SVR-services
+										div.clickoneroService-SVR-icons
+											span.iconFont-plane(title="Avion")
+											span.iconFont-hotel(title="Hotel")
+											span.iconFont-restaurant(title="Restaurant")
+											span.iconFont-ticket(title="Ticket")
+											span.iconFont-bus(title="Transporte")
+										div.clickoneroService-SVR-msi
+											h4 3, 6 y 12 Meses sin intereses
+											ul
+												li
+													span.slideInput-msi 3
+													| pagos de 
+													strong $
+														span.slideInput-msiPrice 289
+												li
+													span.slideInput-msi 6
+													| pagos de 
+													strong $
+														span.slideInput-msiPrice 120
+												li
+													span.slideInput-msi 12
+													| pagos de 
+													strong $
+														span.slideInput-msiPrice 30
+									div.clickoneroService-SVR-buynow
+										a.clickoneroSuggestionRecentViewButton(href="#")
+											span.clickoneroCompraAhora compra ahora
+			div.clickoneroArrows.clickoneroArrowLeft
+				span.iconFont-left(title="Anterior")
+			div.clickoneroArrows.clickoneroArrowRight
+				span.iconFont-right(title="Siguiente")

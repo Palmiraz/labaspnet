@@ -1,0 +1,38 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroModalBody
+			div.clickoneroMainModal.clickoneroMainModal-product
+				div.clickoneroProductDetail
+					div.clickoneroProductImage
+						div.clickoneroProductMainImage
+						div.clickonero-sold-out AGOTADO
+						div.clickoneroProductImageCarousel-carrusel
+							div.clickoneroProductImageCarousel-wrapper
+								div.clickoneroProductImageCarousel-slide
+									- for (var j = 1; j < 3; j++)
+										- for (var i = 1; i < 5; i++)
+											img(src="clickoneroInclude/images/assets/blackdress#{i}-tumb.jpg", alt="Imagen #{i}", data-image="clickoneroInclude/images/assets/blackdress#{i}.jpg")
+							div.clickoneroProductImageCarousel-scrollbar
+					+descriptionDetail('clickoneroProductDescription')
+		script(src="clickoneroInclude/include/js/script.js")
+		script.
+			(function(){
+				$('.clickoneroProductImageCarousel-carrusel').carruselVerticalSwiper({
+					slide: 'clickoneroProductImageCarousel-slide',
+					wrapper: 'clickoneroProductImageCarousel-wrapper',
+					scrollbar: '.clickoneroProductImageCarousel-scrollbar'
+				});
+				$('.clickoneroProductSize, .clickoneroProductText').customRadio();
+				$('.clickoneroProductColor').customRadio({tooltipClass: 'clickoneroTool-Tip'});
+				$('.clickoneroProductImage').imageProduct({
+					container: '.clickoneroProductMainImage',
+					imgs: '.clickoneroProductImageCarousel-slide'
+				});
+				$('.clickoneroProductTabs').tabs({
+					collapsible: true,
+					heightStyle: 'auto'
+				});
+				DocumentReady();
+			})();

@@ -1,0 +1,71 @@
+doctype html
+html(lang="es", class="clickoneroVertical")
+	include scaffolding/head.jade
+	body
+		div.clickoneroPreloader: p
+		header: div#winbits-widget
+		main.clickoneroMain.widgetWinbitsMain
+			- var crt = 2
+			include scaffolding/header.jade
+			div.clickoneroWrapper
+				div.wb-breadcrums.wb-listado
+					div.wb-breadcrums-div
+						span: a(href="#") Home
+						span.iconFont-right3
+						span Búsqueda
+				div.clickoneroFilter.filterDepartment
+					aside
+						h3 Productos
+						div.clickoneroFilter-div
+							h4 Categorías
+							each val in ['Mujer', 'Hombre', 'Hogar', 'Tecnología', 'Infantiles']
+								a(href="#") #{val}
+						div.clickoneroFilter-div
+							h4 Marcas
+							each val in ['Ralph Laurent', 'Champs', 'Armani Woman']
+								a(href="#") #{val}
+					div.clickoneroFilter-products
+						- var filtro = 3
+						include scaffolding/filtro.jade
+						+filterNotFound
+		include scaffolding/footer.jade
+		script.
+			(function(){
+				DocumentReady();
+				$('.clickoneroSRV-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroSRV-slide',
+						wrapperClass: 'clickoneroSRV-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 5
+					},
+					centerArrow: false,
+					arrowLeft: '.iconFont-left3',
+					arrowRight: '.iconFont-right3',
+					slidesNum: 5,
+					loop: true,
+					slideCSS: '.clickoneroSRV-slide',
+					calculateHeight: true
+				});
+				$('.clickoneroService-SVR-carrusel').carouselSwiper({
+					optionsSwiper: {
+						slideClass: 'clickoneroService-SVR-slide',
+						wrapperClass: 'clickoneroService-SVR-wrapper',
+						grabCursor: true,
+						loop: true,
+						slidesPerView: 2
+					},
+					centerArrow: false,
+					arrowLeft: '.iconFont-left3',
+					arrowRight: '.iconFont-right3',
+					slidesNum: 2,
+					loop: true,
+					slideCSS: '.clickoneroService-SVR-slide',
+					calculateHeight: true
+				});
+				$('.clickoneroFilter-div').customCheckbox();
+				$('.clickoneroFP-productSize').customRadio();
+				$('.clickoneroFilter-div').resizeFilter();
+				$('.clickoneroToolTip').tooltip();
+			})();

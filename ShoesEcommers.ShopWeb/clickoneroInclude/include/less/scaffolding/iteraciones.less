@@ -1,0 +1,37 @@
+// Iteraciones
+.iIcons(@width, @item, @index, @top, @height) when (@index >= 0){
+	@tmp: ~".@{item}@{index}";
+	@{tmp} {
+		background-position: -(@index*@width) @top;
+		.size(@height, @width);
+	}
+	.iIcons(@width, @item, @index - 1, @top, @height);
+}
+
+.iIconsBG(@width, @item, @index, @top) when (@index >= 0){
+	@tmp: ~".@{item}@{index}";
+	@{tmp} {
+		background-position: -(@index*@width) @top;
+	}
+	.iIconsBG(@width, @item, @index - 1, @top);
+}
+
+.iWidth(@item, @index) when (@index >= 0){
+	@tmp: ~".@{item}@{index}";
+	@{tmp} {
+		width: ~"@{index}%";
+	}
+	.iWidth(@item, @index - 5);
+}
+.iHeightProduct(@item, @ancho, @index) when (@index > 0){
+	@tmp: ~".@{item}@{index}";
+	@{tmp} {
+		height: @index*@ancho !important;
+	}
+	.iHeightProduct(@item, @ancho, @index - 1);
+}
+.iHeightProduct("looqProductImageCarousel-slide.looqProductItems", 90px, 20); // Productos en modales
+.iHeightProduct("looqMainProductDetail .looqProductImageCarousel-slide.looqProductItems", 94px, 20); // Productos en modales
+.iHeightProduct("looqProductLookCarousel-slide.looqProductItems", 134px, 20); //Productos en aside
+.iHeightProduct("looqLookItems-slide.looqProductItems", 200px, 20); //Productos del look en lookCompleto
+.iHeightProduct("looqLookOtherLooksCarousel-slide.looqProductItems", 150px, 20); //Otros looks en lookCompleto
