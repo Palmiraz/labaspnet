@@ -404,12 +404,6 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ShoeEcommers.LogicLayer\ShoeEcommers.LogicLayer.csproj">
-      <Project>{b5a7d260-0217-4edf-baa1-0bbdd01b2fbd}</Project>
-      <Name>ShoeEcommers.LogicLayer</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -474,7 +474,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Data\InsertData.txt" />
     <Content Include="Data\SaveData.txt" />
     <Content Include="Data\ScriptChange.txt" />
     <Content Include="favicon.ico" />
