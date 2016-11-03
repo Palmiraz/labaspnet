@@ -83,3 +83,11 @@ delete 	ProductsData
 delete 	StatusOrders	 
 delete 	Brands	 
 
+update products
+set active = 0
+from(
+select max(id) as id, max(name) name
+from products
+group by name) t
+where t.id = products.id
+
