@@ -17,6 +17,7 @@ namespace ShoeEcommers.LogicLayer.Entities
         public Products()
         {
             this.Skus = new HashSet<Skus>();
+            this.Campaigns = new HashSet<Campaigns>();
         }
     
         public int Id { get; set; }
@@ -25,9 +26,11 @@ namespace ShoeEcommers.LogicLayer.Entities
         public string Name { get; set; }
         public string Model { get; set; }
         public bool Active { get; set; }
+        public Nullable<int> IdRef { get; set; }
     
         public virtual Brands Brands { get; set; }
         public virtual SubCategories SubCategories { get; set; }
         public virtual ICollection<Skus> Skus { get; set; }
+        public virtual ICollection<Campaigns> Campaigns { get; set; }
     }
 }

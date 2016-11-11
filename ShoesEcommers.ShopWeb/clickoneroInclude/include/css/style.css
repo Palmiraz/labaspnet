@@ -3824,7 +3824,7 @@ input[type="submit"].btn.btn-mini {
 .clickoneroErrorMsg {
   background: #fee7eb;
   color: #dd092c;
-  display: none;
+ 
   font-size: 15px;
   margin: 5px 10px;
   font-family: 'OmnesMedium', Arial;
@@ -9669,4 +9669,18 @@ footer .clickoneroFooter-links.clickoneroFooter-clickonero div.clickoneroFooter-
 .msie8 .products-slide .clickoneroFP-productSize,
 .msie7 .products-slide .clickoneroFP-productSize {
   display: none;
+}
+.tableInit {
+    width:100%;
+
+}
+.tableInit th{
+    margin: 5px;
+    border-bottom-color: green;
+    border-bottom-style: solid;
+    
+}
+
+.tableInit .food {
+    color: green;
 }

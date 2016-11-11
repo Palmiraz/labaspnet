@@ -1,50 +1,55 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@model ShoeEcommers.LogicLayer.Entities.ContactUs
+@{
+    ViewBag.Title = "Contacto";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>@ViewBag.Message</h2>
-</hgroup>
 
-<section class="contact">
-    <header>
-        <h3>Phone</h3>
-    </header>
-    <p>
-        <span class="label">Main:</span>
-        <span>425.555.0100</span>
-    </p>
-    <p>
-        <span class="label">After Hours:</span>
-        <span>425.555.0199</span>
-    </p>
-</section>
 
-<section class="contact">
-    <header>
-        <h3>Email</h3>
-    </header>
-    <p>
-        <span class="label">Support:</span>
-        <span><a href="mailto:Support@example.com">Support@example.com</a></span>
-    </p>
-    <p>
-        <span class="label">Marketing:</span>
-        <span><a href="mailto:Marketing@example.com">Marketing@example.com</a></span>
-    </p>
-    <p>
-        <span class="label">General:</span>
-        <span><a href="mailto:General@example.com">General@example.com</a></span>
-    </p>
-</section>
+<div class="clickoneroWrapper">
+    <hr/>
+    <h2>Contactanos </h2>
+    <hr/>
+    @if (ViewBag.IsSaved == null)
+    {
+        using (Html.BeginForm())
+        {
+            <div class="dataTable">
+                <table class="width50">
+                    <tr>
+                        <td>Nombre:</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.FullName, new {@class = "clickoneroMainSearch"})
+                            @Html.ValidationMessageFor(m => m.FullName, null, new {@class = "clickoneroErrorMsg"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Correo:</td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Email, new {@class = "clickoneroMainSearch"})
+                            @Html.ValidationMessageFor(m => m.Email, null, new {@class = "clickoneroErrorMsg"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Comentarios:</td>
+                        <td>
+                            @Html.TextAreaFor(m => m.Comments, new {@class = "clickoneroMainSearch"})
+                            @Html.ValidationMessageFor(m => m.Comments, null, new {@class = "clickoneroErrorMsg"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Comentarios:</td>
+                        <td><input type="submit" class="clickoneroBtn" value="Enviar"/></td>
+                    </tr>
+                </table>
+            </div>
+        }
+    }
+    else
+    {
+        <div>
+            <h2>Pronto nos pondremos en contacto contigo. Gracias!</h2>
+        </div>
+    }
+</div>
 
-<section class="contact">
-    <header>
-        <h3>Address</h3>
-    </header>
-    <p>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399
-    </p>
-</section>
+ @MyHelpers.MakeNote("Esta es una prueba")

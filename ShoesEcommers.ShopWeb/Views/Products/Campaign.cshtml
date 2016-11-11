@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<IGrouping<ShoeEcommers.LogicLayer.Modelos.GroupsSkusFront, ShoeEcommers.LogicLayer.Entities.Skus>>
+@{
     ViewBag.Title = "Campaign";
 }
 
@@ -104,253 +105,251 @@
               </div>
             </div>
           </aside>
-          <div class="clickoneroFilter-products">
+        <div class="clickoneroFilter-products">
+           
+        @foreach (var item in Model)
+        {
             <div class="clickoneroFP-item">
-              <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings1.jpg" alt="Leggings 1"></a>
-                <div class="clickoneroFP-overlay">
-                  <div class="clickoneroFP-soldout">
-                    <h3>SOLD OUT</h3><a href="waitinglist.html" data-fancyboxWidth="745" class="clickoneroFancybox">Añadir a waitinglist</a>
-                  </div>
+                <div class="clickoneroFP-image"><a href="/Products/Details/@item.First().IdProduct">
+                        <img src="//@item.First().Thumbnail" alt="Leggings 4">
+                    </a>
+                    <div class="clickoneroFP-overlay">
+                        <div class="clickoneroFP-productSize">
+                            @foreach (var sku in item)
+                            {
+                                <input type="radio" name="ckSize" value="@sku.Sku">
+                            }
+                            <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
+                            <p class="clickoneroError">Por favor escoja una talla</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <h3>Denim look leggings</h3>
-              <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
-              <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
-                <label>307</label>
-              </div>
-            </div>
-            <div class="clickoneroFP-item">
-              <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings4.jpg" alt="Leggings 4"></a>
-                <div class="clickoneroFP-overlay">
-                  <div class="clickoneroFP-productSize">
-                    <input type="radio" name="ckSize" value="XS" data-soldout="true">
-                    <input type="radio" name="ckSize" value="S">
-                    <input type="radio" name="ckSize" value="M">
-                    <input type="radio" name="ckSize" value="L">
-                    <input type="radio" name="ckSize" value="XL">
-                    <input type="radio" name="ckSize" value="XXXL">
-                    <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
-                    <p class="clickoneroError">Por favor escoja una talla</p>
-                  </div>
+                <h3>Denim look leggings</h3>
+                <h4>@item.First().Products.Name</h4>
+                <span class="clickoneroFP-actualPrice">@item.First().Price</span>
+                <span class="clickoneroFP-listPrice">@item.First().ListPrice</span>
+                <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
+                    <label>307</label>
                 </div>
-              </div>
-              <h3>Denim look leggings</h3>
-              <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
-              <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
-                <label>307</label>
-              </div>
             </div>
-            <div class="clickoneroFP-item">
-              <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings5.jpg" alt="Leggings 5"></a>
+        }
+
+ @foreach (var item in Model)
+ {
+     
+     <div class="clickoneroFP-item">
+         <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings5.jpg" alt="Leggings 5"></a>
+             <div class="clickoneroFP-overlay">
+                 <div class="clickoneroFP-productSize">
+                     <input type="radio" name="ckSize" value="XS" data-soldout="true">
+                     <input type="radio" name="ckSize" value="S">
+                     <input type="radio" name="ckSize" value="M">
+                     <input type="radio" name="ckSize" value="L">
+                     <input type="radio" name="ckSize" value="XL">
+                     <input type="radio" name="ckSize" value="XXXL">
+                     <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
+                     <p class="clickoneroError">Por favor escoja una talla</p>
+                 </div>
+             </div>
+         </div>
+         <h3>Denim look leggings</h3>
+         <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
+         <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
+             <label>307</label>
+         </div>
+     </div>
+ }
+
+        <div class="clickoneroFP-item">
+            <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings6.jpg" alt="Leggings 6"></a>
                 <div class="clickoneroFP-overlay">
-                  <div class="clickoneroFP-productSize">
-                    <input type="radio" name="ckSize" value="XS" data-soldout="true">
-                    <input type="radio" name="ckSize" value="S">
-                    <input type="radio" name="ckSize" value="M">
-                    <input type="radio" name="ckSize" value="L">
-                    <input type="radio" name="ckSize" value="XL">
-                    <input type="radio" name="ckSize" value="XXXL">
-                    <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
-                    <p class="clickoneroError">Por favor escoja una talla</p>
-                  </div>
+                    <div class="clickoneroFP-productSize">
+                        <input type="radio" name="ckSize" value="XS" data-soldout="true">
+                        <input type="radio" name="ckSize" value="S">
+                        <input type="radio" name="ckSize" value="M">
+                        <input type="radio" name="ckSize" value="L">
+                        <input type="radio" name="ckSize" value="XL">
+                        <input type="radio" name="ckSize" value="XXXL">
+                        <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
+                        <p class="clickoneroError">Por favor escoja una talla</p>
+                    </div>
                 </div>
-              </div>
-              <h3>Denim look leggings</h3>
-              <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
-              <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
-                <label>307</label>
-              </div>
             </div>
-            <div class="clickoneroFP-item">
-              <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings6.jpg" alt="Leggings 6"></a>
+            <h3>Denim look leggings</h3>
+            <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
+            <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
+                <label>307</label>
+            </div>
+        </div>
+        <div class="clickoneroFP-item">
+            <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings7.jpg" alt="Leggings 7"></a>
                 <div class="clickoneroFP-overlay">
-                  <div class="clickoneroFP-productSize">
-                    <input type="radio" name="ckSize" value="XS" data-soldout="true">
-                    <input type="radio" name="ckSize" value="S">
-                    <input type="radio" name="ckSize" value="M">
-                    <input type="radio" name="ckSize" value="L">
-                    <input type="radio" name="ckSize" value="XL">
-                    <input type="radio" name="ckSize" value="XXXL">
-                    <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
-                    <p class="clickoneroError">Por favor escoja una talla</p>
-                  </div>
+                    <div class="clickoneroFP-productSize">
+                        <input type="radio" name="ckSize" value="XS" data-soldout="true">
+                        <input type="radio" name="ckSize" value="S">
+                        <input type="radio" name="ckSize" value="M">
+                        <input type="radio" name="ckSize" value="L">
+                        <input type="radio" name="ckSize" value="XL">
+                        <input type="radio" name="ckSize" value="XXXL">
+                        <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
+                        <p class="clickoneroError">Por favor escoja una talla</p>
+                    </div>
                 </div>
-              </div>
-              <h3>Denim look leggings</h3>
-              <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
-              <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
-                <label>307</label>
-              </div>
             </div>
-            <div class="clickoneroFP-item">
-              <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings7.jpg" alt="Leggings 7"></a>
+            <h3>Denim look leggings</h3>
+            <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
+            <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
+                <label>307</label>
+            </div>
+        </div>
+        <div class="clickoneroFP-item">
+            <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings8.jpg" alt="Leggings 8"></a>
                 <div class="clickoneroFP-overlay">
-                  <div class="clickoneroFP-productSize">
-                    <input type="radio" name="ckSize" value="XS" data-soldout="true">
-                    <input type="radio" name="ckSize" value="S">
-                    <input type="radio" name="ckSize" value="M">
-                    <input type="radio" name="ckSize" value="L">
-                    <input type="radio" name="ckSize" value="XL">
-                    <input type="radio" name="ckSize" value="XXXL">
-                    <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
-                    <p class="clickoneroError">Por favor escoja una talla</p>
-                  </div>
+                    <div class="clickoneroFP-productSize">
+                        <input type="radio" name="ckSize" value="XS" data-soldout="true">
+                        <input type="radio" name="ckSize" value="S">
+                        <input type="radio" name="ckSize" value="M">
+                        <input type="radio" name="ckSize" value="L">
+                        <input type="radio" name="ckSize" value="XL">
+                        <input type="radio" name="ckSize" value="XXXL">
+                        <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
+                        <p class="clickoneroError">Por favor escoja una talla</p>
+                    </div>
                 </div>
-              </div>
-              <h3>Denim look leggings</h3>
-              <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
-              <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
-                <label>307</label>
-              </div>
             </div>
-            <div class="clickoneroFP-item">
-              <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings8.jpg" alt="Leggings 8"></a>
+            <h3>Denim look leggings</h3>
+            <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
+            <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
+                <label>307</label>
+            </div>
+        </div>
+        <div class="clickoneroFP-item">
+            <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings9.jpg" alt="Leggings 9"></a>
                 <div class="clickoneroFP-overlay">
-                  <div class="clickoneroFP-productSize">
-                    <input type="radio" name="ckSize" value="XS" data-soldout="true">
-                    <input type="radio" name="ckSize" value="S">
-                    <input type="radio" name="ckSize" value="M">
-                    <input type="radio" name="ckSize" value="L">
-                    <input type="radio" name="ckSize" value="XL">
-                    <input type="radio" name="ckSize" value="XXXL">
-                    <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
-                    <p class="clickoneroError">Por favor escoja una talla</p>
-                  </div>
+                    <div class="clickoneroFP-productSize">
+                        <input type="radio" name="ckSize" value="XS" data-soldout="true">
+                        <input type="radio" name="ckSize" value="S">
+                        <input type="radio" name="ckSize" value="M">
+                        <input type="radio" name="ckSize" value="L">
+                        <input type="radio" name="ckSize" value="XL">
+                        <input type="radio" name="ckSize" value="XXXL">
+                        <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
+                        <p class="clickoneroError">Por favor escoja una talla</p>
+                    </div>
                 </div>
-              </div>
-              <h3>Denim look leggings</h3>
-              <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
-              <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
-                <label>307</label>
-              </div>
             </div>
-            <div class="clickoneroFP-item">
-              <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings9.jpg" alt="Leggings 9"></a>
+            <h3>Denim look leggings</h3>
+            <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
+            <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
+                <label>307</label>
+            </div>
+        </div>
+        <div class="clickoneroFP-item">
+            <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings10.jpg" alt="Leggings 10"></a>
                 <div class="clickoneroFP-overlay">
-                  <div class="clickoneroFP-productSize">
-                    <input type="radio" name="ckSize" value="XS" data-soldout="true">
-                    <input type="radio" name="ckSize" value="S">
-                    <input type="radio" name="ckSize" value="M">
-                    <input type="radio" name="ckSize" value="L">
-                    <input type="radio" name="ckSize" value="XL">
-                    <input type="radio" name="ckSize" value="XXXL">
-                    <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
-                    <p class="clickoneroError">Por favor escoja una talla</p>
-                  </div>
+                    <div class="clickoneroFP-productSize">
+                        <input type="radio" name="ckSize" value="XS" data-soldout="true">
+                        <input type="radio" name="ckSize" value="S">
+                        <input type="radio" name="ckSize" value="M">
+                        <input type="radio" name="ckSize" value="L">
+                        <input type="radio" name="ckSize" value="XL">
+                        <input type="radio" name="ckSize" value="XXXL">
+                        <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
+                        <p class="clickoneroError">Por favor escoja una talla</p>
+                    </div>
                 </div>
-              </div>
-              <h3>Denim look leggings</h3>
-              <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
-              <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
-                <label>307</label>
-              </div>
             </div>
-            <div class="clickoneroFP-item">
-              <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings10.jpg" alt="Leggings 10"></a>
+            <h3>Denim look leggings</h3>
+            <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
+            <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
+                <label>307</label>
+            </div>
+        </div>
+        <div class="clickoneroFP-item">
+            <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings11.jpg" alt="Leggings 11"></a>
                 <div class="clickoneroFP-overlay">
-                  <div class="clickoneroFP-productSize">
-                    <input type="radio" name="ckSize" value="XS" data-soldout="true">
-                    <input type="radio" name="ckSize" value="S">
-                    <input type="radio" name="ckSize" value="M">
-                    <input type="radio" name="ckSize" value="L">
-                    <input type="radio" name="ckSize" value="XL">
-                    <input type="radio" name="ckSize" value="XXXL">
-                    <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
-                    <p class="clickoneroError">Por favor escoja una talla</p>
-                  </div>
+                    <div class="clickoneroFP-productSize">
+                        <input type="radio" name="ckSize" value="XS" data-soldout="true">
+                        <input type="radio" name="ckSize" value="S">
+                        <input type="radio" name="ckSize" value="M">
+                        <input type="radio" name="ckSize" value="L">
+                        <input type="radio" name="ckSize" value="XL">
+                        <input type="radio" name="ckSize" value="XXXL">
+                        <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
+                        <p class="clickoneroError">Por favor escoja una talla</p>
+                    </div>
                 </div>
-              </div>
-              <h3>Denim look leggings</h3>
-              <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
-              <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
-                <label>307</label>
-              </div>
             </div>
-            <div class="clickoneroFP-item">
-              <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings11.jpg" alt="Leggings 11"></a>
+            <h3>Denim look leggings</h3>
+            <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
+            <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
+                <label>307</label>
+            </div>
+        </div>
+        <div class="clickoneroFP-item">
+            <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings12.jpg" alt="Leggings 12"></a>
                 <div class="clickoneroFP-overlay">
-                  <div class="clickoneroFP-productSize">
-                    <input type="radio" name="ckSize" value="XS" data-soldout="true">
-                    <input type="radio" name="ckSize" value="S">
-                    <input type="radio" name="ckSize" value="M">
-                    <input type="radio" name="ckSize" value="L">
-                    <input type="radio" name="ckSize" value="XL">
-                    <input type="radio" name="ckSize" value="XXXL">
-                    <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
-                    <p class="clickoneroError">Por favor escoja una talla</p>
-                  </div>
+                    <div class="clickoneroFP-productSize">
+                        <input type="radio" name="ckSize" value="XS" data-soldout="true">
+                        <input type="radio" name="ckSize" value="S">
+                        <input type="radio" name="ckSize" value="M">
+                        <input type="radio" name="ckSize" value="L">
+                        <input type="radio" name="ckSize" value="XL">
+                        <input type="radio" name="ckSize" value="XXXL">
+                        <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
+                        <p class="clickoneroError">Por favor escoja una talla</p>
+                    </div>
                 </div>
-              </div>
-              <h3>Denim look leggings</h3>
-              <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
-              <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
-                <label>307</label>
-              </div>
             </div>
-            <div class="clickoneroFP-item">
-              <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings12.jpg" alt="Leggings 12"></a>
+            <h3>Denim look leggings</h3>
+            <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
+            <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
+                <label>307</label>
+            </div>
+        </div>
+        <div class="clickoneroFP-item">
+            <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings13.jpg" alt="Leggings 13"></a>
                 <div class="clickoneroFP-overlay">
-                  <div class="clickoneroFP-productSize">
-                    <input type="radio" name="ckSize" value="XS" data-soldout="true">
-                    <input type="radio" name="ckSize" value="S">
-                    <input type="radio" name="ckSize" value="M">
-                    <input type="radio" name="ckSize" value="L">
-                    <input type="radio" name="ckSize" value="XL">
-                    <input type="radio" name="ckSize" value="XXXL">
-                    <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
-                    <p class="clickoneroError">Por favor escoja una talla</p>
-                  </div>
+                    <div class="clickoneroFP-productSize">
+                        <input type="radio" name="ckSize" value="XS" data-soldout="true">
+                        <input type="radio" name="ckSize" value="S">
+                        <input type="radio" name="ckSize" value="M">
+                        <input type="radio" name="ckSize" value="L">
+                        <input type="radio" name="ckSize" value="XL">
+                        <input type="radio" name="ckSize" value="XXXL">
+                        <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
+                        <p class="clickoneroError">Por favor escoja una talla</p>
+                    </div>
                 </div>
-              </div>
-              <h3>Denim look leggings</h3>
-              <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
-              <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
-                <label>307</label>
-              </div>
             </div>
-            <div class="clickoneroFP-item">
-              <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings13.jpg" alt="Leggings 13"></a>
+            <h3>Denim look leggings</h3>
+            <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
+            <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
+                <label>307</label>
+            </div>
+        </div>
+        <div class="clickoneroFP-item">
+            <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings14.jpg" alt="Leggings 14"></a>
                 <div class="clickoneroFP-overlay">
-                  <div class="clickoneroFP-productSize">
-                    <input type="radio" name="ckSize" value="XS" data-soldout="true">
-                    <input type="radio" name="ckSize" value="S">
-                    <input type="radio" name="ckSize" value="M">
-                    <input type="radio" name="ckSize" value="L">
-                    <input type="radio" name="ckSize" value="XL">
-                    <input type="radio" name="ckSize" value="XXXL">
-                    <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
-                    <p class="clickoneroError">Por favor escoja una talla</p>
-                  </div>
+                    <div class="clickoneroFP-productSize">
+                        <input type="radio" name="ckSize" value="XS" data-soldout="true">
+                        <input type="radio" name="ckSize" value="S">
+                        <input type="radio" name="ckSize" value="M">
+                        <input type="radio" name="ckSize" value="L">
+                        <input type="radio" name="ckSize" value="XL">
+                        <input type="radio" name="ckSize" value="XXXL">
+                        <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
+                        <p class="clickoneroError">Por favor escoja una talla</p>
+                    </div>
                 </div>
-              </div>
-              <h3>Denim look leggings</h3>
-              <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
-              <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
-                <label>307</label>
-              </div>
             </div>
-            <div class="clickoneroFP-item">
-              <div class="clickoneroFP-image"><a href="#"><img src="/clickoneroInclude/images/assets/leggings14.jpg" alt="Leggings 14"></a>
-                <div class="clickoneroFP-overlay">
-                  <div class="clickoneroFP-productSize">
-                    <input type="radio" name="ckSize" value="XS" data-soldout="true">
-                    <input type="radio" name="ckSize" value="S">
-                    <input type="radio" name="ckSize" value="M">
-                    <input type="radio" name="ckSize" value="L">
-                    <input type="radio" name="ckSize" value="XL">
-                    <input type="radio" name="ckSize" value="XXXL">
-                    <input type="submit" value="Añadir a carrito" class="clickoneroBtnCart">
-                    <p class="clickoneroError">Por favor escoja una talla</p>
-                  </div>
-                </div>
-              </div>
-              <h3>Denim look leggings</h3>
-              <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
-              <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
+            <h3>Denim look leggings</h3>
+            <h4>Pull &amp; Bear</h4><span class="clickoneroFP-actualPrice">$540</span><span class="clickoneroFP-listPrice">$760</span>
+            <div class="clickoneroFP-winWinbits"><span>GANA</span><em class="clickoneroIcon clickoneroWinbits12px"></em>
                 <label>307</label>
-              </div>
             </div>
-          </div>
+        </div>
+        </div>
         </div>
       </div>
 

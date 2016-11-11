@@ -8,7 +8,10 @@
         <EntityContainer Name="ecommersModelStoreContainer">
           <EntitySet Name="AttributeSkus" EntityType="ecommersModel.Store.AttributeSkus" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Brands" EntityType="ecommersModel.Store.Brands" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Campaigns" EntityType="ecommersModel.Store.Campaigns" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CampaignsProducts" EntityType="ecommersModel.Store.CampaignsProducts" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Categories" EntityType="ecommersModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ContactUs" EntityType="ecommersModel.Store.ContactUs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Customers" EntityType="ecommersModel.Store.Customers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Department" EntityType="ecommersModel.Store.Department" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GroupsAttributes" EntityType="ecommersModel.Store.GroupsAttributes" store:Type="Tables" Schema="dbo" />
@@ -26,6 +29,14 @@
           <AssociationSet Name="FK_AttributeSkus_Skus" Association="ecommersModel.Store.FK_AttributeSkus_Skus">
             <End Role="Skus" EntitySet="Skus" />
             <End Role="AttributeSkus" EntitySet="AttributeSkus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampaignsProducts_Campaigns" Association="ecommersModel.Store.FK_CampaignsProducts_Campaigns">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="CampaignsProducts" EntitySet="CampaignsProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampaignsProducts_Products" Association="ecommersModel.Store.FK_CampaignsProducts_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="CampaignsProducts" EntitySet="CampaignsProducts" />
           </AssociationSet>
           <AssociationSet Name="FK_Categories_Department" Association="ecommersModel.Store.FK_Categories_Department">
             <End Role="Department" EntitySet="Department" />
@@ -85,6 +96,26 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Brand" Type="varchar" Nullable="false" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Campaigns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="UrlImageMedium" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="UrlImagePrincipal" Type="varchar" MaxLength="300" />
+          <Property Name="OrderCamp" Type="int" Nullable="false" />
+          <Property Name="OrderPrincipal" Type="int" />
+          <Property Name="IsPrincipal" Type="bit" />
+        </EntityType>
+        <EntityType Name="CampaignsProducts">
+          <Key>
+            <PropertyRef Name="IdProduct" />
+            <PropertyRef Name="IdCampaign" />
+          </Key>
+          <Property Name="IdProduct" Type="int" Nullable="false" />
+          <Property Name="IdCampaign" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
@@ -92,6 +123,16 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdDepartment" Type="int" Nullable="false" />
           <Property Name="Category" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ContactUs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Comments" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -103,6 +144,7 @@
           <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="DateBirth" Type="datetime" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -118,6 +160,7 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="GroupName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="TypeGroup" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ValueGroup" Type="varchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="ImagesSkus">
           <Key>
@@ -126,6 +169,7 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdSku" Type="int" Nullable="false" />
           <Property Name="UrlImage" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="TypeImage" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -153,9 +197,10 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdBrand" Type="int" Nullable="false" />
           <Property Name="IdSubcategory" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="Model" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Model" Type="varchar" MaxLength="100" />
           <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IdRef" Type="int" />
         </EntityType>
         <EntityType Name="Skus">
           <Key>
@@ -163,11 +208,12 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdProduct" Type="int" Nullable="false" />
-          <Property Name="Sku" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Sku" Type="varchar" MaxLength="100" />
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="Price" Type="money" Nullable="false" />
           <Property Name="ListPrice" Type="money" Nullable="false" />
           <Property Name="Thumbnail" Type="varchar" MaxLength="255" />
+          <Property Name="IdRef" Type="int" />
         </EntityType>
         <EntityType Name="StatusOrders">
           <Key>
@@ -205,6 +251,30 @@
             </Principal>
             <Dependent Role="AttributeSkus">
               <PropertyRef Name="IdSku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampaignsProducts_Campaigns">
+          <End Role="Campaigns" Type="ecommersModel.Store.Campaigns" Multiplicity="1" />
+          <End Role="CampaignsProducts" Type="ecommersModel.Store.CampaignsProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaigns">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampaignsProducts">
+              <PropertyRef Name="IdCampaign" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampaignsProducts_Products">
+          <End Role="Products" Type="ecommersModel.Store.Products" Multiplicity="1" />
+          <End Role="CampaignsProducts" Type="ecommersModel.Store.CampaignsProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CampaignsProducts">
+              <PropertyRef Name="IdProduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -410,7 +480,7 @@
             <End Role="Skus" EntitySet="Skus" />
           </AssociationSet>
           <FunctionImport Name="DeleteCustomer">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetCustomer" ReturnType="Collection(ecommersModel.GetCustomer_Result)">
             <Parameter Name="Id" Mode="In" Type="Int32" />
@@ -424,6 +494,12 @@
             <Parameter Name="Email" Mode="In" Type="String" />
             <Parameter Name="DateBirth" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="Campaigns" EntityType="ecommersModel.Campaigns" />
+          <AssociationSet Name="CampaignsProducts" Association="ecommersModel.CampaignsProducts">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="ContactUs" EntityType="ecommersModel.ContactUs" />
         </EntityContainer>
         <EntityType Name="AttributeSkus">
           <Key>
@@ -466,6 +542,7 @@
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="DateBirth" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Orders" Relationship="ecommersModel.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
+          <Property Type="Int32" Name="IdUser" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -483,6 +560,7 @@
           <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="TypeGroup" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="AttributeSkus" Relationship="ecommersModel.FK_AttributeSkus_GroupsAttributes" FromRole="GroupsAttributes" ToRole="AttributeSkus" />
+          <Property Type="String" Name="ValueGroup" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ImagesSkus">
           <Key>
@@ -492,6 +570,7 @@
           <Property Name="IdSku" Type="Int32" Nullable="false" />
           <Property Name="UrlImage" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Skus" Relationship="ecommersModel.FK_ImagesSkus_Skus" FromRole="ImagesSkus" ToRole="Skus" />
+          <Property Type="String" Name="TypeImage" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -524,12 +603,14 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdBrand" Type="Int32" Nullable="false" />
           <Property Name="IdSubcategory" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="Model" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Model" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Brands" Relationship="ecommersModel.FK_Products_Brands" FromRole="Products" ToRole="Brands" />
           <NavigationProperty Name="SubCategories" Relationship="ecommersModel.FK_Products_SubCategories" FromRole="Products" ToRole="SubCategories" />
           <NavigationProperty Name="Skus" Relationship="ecommersModel.FK_Skus_Products" FromRole="Products" ToRole="Skus" />
+          <Property Type="Int32" Name="IdRef" />
+          <NavigationProperty Name="Campaigns" Relationship="ecommersModel.CampaignsProducts" FromRole="Products" ToRole="Campaigns" />
         </EntityType>
         <EntityType Name="Skus">
           <Key>
@@ -537,7 +618,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdProduct" Type="Int32" Nullable="false" />
-          <Property Name="Sku" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Sku" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="ListPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
@@ -546,6 +627,7 @@
           <NavigationProperty Name="ImagesSkus" Relationship="ecommersModel.FK_ImagesSkus_Skus" FromRole="Skus" ToRole="ImagesSkus" />
           <NavigationProperty Name="OrderDetail" Relationship="ecommersModel.FK_OrderDetail_Skus" FromRole="Skus" ToRole="OrderDetail" />
           <NavigationProperty Name="Products" Relationship="ecommersModel.FK_Skus_Products" FromRole="Skus" ToRole="Products" />
+          <Property Type="Int32" Name="IdRef" />
         </EntityType>
         <EntityType Name="StatusOrders">
           <Key>
@@ -717,6 +799,33 @@
           <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="DateBirth" Nullable="false" Precision="23" />
         </ComplexType>
+        <EntityType Name="Campaigns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UrlImageMedium" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UrlImagePrincipal" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="OrderCamp" Nullable="false" />
+          <Property Type="Int32" Name="OrderPrincipal" />
+          <Property Type="Boolean" Name="IsPrincipal" />
+          <NavigationProperty Name="Products" Relationship="ecommersModel.CampaignsProducts" FromRole="Campaigns" ToRole="Products" />
+        </EntityType>
+        <Association Name="CampaignsProducts">
+          <End Type="ecommersModel.Campaigns" Role="Campaigns" Multiplicity="*" />
+          <End Type="ecommersModel.Products" Role="Products" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ContactUs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Comments" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -754,6 +863,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="ecommersModel.Customers">
               <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -774,6 +884,7 @@
           <EntitySetMapping Name="GroupsAttributes">
             <EntityTypeMapping TypeName="ecommersModel.GroupsAttributes">
               <MappingFragment StoreEntitySet="GroupsAttributes">
+                <ScalarProperty Name="ValueGroup" ColumnName="ValueGroup" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="GroupName" ColumnName="GroupName" />
                 <ScalarProperty Name="TypeGroup" ColumnName="TypeGroup" />
@@ -783,6 +894,7 @@
           <EntitySetMapping Name="ImagesSkus">
             <EntityTypeMapping TypeName="ecommersModel.ImagesSkus">
               <MappingFragment StoreEntitySet="ImagesSkus">
+                <ScalarProperty Name="TypeImage" ColumnName="TypeImage" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdSku" ColumnName="IdSku" />
                 <ScalarProperty Name="UrlImage" ColumnName="UrlImage" />
@@ -813,6 +925,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="ecommersModel.Products">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="IdRef" ColumnName="IdRef" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
                 <ScalarProperty Name="IdSubcategory" ColumnName="IdSubcategory" />
@@ -825,6 +938,7 @@
           <EntitySetMapping Name="Skus">
             <EntityTypeMapping TypeName="ecommersModel.Skus">
               <MappingFragment StoreEntitySet="Skus">
+                <ScalarProperty Name="IdRef" ColumnName="IdRef" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
                 <ScalarProperty Name="Sku" ColumnName="Sku" />
@@ -866,6 +980,38 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="InsertCustomer" FunctionName="ecommersModel.Store.InsertCustomer" />
+          <EntitySetMapping Name="Campaigns">
+            <EntityTypeMapping TypeName="ecommersModel.Campaigns">
+              <MappingFragment StoreEntitySet="Campaigns">
+                <ScalarProperty Name="IsPrincipal" ColumnName="IsPrincipal" />
+                <ScalarProperty Name="OrderPrincipal" ColumnName="OrderPrincipal" />
+                <ScalarProperty Name="OrderCamp" ColumnName="OrderCamp" />
+                <ScalarProperty Name="UrlImagePrincipal" ColumnName="UrlImagePrincipal" />
+                <ScalarProperty Name="UrlImageMedium" ColumnName="UrlImageMedium" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CampaignsProducts" TypeName="ecommersModel.CampaignsProducts" StoreEntitySet="CampaignsProducts">
+            <EndProperty Name="Products">
+              <ScalarProperty Name="Id" ColumnName="IdProduct" />
+            </EndProperty>
+            <EndProperty Name="Campaigns">
+              <ScalarProperty Name="Id" ColumnName="IdCampaign" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="ContactUs">
+            <EntityTypeMapping TypeName="ecommersModel.ContactUs">
+              <MappingFragment StoreEntitySet="ContactUs">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

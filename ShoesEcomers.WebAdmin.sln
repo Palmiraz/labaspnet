@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplesLinq", "ExamplesLin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirtsDemo", "CodeFirtsDemo\CodeFirtsDemo.csproj", "{BCAD7D4F-A302-44BF-AF28-870B20C00AB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoeEcommers.WebAdminDynamic", "ShoeEcommers.WebAdminDynamic\ShoeEcommers.WebAdminDynamic.csproj", "{449C745E-DA04-4481-A1B3-56B76A145B0A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoesEcommers.ShopWeb", "ShoesEcommers.ShopWeb\ShoesEcommers.ShopWeb.csproj", "{7F5E59B0-84F9-43C8-B899-691903772178}"
 EndProject
 Global
@@ -35,10 +33,6 @@ Global
 		{BCAD7D4F-A302-44BF-AF28-870B20C00AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCAD7D4F-A302-44BF-AF28-870B20C00AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCAD7D4F-A302-44BF-AF28-870B20C00AB7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{449C745E-DA04-4481-A1B3-56B76A145B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{449C745E-DA04-4481-A1B3-56B76A145B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{449C745E-DA04-4481-A1B3-56B76A145B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{449C745E-DA04-4481-A1B3-56B76A145B0A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7F5E59B0-84F9-43C8-B899-691903772178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7F5E59B0-84F9-43C8-B899-691903772178}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F5E59B0-84F9-43C8-B899-691903772178}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -420,6 +420,9 @@
     <Content Include="clickoneroInclude\include\js\script.js" />
     <Content Include="clickoneroInclude\include\js\scriptALL.js" />
     <Content Include="clickoneroInclude\include\js\scriptsHeader.js" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -476,6 +479,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Data\SaveData.txt" />
     <Content Include="Data\ScriptChange.txt" />
+    <Content Include="Data\WebSecurityAndOrders.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="clickoneroInclude\include\fonts\clickOnero.eot" />
@@ -673,6 +677,13 @@
     <Content Include="clickoneroInclude\include\less\styles\main.less" />
     <Content Include="clickoneroInclude\include\less\styles\modal.less" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\angular\angular-animate.min.js" />
+    <Content Include="Scripts\angular\angular-aria.min.js" />
+    <Content Include="Scripts\angular\angular-material.js" />
+    <Content Include="Scripts\angular\angular-messages.min.js" />
+    <Content Include="Scripts\angular\angular-route.js" />
+    <Content Include="Scripts\angular\angular.min.js" />
+    <Content Include="Scripts\angular\svg-assets-cache.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -731,6 +742,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\app\orders\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

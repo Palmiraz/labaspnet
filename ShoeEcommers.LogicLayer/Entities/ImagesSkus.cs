@@ -17,6 +17,7 @@ namespace ShoeEcommers.LogicLayer.Entities
         public int Id { get; set; }
         public int IdSku { get; set; }
         public string UrlImage { get; set; }
+        public string TypeImage { get; set; }
     
         public virtual Skus Skus { get; set; }
     }

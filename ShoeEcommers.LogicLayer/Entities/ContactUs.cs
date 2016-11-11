@@ -12,18 +12,12 @@ namespace ShoeEcommers.LogicLayer.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class GroupsAttributes
+    public partial class ContactUs
     {
-        public GroupsAttributes()
-        {
-            this.AttributeSkus = new HashSet<AttributeSkus>();
-        }
-    
         public int Id { get; set; }
-        public string GroupName { get; set; }
-        public string TypeGroup { get; set; }
-        public string ValueGroup { get; set; }
-    
-        public virtual ICollection<AttributeSkus> AttributeSkus { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Comments { get; set; }
+        public System.DateTime DateCreated { get; set; }
     }
 }

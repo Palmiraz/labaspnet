@@ -1,5 +1,17 @@
-﻿@{
+﻿@using ShoeEcommers.LogicLayer.Entities
+@model ShoeEcommers.LogicLayer.Entities.Products
+@{
     ViewBag.Title = "Details";
+}
+@{
+    List<ImagesSkus> imgMedium = Model.Skus.First().ImagesSkus.Where(i=>i.TypeImage == "Medium").ToList();
+    List<ImagesSkus> imgLarge  = Model.Skus.First().ImagesSkus.Where(i => i.TypeImage == "Large").ToList();
+    var colorsP = from s in Model.Skus
+        from a in s.AttributeSkus
+        group s by new {color = a.ValueLabel , valueColor = a.Label}
+        into groupsColor
+        select groupsColor;
+    
 }
 
 
@@ -7,19 +19,18 @@
     <div class="clickoneroProductImage">
         <div class="clickoneroProductImage-img"></div>
         <div class="clickoneroProductImageSoldOut">
-            <h3>SOLD OUT</h3><a href="waitinglist.html" data-fancyboxWidth="745" class="clickoneroFancybox">Añadir a waitinglist</a>
+            
         </div>
         <div class="clickoneroProductImage-carrusel">
             <div class="clickoneroProductImage-wrapper">
                 <div class="clickoneroProductImage-slide">
-                    <img src="/clickoneroInclude/images/assets/blackdress1-tumb.jpg" alt="LACE OFF-SHOULDER DRESS" data-image="/clickoneroInclude/images/assets/blackdress1.jpg">
-                    <img src="/clickoneroInclude/images/assets/blackdress2-tumb.jpg" alt="LACE OFF-SHOULDER DRESS" data-image="/clickoneroInclude/images/assets/blackdress2.jpg">
-                    <img src="/clickoneroInclude/images/assets/blackdress3-tumb.jpg" alt="LACE OFF-SHOULDER DRESS" data-image="/clickoneroInclude/images/assets/blackdress3.jpg">
-                    <img src="/clickoneroInclude/images/assets/blackdress4-tumb.jpg" alt="LACE OFF-SHOULDER DRESS" data-image="/clickoneroInclude/images/assets/blackdress4.jpg">
-                    <img src="/clickoneroInclude/images/assets/blackdress1-tumb.jpg" alt="LACE OFF-SHOULDER DRESS" data-image="/clickoneroInclude/images/assets/blackdress1.jpg">
-                    <img src="/clickoneroInclude/images/assets/blackdress2-tumb.jpg" alt="LACE OFF-SHOULDER DRESS" data-image="/clickoneroInclude/images/assets/blackdress2.jpg">
-                    <img src="/clickoneroInclude/images/assets/blackdress3-tumb.jpg" alt="LACE OFF-SHOULDER DRESS" data-image="/clickoneroInclude/images/assets/blackdress3.jpg">
-                    <img src="/clickoneroInclude/images/assets/blackdress4-tumb.jpg" alt="LACE OFF-SHOULDER DRESS" data-image="/clickoneroInclude/images/assets/blackdress4.jpg">
+                    @for(int i = 0; i< imgMedium.Count; i++)
+                    {
+                        if (i >= imgLarge.Count) {break;}
+                        <img src="//@imgMedium[i].UrlImage" 
+                            data-image="//@imgLarge[i].UrlImage">
+                    }
+                    
                 </div>
             </div>
             <div class="clickoneroProductImage-scrollbar"></div>
@@ -33,44 +44,56 @@
             <div class="clickoneroProduct-divsubdiv2">
                 <div class="clickoneroProduct-win"><span>GANA 500</span><em class="iconBit bit18px"><em class="iconBG"></em><em class="iconFont-bit"></em></em>
                 </div>
-                <input type="text" value="0" data-min="0" data-max="599" data-step="2" data-moveprice="true" data-priceitem="slideInput-price" data-price="540" data-realpriceitem="slideInput-realprice" data-realprice="760" data-percent="slideInput-percent" data-totalprice="true" data-totalpriceitem="slideInput-price" class="slider-input">
+                <input type="text" value="0" data-min="0"
+                       data-max="@Model.Skus.First().ListPrice" data-step="2"
+                       data-moveprice="true"
+                       data-priceitem="slideInput-price"
+                       data-price="@Model.Skus.First().Price"
+                       data-realpriceitem="slideInput-realprice"
+                       data-realprice="@Model.Skus.First().ListPrice"
+                       data-percent="slideInput-percent" data-totalprice="true" 
+                    data-totalpriceitem="slideInput-price" class="slider-input">
                 <div class="clickoneroProductWinWinbits clickoneroProduct-save"><span>AHORRA <span class="slideInput-percent"></span>%</span></div>
             </div>
         </div>
         <h4>Color</h4>
+        @using (Html.BeginForm())
+        {
         <div class="clickoneroProductColor">
-            <input type="radio" name="lookColor" value="Negro" data-color="000000">
-            <input type="radio" name="lookColor" value="Gris" data-color="d7d8d8">
-            <input type="radio" name="lookColor" value="Aquamarino" data-color="7bdbdc">
-            <input type="radio" name="lookColor" value="Amarillo" data-color="cddc7b">
+            @foreach (var color in colorsP)
+            {
+                <input type="radio" name="LookColor" value="@color.Key.color" data-color="@color.Key.valueColor">
+            }
         </div>
-        <div class="clickoneroProductMesure">
-            <h4>Talla</h4>
-            <div class="clickoneroProductSize">
-                <input type="radio" name="lookSize" value="XS" data-soldout="true">
-                <input type="radio" name="lookSize" value="S">
-                <input type="radio" name="lookSize" value="M">
-                <input type="radio" name="lookSize" value="L">
-                <input type="radio" name="lookSize" value="XXXL">
+            <div class="clickoneroProductMesure">
+                <h4>Talla</h4>
+                <div class="clickoneroProductSize">
+                    @foreach (var sku in colorsP.First())
+                    {
+                        <input type="radio" name="LookSize"  value="@sku.Sku">
+                    }
+                    
+                </div>
             </div>
-        </div>
-        <div class="clickoneroProductQuantity">
-            <h4>Cantidad</h4>
-            <select data-clase="clickoneroSelect-cantidad" data-inputselect="true" class="clickoneroSelect">
-                <option selected="selected">1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-            </select>
-        </div>
-        <div class="clickoneroProductShare">
-            <p>Comparte y gana <a href="#">learn more</a>
-            </p><a href="#"><span title="Facebook" class="iconFont-facebook"></span></a><a href="#"><span title="Twitter" class="iconFont-twitter"></span></a><a href="#"><span title="Pinterest" class="iconFont-pinterest"></span></a>
-        </div>
-        <div class="clickoneroProductSubmit"><span>Termina en <strong>1 día, 10 hrs</strong></span>
-            <!-- input.clickoneroBtn.clickoneroFancybox(type="submit", value="Waitinglist", data-fancyboxhref="waitinglist.html", data-fancyboxwidth="745")-->
-            <input type="submit" value="Añadir a carrito" class="clickoneroBtn clickoneroBtnCart">
-        </div>
+            <div class="clickoneroProductQuantity">
+                <h4>Cantidad</h4>
+                <input type="text" name="Quantity"/>
+               
+            </div>
+            <div class="clickoneroProductShare">
+                <p>Comparte y gana <a href="#">learn more</a>
+                </p><a href="#"><span title="Facebook" class="iconFont-facebook"></span></a><a href="#"><span title="Twitter" class="iconFont-twitter"></span></a><a href="#"><span title="Pinterest" class="iconFont-pinterest"></span></a>
+            </div>
+            <div class="clickoneroProductSubmit"><span>Termina en <strong>1 día, 10 hrs</strong></span>
+                <!-- input.clickoneroBtn.clickoneroFancybox(type="submit", value="Waitinglist", data-fancyboxhref="waitinglist.html", data-fancyboxwidth="745")-->
+                <input type="submit" value="Añadir a carrito" class="clickoneroBtn clickoneroBtnCart">
+            </div>
+            <input type="hidden" name="IdProduct" value="@Model.Id"/>
+            if (ViewBag.ErrorMessage != null && !string.IsNullOrEmpty(ViewBag.ErrorMessage))
+             {
+                 <span class="clickoneroErrorMsg">@ViewBag.ErrorMessage</span>
+             }
+        }
         <div class="clickoneroProductTabs">
             <ul>
                 <li><a href="#clickoneroPDTabDescription">DESCRIPCIÓN</a></li>

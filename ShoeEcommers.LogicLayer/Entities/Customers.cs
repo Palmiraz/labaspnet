@@ -25,6 +25,7 @@ namespace ShoeEcommers.LogicLayer.Entities
         public string LastName { get; set; }
         public string Email { get; set; }
         public System.DateTime DateBirth { get; set; }
+        public Nullable<int> IdUser { get; set; }
     
         public virtual ICollection<Orders> Orders { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ShoeEcommers.LogicLayer.Modelos.DataHomeSite
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -7,33 +8,14 @@
 <div class="clickoneroHome-banner">
     <div class="clickoneroHB-carrusel">
         <div class="clickoneroHB-wrapper">
-            <div class="clickoneroHB-slide"><a href="#"><img src="" alt=""></a>
-                <div></div>
-            </div>
-            <div class="clickoneroHB-slide"><a href="#"><img src="clickoneroInclude/images/assets/bannerAmor.jpg" alt="Banner bannerAmor"></a>
-                <div><a href="#" data-tooltip="Camisa cuadros Hombre" data-top="90" data-left="414" style="color: #000" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Tenis Nike Hombre" data-top="170" data-left="550" style="color: #000" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Chaleco Azul Mujer" data-top="103" data-left="281" style="color: #fff" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Tenis Nike Mujer" data-top="200" data-left="335" style="color: #f00" class="iconBlock iconFont-cruz clickoneroToolTip"></a>
+            @foreach (var campaign in Model.CampaignsCarrousel)
+            {
+                <div class="clickoneroHB-slide">
+                    <a href="/Products/Campaign/@campaign.Id">
+                        <img src="//@campaign.UrlImagePrincipal" alt="@campaign.Name">
+                    </a>
                 </div>
-            </div>
-            <div class="clickoneroHB-slide"><a href="#"><img src="clickoneroInclude/images/assets/benettonHome.jpg" alt="Banner benettonHome"></a>
-                <div><a href="#" data-tooltip="Camisa cuadros Hombre" data-top="90" data-left="414" style="color: #000" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Tenis Nike Hombre" data-top="170" data-left="550" style="color: #000" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Chaleco Azul Mujer" data-top="103" data-left="281" style="color: #fff" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Tenis Nike Mujer" data-top="200" data-left="335" style="color: #f00" class="iconBlock iconFont-cruz clickoneroToolTip"></a>
-                </div>
-            </div>
-            <div class="clickoneroHB-slide"><a href="#"><img src="clickoneroInclude/images/assets/bannerAmor.jpg" alt="Banner bannerAmor"></a>
-                <div><a href="#" data-tooltip="Camisa cuadros Hombre" data-top="90" data-left="414" style="color: #000" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Tenis Nike Hombre" data-top="170" data-left="550" style="color: #000" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Chaleco Azul Mujer" data-top="103" data-left="281" style="color: #fff" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Tenis Nike Mujer" data-top="200" data-left="335" style="color: #f00" class="iconBlock iconFont-cruz clickoneroToolTip"></a>
-                </div>
-            </div>
-            <div class="clickoneroHB-slide"><a href="#"><img src="clickoneroInclude/images/assets/benettonHome.jpg" alt="Banner benettonHome"></a>
-                <div><a href="#" data-tooltip="Camisa cuadros Hombre" data-top="90" data-left="414" style="color: #000" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Tenis Nike Hombre" data-top="170" data-left="550" style="color: #000" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Chaleco Azul Mujer" data-top="103" data-left="281" style="color: #fff" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Tenis Nike Mujer" data-top="200" data-left="335" style="color: #f00" class="iconBlock iconFont-cruz clickoneroToolTip"></a>
-                </div>
-            </div>
-            <div class="clickoneroHB-slide"><a href="#"><img src="clickoneroInclude/images/assets/bannerAmor.jpg" alt="Banner bannerAmor"></a>
-                <div><a href="#" data-tooltip="Camisa cuadros Hombre" data-top="90" data-left="414" style="color: #000" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Tenis Nike Hombre" data-top="170" data-left="550" style="color: #000" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Chaleco Azul Mujer" data-top="103" data-left="281" style="color: #fff" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Tenis Nike Mujer" data-top="200" data-left="335" style="color: #f00" class="iconBlock iconFont-cruz clickoneroToolTip"></a>
-                </div>
-            </div>
-            <div class="clickoneroHB-slide"><a href="#"><img src="clickoneroInclude/images/assets/benettonHome.jpg" alt="Banner benettonHome"></a>
-                <div><a href="#" data-tooltip="Camisa cuadros Hombre" data-top="90" data-left="414" style="color: #000" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Tenis Nike Hombre" data-top="170" data-left="550" style="color: #000" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Chaleco Azul Mujer" data-top="103" data-left="281" style="color: #fff" class="iconBlock iconFont-cruz clickoneroToolTip"></a><a href="#" data-tooltip="Tenis Nike Mujer" data-top="200" data-left="335" style="color: #f00" class="iconBlock iconFont-cruz clickoneroToolTip"></a>
-                </div>
-            </div>
+            }
         </div>
     </div>
     <div class="iconFontArrow iconFontArrow-prev"><span class="iconFont-left"></span><span class="iconFont-rightA"></span></div>
@@ -43,33 +25,13 @@
     <h2>Las Mejores Ofertas de <a href="#">Productos</a>
     </h2>
     <div class="bestOffer-container">
-        <div class="bestOffer-item"><a href="#"><img src="" alt=""></a>
-            <div class="clickoneroFP-termina"><span class="iconFont-clock"></span><span>Termina en 7 días</span></div>
-        </div>
-        <div class="bestOffer-item"><a href="#"><img src="clickoneroInclude/images/assets/3_1.jpg" alt="Campaña 1"></a>
-            <div class="clickoneroFP-termina"><span class="iconFont-clock"></span><span>Termina en 7 días</span></div>
-        </div>
-        <div class="bestOffer-item"><a href="#"><img src="clickoneroInclude/images/assets/3_2.jpg" alt="Campaña 2"></a>
-            <div class="clickoneroFP-termina"><span class="iconFont-clock"></span><span>Termina en 7 días</span></div>
-        </div>
-        <div class="bestOffer-item"><a href="#"><img src="clickoneroInclude/images/assets/3_3.jpg" alt="Campaña 3"></a>
-            <div class="clickoneroFP-termina"><span class="iconFont-clock"></span><span>Termina en 7 días</span></div>
-        </div>
-        <div class="bestOffer-item"><a href="#"><img src="clickoneroInclude/images/assets/3_4.jpg" alt="Campaña 4"></a>
-            <div class="clickoneroFP-termina"><span class="iconFont-clock"></span><span>Termina en 7 días</span></div>
-        </div>
-        <div class="bestOffer-item"><a href="#"><img src="clickoneroInclude/images/assets/3_5.jpg" alt="Campaña 5"></a>
-            <div class="clickoneroFP-termina"><span class="iconFont-clock"></span><span>Termina en 7 días</span></div>
-        </div>
-        <div class="bestOffer-item"><a href="#"><img src="clickoneroInclude/images/assets/3_6.jpg" alt="Campaña 6"></a>
-            <div class="clickoneroFP-termina"><span class="iconFont-clock"></span><span>Termina en 7 días</span></div>
-        </div>
-        <div class="bestOffer-item"><a href="#"><img src="clickoneroInclude/images/assets/3_7.jpg" alt="Campaña 7"></a>
-            <div class="clickoneroFP-termina"><span class="iconFont-clock"></span><span>Termina en 7 días</span></div>
-        </div>
-        <div class="bestOffer-item"><a href="#"><img src="clickoneroInclude/images/assets/3_8.jpg" alt="Campaña 8"></a>
-            <div class="clickoneroFP-termina"><span class="iconFont-clock"></span><span>Termina en 7 días</span></div>
-        </div>
+        @foreach(var campaign in Model.CampaignsHome){
+            <div class="bestOffer-item"><a href="/Products/Campaign/@campaign.Id">
+                    <img src="//@campaign.UrlImagePrincipal" alt="@campaign.Name">
+                </a>
+            </div>
+        }
+        
     </div>
 </div>
 <div class="clickoneroHome-itemVertical">

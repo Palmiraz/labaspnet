@@ -12,18 +12,21 @@ namespace ShoeEcommers.LogicLayer.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class GroupsAttributes
+    public partial class Campaigns
     {
-        public GroupsAttributes()
+        public Campaigns()
         {
-            this.AttributeSkus = new HashSet<AttributeSkus>();
+            this.Products = new HashSet<Products>();
         }
     
         public int Id { get; set; }
-        public string GroupName { get; set; }
-        public string TypeGroup { get; set; }
-        public string ValueGroup { get; set; }
+        public string Name { get; set; }
+        public string UrlImageMedium { get; set; }
+        public string UrlImagePrincipal { get; set; }
+        public int OrderCamp { get; set; }
+        public Nullable<int> OrderPrincipal { get; set; }
+        public Nullable<bool> IsPrincipal { get; set; }
     
-        public virtual ICollection<AttributeSkus> AttributeSkus { get; set; }
+        public virtual ICollection<Products> Products { get; set; }
     }
 }

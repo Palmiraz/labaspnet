@@ -41,6 +41,8 @@ namespace ShoeEcommers.LogicLayer.Entities
         public DbSet<Skus> Skus { get; set; }
         public DbSet<StatusOrders> StatusOrders { get; set; }
         public DbSet<SubCategories> SubCategories { get; set; }
+        public DbSet<Campaigns> Campaigns { get; set; }
+        public DbSet<ContactUs> ContactUs { get; set; }
     
         public virtual int DeleteCustomer(Nullable<int> id)
         {

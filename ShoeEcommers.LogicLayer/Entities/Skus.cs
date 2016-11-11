@@ -28,6 +28,7 @@ namespace ShoeEcommers.LogicLayer.Entities
         public decimal Price { get; set; }
         public decimal ListPrice { get; set; }
         public string Thumbnail { get; set; }
+        public Nullable<int> IdRef { get; set; }
     
         public virtual ICollection<AttributeSkus> AttributeSkus { get; set; }
         public virtual ICollection<ImagesSkus> ImagesSkus { get; set; }
