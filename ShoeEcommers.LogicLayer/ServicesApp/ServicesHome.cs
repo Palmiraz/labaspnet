@@ -9,11 +9,11 @@ namespace ShoeEcommers.LogicLayer.ServicesApp
 {
     public class ServicesHome : ServicesBase
     {
-        private readonly ecommersEntities1 _dc;
+        private readonly ecommersEntities _dc;
         private readonly DataHomeSite _result;
         public ServicesHome()
         {
-            _dc = new ecommersEntities1();
+            _dc = new ecommersEntities();
             _result = new DataHomeSite();
             ListDisposable.Add(_dc);
         }
@@ -27,9 +27,9 @@ namespace ShoeEcommers.LogicLayer.ServicesApp
 
         public void SaveContactUs(ContactUs contact)
         {
-            contact.DateCreated = DateTime.Now;
-            _dc.ContactUs.Add(contact);
-            _dc.SaveChanges();
+            //contact.DateCreated = DateTime.Now;
+            //_dc.ContactUs.Add(contact);
+            //_dc.SaveChanges();
 
         }
 

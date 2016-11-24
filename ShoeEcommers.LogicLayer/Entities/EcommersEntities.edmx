@@ -4,24 +4,30 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ecommersModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="ecommersModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="ecommersModelStoreContainer">
           <EntitySet Name="AttributeSkus" EntityType="ecommersModel.Store.AttributeSkus" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Brands" EntityType="ecommersModel.Store.Brands" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Campaigns" EntityType="ecommersModel.Store.Campaigns" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CampaignsProducts" EntityType="ecommersModel.Store.CampaignsProducts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cards" EntityType="ecommersModel.Store.Cards" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Categories" EntityType="ecommersModel.Store.Categories" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ContactUs" EntityType="ecommersModel.Store.ContactUs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Customers" EntityType="ecommersModel.Store.Customers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Department" EntityType="ecommersModel.Store.Department" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="GroupsAttributes" EntityType="ecommersModel.Store.GroupsAttributes" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ImagesSkus" EntityType="ecommersModel.Store.ImagesSkus" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OrderDetail" EntityType="ecommersModel.Store.OrderDetail" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Orders" EntityType="ecommersModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Pays" EntityType="ecommersModel.Store.Pays" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Products" EntityType="ecommersModel.Store.Products" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Skus" EntityType="ecommersModel.Store.Skus" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="StatusOrders" EntityType="ecommersModel.Store.StatusOrders" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SubCategories" EntityType="ecommersModel.Store.SubCategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfile" EntityType="ecommersModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Membership" EntityType="ecommersModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="ecommersModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Roles" EntityType="ecommersModel.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="ecommersModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_AttributeSkus_GroupsAttributes" Association="ecommersModel.Store.FK_AttributeSkus_GroupsAttributes">
             <End Role="GroupsAttributes" EntitySet="GroupsAttributes" />
             <End Role="AttributeSkus" EntitySet="AttributeSkus" />
@@ -38,9 +44,17 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="CampaignsProducts" EntitySet="CampaignsProducts" />
           </AssociationSet>
+          <AssociationSet Name="FK_Cards_Customers" Association="ecommersModel.Store.FK_Cards_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
           <AssociationSet Name="FK_Categories_Department" Association="ecommersModel.Store.FK_Categories_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_UserProfile" Association="ecommersModel.Store.FK_Customers_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Customers" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="FK_ImagesSkus_Skus" Association="ecommersModel.Store.FK_ImagesSkus_Skus">
             <End Role="Skus" EntitySet="Skus" />
@@ -62,6 +76,14 @@
             <End Role="StatusOrders" EntitySet="StatusOrders" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
+          <AssociationSet Name="FK_Pays_Cards" Association="ecommersModel.Store.FK_Pays_Cards">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="Pays" EntitySet="Pays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pays_Orders" Association="ecommersModel.Store.FK_Pays_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Pays" EntitySet="Pays" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_Brands" Association="ecommersModel.Store.FK_Products_Brands">
             <End Role="Brands" EntitySet="Brands" />
             <End Role="Products" EntitySet="Products" />
@@ -70,6 +92,10 @@
             <End Role="SubCategories" EntitySet="SubCategories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <AssociationSet Name="fk_RoleId" Association="ecommersModel.Store.fk_RoleId">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
           <AssociationSet Name="FK_Skus_Products" Association="ecommersModel.Store.FK_Skus_Products">
             <End Role="Products" EntitySet="Products" />
             <End Role="Skus" EntitySet="Skus" />
@@ -77,6 +103,10 @@
           <AssociationSet Name="FK_SubCategories_Categories" Association="ecommersModel.Store.FK_SubCategories_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="SubCategories" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserId" Association="ecommersModel.Store.fk_UserId">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AttributeSkus">
@@ -116,6 +146,16 @@
           <Property Name="IdProduct" Type="int" Nullable="false" />
           <Property Name="IdCampaign" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Cards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdCustomer" Type="int" Nullable="false" />
+          <Property Name="CardEnd" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="TypeCard" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
@@ -123,16 +163,6 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdDepartment" Type="int" Nullable="false" />
           <Property Name="Category" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="ContactUs">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="FullName" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="Comments" Type="varchar" Nullable="false" MaxLength="500" />
-          <Property Name="DateCreated" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -190,6 +220,15 @@
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
           <Property Name="IdStatus" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Pays">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="IdCard" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+        </EntityType>
         <EntityType Name="Products">
           <Key>
             <PropertyRef Name="Id" />
@@ -200,7 +239,7 @@
           <Property Name="Name" Type="varchar" MaxLength="100" />
           <Property Name="Model" Type="varchar" MaxLength="100" />
           <Property Name="Active" Type="bit" Nullable="false" />
-          <Property Name="IdRef" Type="int" />
+          <Property Name="idRef" Type="int" />
         </EntityType>
         <EntityType Name="Skus">
           <Key>
@@ -213,7 +252,7 @@
           <Property Name="Price" Type="money" Nullable="false" />
           <Property Name="ListPrice" Type="money" Nullable="false" />
           <Property Name="Thumbnail" Type="varchar" MaxLength="255" />
-          <Property Name="IdRef" Type="int" />
+          <Property Name="idRef" Type="int" />
         </EntityType>
         <EntityType Name="StatusOrders">
           <Key>
@@ -229,6 +268,53 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdCategory" Type="int" Nullable="false" />
           <Property Name="SubCategory" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_AttributeSkus_GroupsAttributes">
           <End Role="GroupsAttributes" Type="ecommersModel.Store.GroupsAttributes" Multiplicity="1" />
@@ -278,6 +364,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Cards_Customers">
+          <End Role="Customers" Type="ecommersModel.Store.Customers" Multiplicity="1" />
+          <End Role="Cards" Type="ecommersModel.Store.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="IdCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Categories_Department">
           <End Role="Department" Type="ecommersModel.Store.Department" Multiplicity="1" />
           <End Role="Categories" Type="ecommersModel.Store.Categories" Multiplicity="*" />
@@ -287,6 +385,18 @@
             </Principal>
             <Dependent Role="Categories">
               <PropertyRef Name="IdDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_UserProfile">
+          <End Role="UserProfile" Type="ecommersModel.Store.UserProfile" Multiplicity="0..1" />
+          <End Role="Customers" Type="ecommersModel.Store.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -350,6 +460,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Pays_Cards">
+          <End Role="Cards" Type="ecommersModel.Store.Cards" Multiplicity="1" />
+          <End Role="Pays" Type="ecommersModel.Store.Pays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pays">
+              <PropertyRef Name="IdCard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pays_Orders">
+          <End Role="Orders" Type="ecommersModel.Store.Orders" Multiplicity="1" />
+          <End Role="Pays" Type="ecommersModel.Store.Pays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pays">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Products_Brands">
           <End Role="Brands" Type="ecommersModel.Store.Brands" Multiplicity="1" />
           <End Role="Products" Type="ecommersModel.Store.Products" Multiplicity="*" />
@@ -371,6 +505,18 @@
             </Principal>
             <Dependent Role="Products">
               <PropertyRef Name="IdSubcategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RoleId">
+          <End Role="webpages_Roles" Type="ecommersModel.Store.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="ecommersModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -398,6 +544,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_UserId">
+          <End Role="UserProfile" Type="ecommersModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="ecommersModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="DeleteCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
         </Function>
@@ -413,13 +571,16 @@
           <Parameter Name="Email" Type="varchar" Mode="In" />
           <Parameter Name="DateBirth" Type="datetime" Mode="In" />
         </Function>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ecommersModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="ecommersEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ecommersEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AttributeSkus" EntityType="ecommersModel.AttributeSkus" />
           <EntitySet Name="Brands" EntityType="ecommersModel.Brands" />
+          <EntitySet Name="Campaigns" EntityType="ecommersModel.Campaigns" />
+          <EntitySet Name="Cards" EntityType="ecommersModel.Cards" />
           <EntitySet Name="Categories" EntityType="ecommersModel.Categories" />
           <EntitySet Name="Customers" EntityType="ecommersModel.Customers" />
           <EntitySet Name="Department" EntityType="ecommersModel.Department" />
@@ -427,10 +588,15 @@
           <EntitySet Name="ImagesSkus" EntityType="ecommersModel.ImagesSkus" />
           <EntitySet Name="OrderDetail" EntityType="ecommersModel.OrderDetail" />
           <EntitySet Name="Orders" EntityType="ecommersModel.Orders" />
+          <EntitySet Name="Pays" EntityType="ecommersModel.Pays" />
           <EntitySet Name="Products" EntityType="ecommersModel.Products" />
           <EntitySet Name="Skus" EntityType="ecommersModel.Skus" />
           <EntitySet Name="StatusOrders" EntityType="ecommersModel.StatusOrders" />
           <EntitySet Name="SubCategories" EntityType="ecommersModel.SubCategories" />
+          <EntitySet Name="UserProfile" EntityType="ecommersModel.UserProfile" />
+          <EntitySet Name="webpages_Membership" EntityType="ecommersModel.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="ecommersModel.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="ecommersModel.webpages_Roles" />
           <AssociationSet Name="FK_AttributeSkus_GroupsAttributes" Association="ecommersModel.FK_AttributeSkus_GroupsAttributes">
             <End Role="GroupsAttributes" EntitySet="GroupsAttributes" />
             <End Role="AttributeSkus" EntitySet="AttributeSkus" />
@@ -443,6 +609,14 @@
             <End Role="Brands" EntitySet="Brands" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <AssociationSet Name="FK_Cards_Customers" Association="ecommersModel.FK_Cards_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Cards" EntitySet="Cards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pays_Cards" Association="ecommersModel.FK_Pays_Cards">
+            <End Role="Cards" EntitySet="Cards" />
+            <End Role="Pays" EntitySet="Pays" />
+          </AssociationSet>
           <AssociationSet Name="FK_Categories_Department" Association="ecommersModel.FK_Categories_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Categories" EntitySet="Categories" />
@@ -450,6 +624,10 @@
           <AssociationSet Name="FK_SubCategories_Categories" Association="ecommersModel.FK_SubCategories_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="SubCategories" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_UserProfile" Association="ecommersModel.FK_Customers_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Customers" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_Customers" Association="ecommersModel.FK_Orders_Customers">
             <End Role="Customers" EntitySet="Customers" />
@@ -471,6 +649,10 @@
             <End Role="StatusOrders" EntitySet="StatusOrders" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
+          <AssociationSet Name="FK_Pays_Orders" Association="ecommersModel.FK_Pays_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Pays" EntitySet="Pays" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_SubCategories" Association="ecommersModel.FK_Products_SubCategories">
             <End Role="SubCategories" EntitySet="SubCategories" />
             <End Role="Products" EntitySet="Products" />
@@ -479,8 +661,16 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="Skus" EntitySet="Skus" />
           </AssociationSet>
+          <AssociationSet Name="CampaignsProducts" Association="ecommersModel.CampaignsProducts">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_UsersInRoles" Association="ecommersModel.webpages_UsersInRoles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
           <FunctionImport Name="DeleteCustomer">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetCustomer" ReturnType="Collection(ecommersModel.GetCustomer_Result)">
             <Parameter Name="Id" Mode="In" Type="Int32" />
@@ -494,12 +684,6 @@
             <Parameter Name="Email" Mode="In" Type="String" />
             <Parameter Name="DateBirth" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <EntitySet Name="Campaigns" EntityType="ecommersModel.Campaigns" />
-          <AssociationSet Name="CampaignsProducts" Association="ecommersModel.CampaignsProducts">
-            <End Role="Campaigns" EntitySet="Campaigns" />
-            <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
-          <EntitySet Name="ContactUs" EntityType="ecommersModel.ContactUs" />
         </EntityContainer>
         <EntityType Name="AttributeSkus">
           <Key>
@@ -521,6 +705,31 @@
           <Property Name="Brand" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Products" Relationship="ecommersModel.FK_Products_Brands" FromRole="Brands" ToRole="Products" />
         </EntityType>
+        <EntityType Name="Campaigns">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UrlImageMedium" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="UrlImagePrincipal" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="OrderCamp" Type="Int32" Nullable="false" />
+          <Property Name="OrderPrincipal" Type="Int32" />
+          <Property Name="IsPrincipal" Type="Boolean" />
+          <NavigationProperty Name="Products" Relationship="ecommersModel.CampaignsProducts" FromRole="Campaigns" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Cards">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCustomer" Type="Int32" Nullable="false" />
+          <Property Name="CardEnd" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TypeCard" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Customers" Relationship="ecommersModel.FK_Cards_Customers" FromRole="Cards" ToRole="Customers" />
+          <NavigationProperty Name="Pays" Relationship="ecommersModel.FK_Pays_Cards" FromRole="Cards" ToRole="Pays" />
+        </EntityType>
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
@@ -541,8 +750,10 @@
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="DateBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUser" Type="Int32" />
+          <NavigationProperty Name="Cards" Relationship="ecommersModel.FK_Cards_Customers" FromRole="Customers" ToRole="Cards" />
+          <NavigationProperty Name="UserProfile" Relationship="ecommersModel.FK_Customers_UserProfile" FromRole="Customers" ToRole="UserProfile" />
           <NavigationProperty Name="Orders" Relationship="ecommersModel.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
-          <Property Type="Int32" Name="IdUser" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -559,8 +770,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="TypeGroup" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ValueGroup" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="AttributeSkus" Relationship="ecommersModel.FK_AttributeSkus_GroupsAttributes" FromRole="GroupsAttributes" ToRole="AttributeSkus" />
-          <Property Type="String" Name="ValueGroup" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ImagesSkus">
           <Key>
@@ -569,8 +780,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdSku" Type="Int32" Nullable="false" />
           <Property Name="UrlImage" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="TypeImage" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Skus" Relationship="ecommersModel.FK_ImagesSkus_Skus" FromRole="ImagesSkus" ToRole="Skus" />
-          <Property Type="String" Name="TypeImage" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -595,6 +806,18 @@
           <NavigationProperty Name="Customers" Relationship="ecommersModel.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
           <NavigationProperty Name="OrderDetail" Relationship="ecommersModel.FK_OrderDetail_Orders" FromRole="Orders" ToRole="OrderDetail" />
           <NavigationProperty Name="StatusOrders" Relationship="ecommersModel.FK_Orders_StatusOrders" FromRole="Orders" ToRole="StatusOrders" />
+          <NavigationProperty Name="Pays" Relationship="ecommersModel.FK_Pays_Orders" FromRole="Orders" ToRole="Pays" />
+        </EntityType>
+        <EntityType Name="Pays">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdOrder" Type="Int32" Nullable="false" />
+          <Property Name="IdCard" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Cards" Relationship="ecommersModel.FK_Pays_Cards" FromRole="Pays" ToRole="Cards" />
+          <NavigationProperty Name="Orders" Relationship="ecommersModel.FK_Pays_Orders" FromRole="Pays" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -606,10 +829,10 @@
           <Property Name="Name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="Model" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="idRef" Type="Int32" />
           <NavigationProperty Name="Brands" Relationship="ecommersModel.FK_Products_Brands" FromRole="Products" ToRole="Brands" />
           <NavigationProperty Name="SubCategories" Relationship="ecommersModel.FK_Products_SubCategories" FromRole="Products" ToRole="SubCategories" />
           <NavigationProperty Name="Skus" Relationship="ecommersModel.FK_Skus_Products" FromRole="Products" ToRole="Skus" />
-          <Property Type="Int32" Name="IdRef" />
           <NavigationProperty Name="Campaigns" Relationship="ecommersModel.CampaignsProducts" FromRole="Products" ToRole="Campaigns" />
         </EntityType>
         <EntityType Name="Skus">
@@ -623,11 +846,11 @@
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="ListPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Thumbnail" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="idRef" Type="Int32" />
           <NavigationProperty Name="AttributeSkus" Relationship="ecommersModel.FK_AttributeSkus_Skus" FromRole="Skus" ToRole="AttributeSkus" />
           <NavigationProperty Name="ImagesSkus" Relationship="ecommersModel.FK_ImagesSkus_Skus" FromRole="Skus" ToRole="ImagesSkus" />
           <NavigationProperty Name="OrderDetail" Relationship="ecommersModel.FK_OrderDetail_Skus" FromRole="Skus" ToRole="OrderDetail" />
           <NavigationProperty Name="Products" Relationship="ecommersModel.FK_Skus_Products" FromRole="Skus" ToRole="Products" />
-          <Property Type="Int32" Name="IdRef" />
         </EntityType>
         <EntityType Name="StatusOrders">
           <Key>
@@ -646,6 +869,48 @@
           <Property Name="SubCategory" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Categories" Relationship="ecommersModel.FK_SubCategories_Categories" FromRole="SubCategories" ToRole="Categories" />
           <NavigationProperty Name="Products" Relationship="ecommersModel.FK_Products_SubCategories" FromRole="SubCategories" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Customers" Relationship="ecommersModel.FK_Customers_UserProfile" FromRole="UserProfile" ToRole="Customers" />
+          <NavigationProperty Name="webpages_Roles" Relationship="ecommersModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IsConfirmed" Type="Boolean" />
+          <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserProfile" Relationship="ecommersModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
         </EntityType>
         <Association Name="FK_AttributeSkus_GroupsAttributes">
           <End Role="GroupsAttributes" Type="ecommersModel.GroupsAttributes" Multiplicity="1" />
@@ -683,6 +948,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Cards_Customers">
+          <End Role="Customers" Type="ecommersModel.Customers" Multiplicity="1" />
+          <End Role="Cards" Type="ecommersModel.Cards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cards">
+              <PropertyRef Name="IdCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pays_Cards">
+          <End Role="Cards" Type="ecommersModel.Cards" Multiplicity="1" />
+          <End Role="Pays" Type="ecommersModel.Pays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cards">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pays">
+              <PropertyRef Name="IdCard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Categories_Department">
           <End Role="Department" Type="ecommersModel.Department" Multiplicity="1" />
           <End Role="Categories" Type="ecommersModel.Categories" Multiplicity="*" />
@@ -704,6 +993,18 @@
             </Principal>
             <Dependent Role="SubCategories">
               <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_UserProfile">
+          <End Role="UserProfile" Type="ecommersModel.UserProfile" Multiplicity="0..1" />
+          <End Role="Customers" Type="ecommersModel.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -767,6 +1068,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Pays_Orders">
+          <End Role="Orders" Type="ecommersModel.Orders" Multiplicity="1" />
+          <End Role="Pays" Type="ecommersModel.Pays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pays">
+              <PropertyRef Name="IdOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Products_SubCategories">
           <End Role="SubCategories" Type="ecommersModel.SubCategories" Multiplicity="1" />
           <End Role="Products" Type="ecommersModel.Products" Multiplicity="*" />
@@ -791,6 +1104,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="CampaignsProducts">
+          <End Role="Campaigns" Type="ecommersModel.Campaigns" Multiplicity="*" />
+          <End Role="Products" Type="ecommersModel.Products" Multiplicity="*" />
+        </Association>
+        <Association Name="webpages_UsersInRoles">
+          <End Role="webpages_Roles" Type="ecommersModel.webpages_Roles" Multiplicity="*" />
+          <End Role="UserProfile" Type="ecommersModel.UserProfile" Multiplicity="*" />
+        </Association>
         <ComplexType Name="GetCustomer_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
@@ -798,40 +1119,14 @@
           <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="DateBirth" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="IdUser" Nullable="true" />
         </ComplexType>
-        <EntityType Name="Campaigns">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="UrlImageMedium" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="UrlImagePrincipal" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="OrderCamp" Nullable="false" />
-          <Property Type="Int32" Name="OrderPrincipal" />
-          <Property Type="Boolean" Name="IsPrincipal" />
-          <NavigationProperty Name="Products" Relationship="ecommersModel.CampaignsProducts" FromRole="Campaigns" ToRole="Products" />
-        </EntityType>
-        <Association Name="CampaignsProducts">
-          <End Type="ecommersModel.Campaigns" Role="Campaigns" Multiplicity="*" />
-          <End Type="ecommersModel.Products" Role="Products" Multiplicity="*" />
-        </Association>
-        <EntityType Name="ContactUs">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Comments" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="3" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ecommersModelStoreContainer" CdmEntityContainer="ecommersEntities1">
+        <EntityContainerMapping StorageEntityContainer="ecommersModelStoreContainer" CdmEntityContainer="ecommersEntities">
           <EntitySetMapping Name="AttributeSkus">
             <EntityTypeMapping TypeName="ecommersModel.AttributeSkus">
               <MappingFragment StoreEntitySet="AttributeSkus">
@@ -851,6 +1146,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Campaigns">
+            <EntityTypeMapping TypeName="ecommersModel.Campaigns">
+              <MappingFragment StoreEntitySet="Campaigns">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UrlImageMedium" ColumnName="UrlImageMedium" />
+                <ScalarProperty Name="UrlImagePrincipal" ColumnName="UrlImagePrincipal" />
+                <ScalarProperty Name="OrderCamp" ColumnName="OrderCamp" />
+                <ScalarProperty Name="OrderPrincipal" ColumnName="OrderPrincipal" />
+                <ScalarProperty Name="IsPrincipal" ColumnName="IsPrincipal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cards">
+            <EntityTypeMapping TypeName="ecommersModel.Cards">
+              <MappingFragment StoreEntitySet="Cards">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdCustomer" ColumnName="IdCustomer" />
+                <ScalarProperty Name="CardEnd" ColumnName="CardEnd" />
+                <ScalarProperty Name="TypeCard" ColumnName="TypeCard" />
+                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="ecommersModel.Categories">
               <MappingFragment StoreEntitySet="Categories">
@@ -863,13 +1182,13 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="ecommersModel.Customers">
               <MappingFragment StoreEntitySet="Customers">
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="DateBirth" ColumnName="DateBirth" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -884,20 +1203,20 @@
           <EntitySetMapping Name="GroupsAttributes">
             <EntityTypeMapping TypeName="ecommersModel.GroupsAttributes">
               <MappingFragment StoreEntitySet="GroupsAttributes">
-                <ScalarProperty Name="ValueGroup" ColumnName="ValueGroup" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="GroupName" ColumnName="GroupName" />
                 <ScalarProperty Name="TypeGroup" ColumnName="TypeGroup" />
+                <ScalarProperty Name="ValueGroup" ColumnName="ValueGroup" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ImagesSkus">
             <EntityTypeMapping TypeName="ecommersModel.ImagesSkus">
               <MappingFragment StoreEntitySet="ImagesSkus">
-                <ScalarProperty Name="TypeImage" ColumnName="TypeImage" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdSku" ColumnName="IdSku" />
                 <ScalarProperty Name="UrlImage" ColumnName="UrlImage" />
+                <ScalarProperty Name="TypeImage" ColumnName="TypeImage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -922,23 +1241,32 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Pays">
+            <EntityTypeMapping TypeName="ecommersModel.Pays">
+              <MappingFragment StoreEntitySet="Pays">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="ecommersModel.Products">
               <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="IdRef" ColumnName="IdRef" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdBrand" ColumnName="IdBrand" />
                 <ScalarProperty Name="IdSubcategory" ColumnName="IdSubcategory" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="idRef" ColumnName="idRef" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Skus">
             <EntityTypeMapping TypeName="ecommersModel.Skus">
               <MappingFragment StoreEntitySet="Skus">
-                <ScalarProperty Name="IdRef" ColumnName="IdRef" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
                 <ScalarProperty Name="Sku" ColumnName="Sku" />
@@ -946,6 +1274,7 @@
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ListPrice" ColumnName="ListPrice" />
                 <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="idRef" ColumnName="idRef" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -966,6 +1295,64 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UserProfile">
+            <EntityTypeMapping TypeName="ecommersModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="ecommersModel.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="ecommersModel.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="ecommersModel.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CampaignsProducts" TypeName="ecommersModel.CampaignsProducts" StoreEntitySet="CampaignsProducts">
+            <EndProperty Name="Campaigns">
+              <ScalarProperty Name="Id" ColumnName="IdCampaign" />
+            </EndProperty>
+            <EndProperty Name="Products">
+              <ScalarProperty Name="Id" ColumnName="IdProduct" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="ecommersModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="UserProfile">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="DeleteCustomer" FunctionName="ecommersModel.Store.DeleteCustomer" />
           <FunctionImportMapping FunctionImportName="GetCustomer" FunctionName="ecommersModel.Store.GetCustomer">
             <ResultMapping>
@@ -976,42 +1363,11 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="DateBirth" ColumnName="DateBirth" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="InsertCustomer" FunctionName="ecommersModel.Store.InsertCustomer" />
-          <EntitySetMapping Name="Campaigns">
-            <EntityTypeMapping TypeName="ecommersModel.Campaigns">
-              <MappingFragment StoreEntitySet="Campaigns">
-                <ScalarProperty Name="IsPrincipal" ColumnName="IsPrincipal" />
-                <ScalarProperty Name="OrderPrincipal" ColumnName="OrderPrincipal" />
-                <ScalarProperty Name="OrderCamp" ColumnName="OrderCamp" />
-                <ScalarProperty Name="UrlImagePrincipal" ColumnName="UrlImagePrincipal" />
-                <ScalarProperty Name="UrlImageMedium" ColumnName="UrlImageMedium" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="CampaignsProducts" TypeName="ecommersModel.CampaignsProducts" StoreEntitySet="CampaignsProducts">
-            <EndProperty Name="Products">
-              <ScalarProperty Name="Id" ColumnName="IdProduct" />
-            </EndProperty>
-            <EndProperty Name="Campaigns">
-              <ScalarProperty Name="Id" ColumnName="IdCampaign" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="ContactUs">
-            <EntityTypeMapping TypeName="ecommersModel.ContactUs">
-              <MappingFragment StoreEntitySet="ContactUs">
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="Comments" ColumnName="Comments" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -12,12 +12,12 @@ namespace ShoeEcommers.LogicLayer.Repositories
 {
     public class CustomerRepository : IDisposable
     {
-        private readonly ecommersEntities1 _dc;
+        private readonly ecommersEntities _dc;
         private readonly SqlConnection _cn;
         public CustomerRepository()
         {
             _cn = ConnectionProvider.GetConnection();
-            _dc = new ecommersEntities1();
+            _dc = new ecommersEntities();
         }
         public List<MyCustomer> GetCustomers(string name = "")
         {

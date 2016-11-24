@@ -17,6 +17,7 @@ namespace ShoeEcommers.LogicLayer.Entities
         public Orders()
         {
             this.OrderDetail = new HashSet<OrderDetail>();
+            this.Pays = new HashSet<Pays>();
         }
     
         public int Id { get; set; }
@@ -27,5 +28,6 @@ namespace ShoeEcommers.LogicLayer.Entities
         public virtual Customers Customers { get; set; }
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
         public virtual StatusOrders StatusOrders { get; set; }
+        public virtual ICollection<Pays> Pays { get; set; }
     }
 }

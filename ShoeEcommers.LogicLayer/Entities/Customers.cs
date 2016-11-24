@@ -16,6 +16,7 @@ namespace ShoeEcommers.LogicLayer.Entities
     {
         public Customers()
         {
+            this.Cards = new HashSet<Cards>();
             this.Orders = new HashSet<Orders>();
         }
     
@@ -27,6 +28,8 @@ namespace ShoeEcommers.LogicLayer.Entities
         public System.DateTime DateBirth { get; set; }
         public Nullable<int> IdUser { get; set; }
     
+        public virtual ICollection<Cards> Cards { get; set; }
+        public virtual UserProfile UserProfile { get; set; }
         public virtual ICollection<Orders> Orders { get; set; }
     }
 }

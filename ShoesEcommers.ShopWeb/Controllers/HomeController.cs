@@ -35,13 +35,13 @@ namespace ShoesEcommers.ShopWeb.Controllers
                 _service.SaveContactUs(contact);
                 ViewBag.IsSaved = true;
             }
-
+            
             return View();
         }
         protected override void Dispose(bool disposing)
         {
             _service.Dispose();
             base.Dispose(disposing);
-        }
+        }
     }
 }

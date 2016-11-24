@@ -16,10 +16,10 @@ namespace ShoeEcommers.LogicLayer.Entities
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class ecommersEntities1 : DbContext
+    public partial class ecommersEntities : DbContext
     {
-        public ecommersEntities1()
-            : base("name=ecommersEntities1")
+        public ecommersEntities()
+            : base("name=ecommersEntities")
         {
         }
     
@@ -30,6 +30,8 @@ namespace ShoeEcommers.LogicLayer.Entities
     
         public DbSet<AttributeSkus> AttributeSkus { get; set; }
         public DbSet<Brands> Brands { get; set; }
+        public DbSet<Campaigns> Campaigns { get; set; }
+        public DbSet<Cards> Cards { get; set; }
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Customers> Customers { get; set; }
         public DbSet<Department> Department { get; set; }
@@ -37,12 +39,15 @@ namespace ShoeEcommers.LogicLayer.Entities
         public DbSet<ImagesSkus> ImagesSkus { get; set; }
         public DbSet<OrderDetail> OrderDetail { get; set; }
         public DbSet<Orders> Orders { get; set; }
+        public DbSet<Pays> Pays { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<Skus> Skus { get; set; }
         public DbSet<StatusOrders> StatusOrders { get; set; }
         public DbSet<SubCategories> SubCategories { get; set; }
-        public DbSet<Campaigns> Campaigns { get; set; }
-        public DbSet<ContactUs> ContactUs { get; set; }
+        public DbSet<UserProfile> UserProfile { get; set; }
+        public DbSet<webpages_Membership> webpages_Membership { get; set; }
+        public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
+        public DbSet<webpages_Roles> webpages_Roles { get; set; }
     
         public virtual int DeleteCustomer(Nullable<int> id)
         {

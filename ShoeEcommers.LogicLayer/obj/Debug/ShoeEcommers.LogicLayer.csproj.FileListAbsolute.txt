@@ -6,3 +6,11 @@ C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoeEc
 C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoeEcommers.LogicLayer\bin\Debug\ShoeEcommers.LogicLayer.dll.config
 C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoeEcommers.LogicLayer\bin\Debug\EntityFramework.dll
 C:\Users\W530\Documents\Visual Studio 2012\Projects\ShoesEcomers.WebAdmin\ShoeEcommers.LogicLayer\bin\Debug\EntityFramework.xml
+C:\Users\Marco Luna\Documents\Visual Studio 2012\Projects\CursosAsp.net\ShoeEcommers.LogicLayer\obj\Debug\ShoeEcommers.LogicLayer.csprojResolveAssemblyReference.cache
+C:\Users\Marco Luna\Documents\Visual Studio 2012\Projects\CursosAsp.net\ShoeEcommers.LogicLayer\obj\Debug\ShoeEcommers.LogicLayer.dll
+C:\Users\Marco Luna\Documents\Visual Studio 2012\Projects\CursosAsp.net\ShoeEcommers.LogicLayer\obj\Debug\ShoeEcommers.LogicLayer.pdb
+C:\Users\Marco Luna\Documents\Visual Studio 2012\Projects\CursosAsp.net\ShoeEcommers.LogicLayer\bin\Debug\ShoeEcommers.LogicLayer.dll.config
+C:\Users\Marco Luna\Documents\Visual Studio 2012\Projects\CursosAsp.net\ShoeEcommers.LogicLayer\bin\Debug\ShoeEcommers.LogicLayer.dll
+C:\Users\Marco Luna\Documents\Visual Studio 2012\Projects\CursosAsp.net\ShoeEcommers.LogicLayer\bin\Debug\ShoeEcommers.LogicLayer.pdb
+C:\Users\Marco Luna\Documents\Visual Studio 2012\Projects\CursosAsp.net\ShoeEcommers.LogicLayer\bin\Debug\EntityFramework.dll
+C:\Users\Marco Luna\Documents\Visual Studio 2012\Projects\CursosAsp.net\ShoeEcommers.LogicLayer\bin\Debug\EntityFramework.xml

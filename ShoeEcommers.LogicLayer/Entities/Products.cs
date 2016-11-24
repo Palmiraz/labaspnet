@@ -26,7 +26,7 @@ namespace ShoeEcommers.LogicLayer.Entities
         public string Name { get; set; }
         public string Model { get; set; }
         public bool Active { get; set; }
-        public Nullable<int> IdRef { get; set; }
+        public Nullable<int> idRef { get; set; }
     
         public virtual Brands Brands { get; set; }
         public virtual SubCategories SubCategories { get; set; }

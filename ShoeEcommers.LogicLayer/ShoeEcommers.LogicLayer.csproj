@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomEntities\ContactUs.cs" />
     <Compile Include="DataObjects\ConnectionProvider.cs" />
     <Compile Include="Entities\AttributeSkus.cs">
       <DependentUpon>EcommersEntities.tt</DependentUpon>
@@ -73,10 +74,10 @@
     <Compile Include="Entities\Campaigns.cs">
       <DependentUpon>EcommersEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Categories.cs">
+    <Compile Include="Entities\Cards.cs">
       <DependentUpon>EcommersEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\ContactUs.cs">
+    <Compile Include="Entities\Categories.cs">
       <DependentUpon>EcommersEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Customers.cs">
@@ -115,6 +116,9 @@
     <Compile Include="Entities\Orders.cs">
       <DependentUpon>EcommersEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Pays.cs">
+      <DependentUpon>EcommersEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Products.cs">
       <DependentUpon>EcommersEntities.tt</DependentUpon>
     </Compile>
@@ -127,13 +131,28 @@
     <Compile Include="Entities\SubCategories.cs">
       <DependentUpon>EcommersEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\UserProfile.cs">
+      <DependentUpon>EcommersEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\webpages_Membership.cs">
+      <DependentUpon>EcommersEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\webpages_OAuthMembership.cs">
+      <DependentUpon>EcommersEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\webpages_Roles.cs">
+      <DependentUpon>EcommersEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Markets\MarketCategories.cs" />
     <Compile Include="Modelos\Customers.cs" />
     <Compile Include="Modelos\DataHomeSite.cs" />
     <Compile Include="Modelos\GroupsSkusFront.cs" />
+    <Compile Include="Modelos\ShopingCar.cs" />
+    <Compile Include="Modelos\ShopingCars.cs" />
     <Compile Include="Modelos\SkuSelectProduct.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Modelos\SkusSelect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -173,18 +192,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EcommersEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Entities\EcommersEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EcommersEntities.edmx</DependentUpon>
-      <LastGenOutput>EcommersEntities.Context.cs</LastGenOutput>
-    </None>
     <None Include="Entities\EcommersEntities.edmx.diagram">
       <DependentUpon>EcommersEntities.edmx</DependentUpon>
-    </None>
-    <None Include="Entities\EcommersEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EcommersEntities.edmx</DependentUpon>
-      <LastGenOutput>EcommersEntities.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -196,8 +205,18 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="CustomEntities\" />
+    <Content Include="Entities\EcommersEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EcommersEntities.edmx</DependentUpon>
+      <LastGenOutput>EcommersEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\EcommersEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EcommersEntities.edmx</DependentUpon>
+      <LastGenOutput>EcommersEntities.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
