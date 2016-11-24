@@ -1,0 +1,41 @@
+﻿@using ShoeEcommers.LogicLayer.Modelos
+@model ShopingCars
+@{
+    ViewBag.Title = "Index";
+}
+@if (null == Model)
+{
+    <h2>No existen productos en tu carrito</h2>
+}
+else
+{
+     foreach (var car in Model.SkusSelect)
+     {
+            <tr>
+                <td><img src="//@car.Sku.Thumbnail" width="120px"/></td>
+                <td>@car.Sku.Products.Name</td>
+                <td>@car.Sku.Sku</td>
+                <td>@car.Quantity</td>
+                <td>@car.Sku.Price.ToString("C")</td>
+                <td>@((car.Quantity*car.Sku.Price).ToString("C"))</td>
+            </tr>
+        }
+        <foot>
+        <tr>
+            <td colspan="3">
+            </td>
+            <td class="food" >
+                <strong>Total</strong>
+            </td >
+            <td class="food">
+                <strong>
+                    @Model.SkusSelect.Sum(c => c.Quantity*c.Sku.Price).ToString("C")
+                </strong>
+            </td>
+            
+            <td>
+                @Html.ActionLink("Pagar", "PayProduct","Checkout",new {@class="clickoneroBtn clickoneroBtnCart"})
+            </td>
+        </tr>
+        </foot>
+}
